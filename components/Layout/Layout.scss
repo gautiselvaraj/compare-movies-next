@@ -1,0 +1,16 @@
+@import '../../styles/variables.scss';
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-top: 80px;
+
+  @media #{$sm-and-down} {
+    padding-top: 65px;
+  }
+
+  .layout__content {
+    flex: 1;
+  }
+}

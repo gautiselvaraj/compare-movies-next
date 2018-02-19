@@ -1,0 +1,6 @@
+{
+  "name": "YouTubeEmbed",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./YouTubeEmbed.js"
+}

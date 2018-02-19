@@ -1,0 +1,95 @@
+@import '../../styles/variables.scss';
+
+.related {
+  .related__button {
+    background-color: $color-transparent;
+    border: 0;
+    cursor: pointer;
+    padding: 0;
+    position: relative;
+
+    &:after {
+      border-bottom: 1px dotted $color-grey-light;
+      bottom: -5px;
+      content: '';
+      left: 0;
+      position: absolute;
+      width: 100%;
+    }
+
+    &:hover,
+    &:focus {
+      &:after {
+        border-bottom-color: $color-primary;
+      }
+    }
+  }
+
+  .related__link {
+    color: $color-grey-lighter;
+    font-size: .9rem;
+  }
+
+  .related__modal-heading {
+    font-size: 1.35rem;
+    margin-bottom: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  .related__add-button {
+    background-color: $color-transparent;
+    border: 0;
+    color: $color-white;
+    cursor: pointer;
+    display: flex;
+    flex-flow: row nowrap;
+    margin: 0 auto 1rem;
+    max-width: 500px;
+    transform: scale(1);
+    transition: transform .5s;
+    width: 100%;
+
+    &:hover,
+    &:focus {
+      transform: scale(1.2) translateX(60px);
+    }
+  }
+
+  .related__media {
+    margin-right: 10px;
+    width: 75px;
+  }
+
+  .related__details {
+    flex: 1 0 0;
+    text-align: left;
+  }
+
+  .related__title {
+    font-size: 1.1rem;
+    line-height: 1.35rem;
+    margin-bottom: .5rem;
+    margin-top: 0;
+  }
+
+  .related__date {
+    color: $color-grey-light;
+    font-size: .8rem;
+    line-height: 1.25rem;
+  }
+
+  .related__vote {
+    display: inline-block;
+    margin-left: .5rem;
+  }
+
+  .related__compare {
+    font-size: .7rem;
+    margin-top: .75rem;
+  }
+
+  .related__no-related {
+    color: $color-grey;
+    font-size: .7rem;
+  }
+}

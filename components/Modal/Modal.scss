@@ -1,0 +1,68 @@
+@import '../../styles/variables.scss';
+
+.modal {
+  .modal__backdrop {
+    background-color: rgba($color-black, .85);
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 200;
+  }
+
+  .modal__inner {
+    animation: modal-animate .5s;
+    max-height: 100vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .modal__content {
+    margin: 0 auto;
+    max-width: 800px;
+    width: 100%;
+  }
+
+  .modal__close {
+    background-color: $color-transparent;
+    border: 0;
+    color: $color-white;
+    cursor: pointer;
+    font-size: 3rem;
+    font-weight: lighter;
+    line-height: 1;
+    padding: 0;
+    position: absolute;
+    right: 10px;
+    top: 0;
+    z-index: 10;
+  }
+
+  &--closing {
+    .modal__backdrop {
+      opacity: 0;
+      transition: opacity .6s;
+    }
+
+    .modal__inner {
+      animation: modal-animate .5s reverse forwards;
+    }
+
+    .modal__close {
+      display: none;
+    }
+  }
+}
+
+@keyframes modal-animate {
+  0% {
+    opacity: 0;
+    transform: scale(.95);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

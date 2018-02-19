@@ -1,0 +1,250 @@
+@import '../../styles/variables.scss';
+
+.movie {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  flex: 1 0 0;
+  min-width: 300px;
+  padding: 10px;
+  position: relative;
+
+  &:before {
+    background: linear-gradient(to right, rgba($color-black, .6), rgba($color-black, .85), rgba($color-black, .6));
+    bottom: 0;
+    content: '';
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 0;
+  }
+
+  .movie__container {
+    align-items: center;
+    color: $color-white;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    position: relative;
+  }
+
+  .movie__poster {
+    height: 200px;
+    margin-top: .5rem;
+  }
+
+  .movie__poster-button {
+    background-color: $color-transparent;
+    border: 0;
+    border-radius: 0;
+    cursor: pointer;
+    padding: 0;
+    width: 135px;
+
+    &:empty {
+      background-color: $color-grey;
+      height: 200px;
+
+      &:after {
+        content: attr(data-title);
+        color: $color-grey-dark;
+        font-size: .85rem;
+        line-height: 1.25rem;
+        padding-left: 5px;
+        padding-right: 5px;
+      }
+    }
+  }
+
+  $image-shadow-color: rgba($color-black, .2);
+
+  .movie__image {
+    box-shadow: 0 25px 28px $image-shadow-color,
+      0 -25px 28px $image-shadow-color,
+      25px 0 28px $image-shadow-color,
+      -25px 0 28px $image-shadow-color;
+  }
+
+  .movie__type {
+    background-color: rgba($color-white, .8);
+    border-radius: 1rem;
+    color: $color-black;
+    font-size: .65rem;
+    font-weight: bold;
+    line-height: 1;
+    margin-top: .65rem;
+    padding: 4px 10px;
+    text-transform: uppercase;
+  }
+
+  .movie__adult {
+    color: red;
+    display: inline-block;
+    font-size: .95rem;
+    font-weight: bold;
+    margin-left: .75rem;
+  }
+
+  .movie__adult-icon {
+    margin-right: 2px;
+  }
+
+  .movie__title {
+    align-items: center;
+    display: flex;
+    font-size: 1.25rem;
+    height: 3.2rem;
+    line-height: 1.6rem;
+    margin-bottom: .25rem;
+    margin-top: 1rem;
+    overflow: hidden;
+  }
+
+  .movie__no-info {
+    color: $color-grey;
+  }
+
+  .movie__vote {
+    align-items: center;
+    display: flex;
+    height: 75px;
+  }
+
+  .movie__medias {
+    min-height: 31px;
+    margin-bottom: 1rem;
+    margin-top: .5rem;
+  }
+
+  .movie__videos-button,
+  .movie__images-button {
+    background-color: $color-transparent;
+    border: 2px solid $color-white;
+    border-radius: 20px;
+    color: $color-white;
+    cursor: pointer;
+    margin-left: .5rem;
+    margin-right: .5rem;
+    padding: 5px 10px;
+    transition-property: background-color, color;
+    transition-duration: .5s;
+
+    &:hover,
+    &:focus {
+      background-color: $color-white;
+      color: $color-black;
+    }
+  }
+
+  .movie__misc {
+    font-size: .85rem;
+    height: 2.5rem;
+    line-height: 2.5rem;
+  }
+
+  .movie__date,
+  .movie__runtime,
+  .movie__seasons-episodes {
+    display: inline-block;
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  .movie__seperator {
+    margin-left: 3px;
+    margin-right: 3px;
+  }
+
+  .movie__genres,
+  .movie__countries,
+  .movie__languages,
+  .movie__related {
+    font-size: .85rem;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+  }
+
+  .movie__genre {
+    margin-right: .35rem;
+
+    &:after {
+      content: ',';
+    }
+
+    &:last-child:after {
+      content: '';
+    }
+  }
+
+  .movie__country {
+    font-size: .9rem;
+
+    + .movie__country {
+      margin-left: 10px;
+    }
+  }
+
+  .movie__country-emoji {
+    font-size: 1rem;
+    margin-right: 3px;
+    position: relative;
+    top: 2px;
+  }
+
+  .movie__overview {
+    flex: 1 0 0;
+    font-size: .85rem;
+    line-height: 1.2rem;
+    margin-bottom: .5rem;
+    margin-top: 1rem;
+    max-width: 650px;
+    text-align: left;
+  }
+
+  .movie__cast-crew {
+    margin: 0 auto 1rem;
+    max-width: 300px;
+    text-align: left;
+    width: 100%;
+  }
+
+  .movie__remove {
+    background-color: $color-white;
+    border: 0;
+    border-radius: 50%;
+    color: $color-grey-darker;
+    cursor: pointer;
+    font-size: .85rem;
+    height: 1.5rem;
+    left: 50%;
+    line-height: 1.5rem;
+    margin-left: 58px;
+    padding: 0;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 1.5rem;
+
+    &:hover,
+    &:focus {
+      background-color: $color-grey-light;
+    }
+  }
+
+  .movie__more-link {
+    background-color: $color-transparent;
+    border: 0;
+    color: $color-primary;
+    cursor: pointer;
+    padding: 0;
+
+    &:hover,
+    &:focus {
+      color: $color-primary-tinted;
+    }
+  }
+}

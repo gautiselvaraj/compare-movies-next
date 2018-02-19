@@ -1,0 +1,6 @@
+{
+  "name": "BodyContainer",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./BodyContainer.js"
+}

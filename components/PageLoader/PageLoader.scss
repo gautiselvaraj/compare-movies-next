@@ -1,0 +1,77 @@
+// Copyright (c) 2014-2017 Materialize
+
+@import '../../styles/variables.scss';
+
+.page-loader {
+    background-color: lighten($color-primary, 40%);
+    border-radius: 2px;
+    display: block;
+    left: 0;
+    height: 3px;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+
+  .page-loader--indeterminate {
+    background-color: $color-primary;
+
+    &:before {
+      animation: indeterminate 2.1s cubic-bezier(.650, .815, .735, .395) infinite;
+      background-color: inherit;
+      bottom: 0;
+      content: '';
+      left: 0;
+      position: absolute;
+      top: 0;
+      will-change: left, right;
+    }
+
+    &:after {
+      animation-delay: 1.15s;
+      animation: indeterminate-short 2.1s cubic-bezier(.165, .840, .440, 1.000) infinite;
+      background-color: inherit;
+      bottom: 0;
+      content: '';
+      left:0;
+      position: absolute;
+      top: 0;
+      will-change: left, right;
+    }
+  }
+}
+
+@keyframes indeterminate {
+  0% {
+    left: -35%;
+    right: 100%;
+  }
+
+  60% {
+    left: 100%;
+    right: -90%;
+  }
+
+  100% {
+    left: 100%;
+    right: -90%;
+  }
+}
+
+@keyframes indeterminate-short {
+    0% {
+      left: -200%;
+      right: 100%;
+    }
+
+    60% {
+      left: 107%;
+      right: -8%;
+    }
+
+    100% {
+      left: 107%;
+      right: -8%;
+    }
+}

@@ -1,0 +1,63 @@
+@import '../../styles/variables.scss';
+
+@mixin header-affixed {
+  align-items: center;
+  background-color: $color-white;
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba($color-black, .1);
+  flex-direction: row;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+
+  .header__logo {
+    margin-bottom: 0;
+    margin-right: 50px;
+    transform: scale(.75) translateY(10px);
+  }
+
+  .header__search {
+    flex: 1;
+    margin: 0;
+    width: auto;
+  }
+}
+
+.header {
+  color: $color-grey-dark;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.35rem;
+  padding-bottom: .5rem;
+  padding-top: .5rem;
+
+  .header__logo {
+    margin-bottom: 50px;
+  }
+
+  .header__link {
+    display: block;
+  }
+
+  .header__search {
+    margin: 0 auto;
+    max-width: 750px;
+    width: 100%;
+  }
+
+  &--affixed {
+    @include header-affixed;
+  }
+
+  @media #{$sm-and-down} {
+    @include header-affixed;
+
+    .header__logo {
+      margin-right: 5px;
+      transform: scale(.6) translateY(10px);
+    }
+  }
+}

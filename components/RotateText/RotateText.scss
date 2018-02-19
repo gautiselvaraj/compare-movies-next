@@ -1,0 +1,22 @@
+@import '../../styles/variables.scss';
+
+.Typist {
+  color: $color-primary;;
+  display: inline-block;
+  margin: 0 10px;
+
+  .Cursor {
+    display: inline-block;
+
+    &--blinking {
+      animation: blink 1s linear infinite;
+      opacity: 1;
+    }
+  }
+}
+
+@keyframes blink {
+  0%   { opacity:1; }
+  50%  { opacity:0; }
+  100% { opacity:1; }
+}

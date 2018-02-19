@@ -1,0 +1,31 @@
+@import '../../styles/variables.scss';
+
+.youtube-embed {
+  padding-bottom: 56.25%;
+  position: relative;
+
+  .youtube-embed__container {
+    transition: opacity 1s;
+  }
+
+  iframe {
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+  }
+
+  .youtube-embed__loader {
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .youtube-embed__error {
+    margin-top: 10rem;
+  }
+}

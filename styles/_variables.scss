@@ -1,0 +1,34 @@
+$color-primary:        #FD7400;
+$color-white:          #fff;
+$color-grey-lighter:   #eee;
+$color-grey-light:     #bbb;
+$color-grey:           #888;
+$color-grey-dark:      #555;
+$color-grey-darker:    #222;
+$color-black:          #000;
+$color-transparent:    transparent;
+$color-primary-tinted: mix(white, $color-primary, 50%);
+
+$font-family-base: 'Lato', sans-serif;
+
+$screen-xs-max: 480px;
+$screen-sm-min: $screen-xs-max + 1;
+$screen-sm-max: 768px;
+$screen-md-min: $screen-sm-max + 1;
+$screen-md-max: 992px;
+$screen-lg-min: $screen-md-max + 1;
+$screen-lg-max: 1200px;
+$screen-xl-min: $screen-lg-max + 1;
+
+$xs-only: (max-width: $screen-xs-max);
+$sm-only: (min-width: $screen-sm-min) and (max-width: $screen-sm-max);
+$md-only: (min-width: $screen-md-min) and (max-width: $screen-md-max);
+$lg-only: (min-width: $screen-lg-min) and (max-width: $screen-lg-max);
+$xl-only: (min-width: $screen-xl-min);
+
+$sm-and-up:   (min-width: $screen-sm-min);
+$md-and-up:   (min-width: $screen-md-min);
+$lg-and-up:   (min-width: $screen-lg-min);
+$lg-and-down: (max-width: $screen-lg-max);
+$md-and-down: (max-width: $screen-md-max);
+$sm-and-down: (max-width: $screen-sm-max);

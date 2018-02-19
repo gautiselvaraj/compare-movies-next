@@ -1,0 +1,89 @@
+@import '../../styles/variables.scss';
+
+.suggests {
+  .suggests__heading {
+    color: $color-grey-dark;
+    font-size: 1.6rem;
+    font-weight: lighter;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+
+    @media #{$md-and-up} {
+      font-size: 2rem;
+    }
+  }
+
+  .suggests__container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+  }
+
+  .suggests__list {
+    margin-bottom: 2rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    max-width: 350px;
+    width: 100%;
+  }
+
+  .suggests__list-title {
+    color: $color-grey-light;
+    font-size: 1.6rem;
+    font-weight: lighter;
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .suggests__list-item {
+    + .suggests__list-item {
+      border-top: 1px solid $color-grey-lighter;
+    }
+  }
+
+  .suggests__list-button {
+    background-color: $color-transparent;
+    border: 0;
+    border-radius: 0;
+    cursor: pointer;
+    display: flex;
+    flex-flow: row nowrap;
+    padding: .35rem 0;
+    transition: background-color .5s;
+    width: 100%;
+
+    &:hover,
+    &:focus {
+      background-color: $color-grey-lighter;
+    }
+  }
+
+  .suggests__list-media {
+    margin-right: 10px;
+    width: 35px;
+  }
+
+  .suggests__list-details {
+    flex: 1 0 0;
+    text-align: left;
+  }
+
+  .suggests__list-sub-title {
+    font-size: 1rem;
+    line-height: 1;
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+
+  .suggests__list-date {
+    color: $color-grey-dark;
+    font-size: .8rem;
+    line-height: 1.25rem;
+  }
+
+  .suggests__list-vote {
+    display: inline-block;
+    margin-left: .5rem;
+  }
+}

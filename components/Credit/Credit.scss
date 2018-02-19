@@ -1,0 +1,47 @@
+@import '../../styles/variables.scss';
+
+.credit {
+  display: flex;
+  flex-flow: row nowrap;
+  margin: 0 auto 1rem;
+  max-width: 300px;
+  width: 100%;
+
+  .credit__poster {
+    margin-right: 10px;
+    width: 35px;
+
+    &--big {
+      width: 50px;
+    }
+
+    &:empty {
+      background-color: $color-grey;
+      position: relative;
+
+      &:after {
+        color: $color-grey-darker;
+        content: attr(data-initials);
+        display: block;
+        font-size: 1rem;
+        font-weight: bold;
+        left: 0;
+        position: absolute;
+        text-align: center;
+        text-transform: uppercase;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 100%;
+      }
+    }
+  }
+
+  .credit__name {
+    margin-bottom: .5rem;
+  }
+
+  .credit__role {
+    color: $color-grey-light;
+    font-size: .9rem;
+  }
+}

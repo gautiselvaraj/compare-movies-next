@@ -1,0 +1,42 @@
+@import '../../styles/variables.scss';
+
+.footer {
+  background-color: $color-primary;
+  color: $color-primary-tinted;
+  line-height: 1.35rem;
+  padding: 1rem;
+  text-align: center;
+
+  .footer__link {
+    color: $color-primary-tinted;
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
+
+  .footer__created_by {
+    font-size: 1.35rem;
+  }
+
+  .footer__heart {
+    display: inline-block;
+    text-align: center;
+    width: 30px;
+
+    @media #{$md-and-up} {
+      animation: heart-animation 2s infinite;
+    }
+  }
+
+  .footer__copyright {
+    font-size: .85rem;
+  }
+}
+
+@keyframes heart-animation {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.5); }
+  100% { transform: scale(1); }
+}

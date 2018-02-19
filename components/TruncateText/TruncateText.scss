@@ -1,0 +1,21 @@
+@import '../../styles/variables.scss';
+
+.text-truncate__more-link {
+  background-color: $color-transparent;
+  border: 0;
+  color: $color-primary;
+  cursor: pointer;
+
+  &:before {
+    content: ' ';
+  }
+
+  &:after {
+    content: '...';
+  }
+
+  &:hover,
+  &:focus {
+    color: $color-primary-tinted;
+  }
+}

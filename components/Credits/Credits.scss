@@ -1,0 +1,38 @@
+@import '../../styles/variables.scss';
+
+.credits {
+  display: flex;
+  flex-flow: column nowrap;
+
+  .credits__heading {
+    font-size: 1.2rem;
+    margin-bottom: .5rem;
+    margin-top: 1rem;
+    text-transform: capitalize;
+  }
+
+  .credits__button {
+    align-self: flex-start;
+    background-color: $color-transparent;
+    border: 0;
+    color: $color-primary;
+    cursor: pointer;
+    padding: 0;
+
+    &:hover,
+    &:focus {
+      color: $color-primary-tinted;
+    }
+  }
+
+  .credits__modal-heading {
+    font-size: 1.35rem;
+    margin-bottom: 1.5rem;
+    margin-top: 1rem;
+    text-align: center;
+  }
+
+  .credits__modal-type {
+    text-transform: capitalize;
+  }
+}

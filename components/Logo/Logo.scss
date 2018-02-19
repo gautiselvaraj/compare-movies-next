@@ -1,0 +1,107 @@
+@import '../../styles/variables.scss';
+
+.logo {
+  .logo-icons {
+    height: 45px;
+    margin: auto;
+    position: relative;
+    left: -10px;
+    transform-style: preserve-3d;
+    width: 50px;
+  }
+
+  .logo__image {
+    height: auto;
+    position: absolute;
+    width: 100%;
+
+    &:first-child {
+      left: 20px;
+      top: -20px;
+      z-index: 1;
+    }
+
+    &:nth-child(2) {
+      left: 10px;
+      top: -10px;
+      z-index: 2;
+    }
+
+    &:last-child {
+      left: 0;
+      top: 0;
+      z-index: 3;
+    }
+  }
+
+  .logo__text {
+    color: $color-black;
+    display: none;
+    font-family: 'Comfortaa', cursive;
+    font-size: 2rem;
+    line-height: 2rem;
+    margin-bottom: 0;
+    margin-top: 1rem;
+    text-align: center;
+    text-transform: lowercase;
+  }
+
+  &--animate {
+    @media #{$md-and-up} {
+      .logo__image {
+        &:first-child {
+          animation: first-logo-animation 8s infinite;
+        }
+
+        &:nth-child(2) {
+          animation: second-logo-animation 8s infinite;
+        }
+
+        &:last-child {
+          animation: third-logo-animation 8s infinite;
+        }
+      }
+
+      .logo__text {
+        display: block;
+      }
+    }
+  }
+}
+
+@keyframes first-logo-animation {
+  0%   { left: 20px; top: -20px; z-index: 1; }
+  8%   { left: 10px; top: -65px; z-index: 1; }
+  9%   { left: 10px; top: -65px; z-index: 3; }
+  17%  { left: 0;    top: 0;     z-index: 3; }
+  49%  { left: 0;    top: 0;     z-index: 3; }
+  50%  { left: 0;    top: 0;     z-index: 2; }
+  58%  { left: 10px; top: -10px; z-index: 2; }
+  90%  { left: 10px; top: -10px; z-index: 2; }
+  91%  { left: 10px; top: -10px; z-index: 1; }
+  100% { left: 20px; top: -20px; z-index: 1; }
+}
+
+@keyframes second-logo-animation {
+  0%   { left: 10px; top: -10px; z-index: 1; }
+  25%  { left: 10px; top: -10px; z-index: 1; }
+  33%  { left: 20px; top: -20px; z-index: 1; }
+  41%  { left: 10px; top: -65px; z-index: 1; }
+  42%  { left: 10px; top: -65px; z-index: 3; }
+  50%  { left: 0;    top: 0;     z-index: 3; }
+  83%  { left: 0;    top: 0;     z-index: 2; }
+  91%  { left: 10px; top: -10px; z-index: 2; }
+  100% { left: 10px; top: -10px; z-index: 1; }
+}
+
+@keyframes third-logo-animation {
+  0%   { left: 0;    top: 0;     z-index: 3; }
+  17%  { left: 0;    top: 0;     z-index: 2; }
+  25%  { left: 10px; top: -10px; z-index: 2; }
+  58%  { left: 10px; top: -10px; z-index: 1; }
+  66%  { left: 20px; top: -20px; z-index: 1; }
+  74%  { left: 10px; top: -65px; z-index: 1; }
+  75%  { left: 10px; top: -65px; z-index: 3; }
+  83%  { left: 0;    top: 0;     z-index: 3; }
+  100% { left: 0;    top: 0;     z-index: 3; }
+}

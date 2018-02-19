@@ -1,0 +1,22 @@
+@import '../../styles/variables.scss';
+
+.search-hint {
+  position: relative;
+
+  .search-hint__text {
+    bottom: 0;
+    color: $color-grey-light;
+    font-size: 1rem;
+    left: 0;
+    line-height: 50px;
+    margin-left: 20px;
+    position: absolute;
+    text-align: left;
+    z-index: -1;
+
+    @media #{$md-and-up} {
+      font-size: 1.5rem;
+      line-height: 65px;
+    }
+  }
+}

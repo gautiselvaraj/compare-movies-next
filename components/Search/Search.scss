@@ -1,0 +1,40 @@
+@import '../../styles/variables.scss';
+
+.search {
+  position: relative;
+
+  .search__input {
+    background-color: $color-transparent;
+    border: 3px solid $color-grey;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    height: 50px;
+    padding: 5px 15px;
+    transition-duration: .35s;
+    transition-property: box-shadow, border-color;
+    width: 100%;
+    z-index: 2;
+
+    @media #{$md-and-up} {
+      font-size: 1.5rem;
+      height: 65px;
+    }
+
+    &:focus {
+      border-color: $color-primary-tinted;
+      border-radius: 5px;
+      box-shadow: 0 5px 8px rgba($color-black, .1), 0 -5px 8px rgba($color-black, .1), 5px 0 8px rgba($color-black, .1), -5px 0 8px rgba($color-black, .1);
+      outline: none;
+    }
+  }
+
+  .search__loader {
+    top: 7px;
+    position: absolute;
+    right: 10px;
+
+    @media #{$md-and-up} {
+      top: 15px;
+    }
+  }
+}

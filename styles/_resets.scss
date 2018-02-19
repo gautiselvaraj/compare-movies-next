@@ -1,0 +1,26 @@
+@import './variables.scss';
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-family-base;
+  font-size: 15px;
+  min-width: 320px;
+}
+
+a {
+  text-decoration: none;
+}
+
+::placeholder {
+  color: $color-grey-light;
+}
+
+.body__modal--opened {
+  &,
+  .movies-list {
+    overflow: hidden;
+  }
+}
