@@ -5,17 +5,10 @@ import Helmet from 'react-helmet';
 import { getPosterPath } from '~/utils/tmdbUtils';
 
 class Meta extends Component {
-  constructor() {
-    super();
-
-    // Hack to make Helmet change exisitng meta tags
-    document.querySelectorAll('title ~ meta').forEach(meta => meta.remove());
-  }
-
   render() {
     const movies = this.props.movies;
 
-    if (!movies.length) {
+    if (!movies || !movies.length) {
       return (
         <Helmet>
           <title>Compare Movies and TV Shows Instantly</title>

@@ -1,12 +1,45 @@
 import Document, { Head, Main, NextScript } from 'next/document';
+import Helmet from 'react-helmet';
 
 export default class MyDocument extends Document {
+  static async getInitialProps(...args) {
+    const documentProps = await super.getInitialProps(...args);
+    return { ...documentProps, helmet: Helmet.renderStatic() };
+  }
+
+  get helmetHtmlAttrComponents() {
+    return this.props.helmet.htmlAttributes.toComponent();
+  }
+
+  get helmetBodyAttrComponents() {
+    return this.props.helmet.bodyAttributes.toComponent();
+  }
+
+  get helmetHeadComponents() {
+    return Object.keys(this.props.helmet)
+      .filter(el => el !== 'htmlAttributes' && el !== 'bodyAttributes')
+      .map(el => this.props.helmet[el].toComponent());
+  }
+
+  get helmetJsx() {
+    return (
+      <Helmet
+        htmlAttributes={{ lang: 'en' }}
+        title="Hello next.js!"
+        meta={[
+          { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+          { property: 'og:title', content: 'Hello next.js!' }
+        ]}
+      />
+    );
+  }
+
   render() {
     return (
-      <html lang="en">
+      <html lang="en" {...this.helmetHtmlAttrComponents}>
         <Head>
-          <meta charset="utf-8" />
-          <meta content="IE=Edge,chrome=1" http-equiv="X-UA-Compatible" />
+          <meta charSet="utf-8" />
+          <meta content="IE=Edge,chrome=1" httpEquiv="X-UA-Compatible" />
           <meta
             content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
             name="viewport"
@@ -41,45 +74,16 @@ export default class MyDocument extends Document {
             href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
             rel="stylesheet"
             integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
-            crossorigin="anonymous"
+            crossOrigin="anonymous"
           />
           <script src="//www.youtube.com/iframe_api" async />
 
-          <title>Compare Movies and TV Shows Instantly</title>
-          <meta
-            name="description"
-            content="Compare movies and TV shows info like ratings, runtime, genres, release date, status, season & episodes details, cast, crew, overview and so on. Also watch movies and TV shows trailers and posters with ease."
-          />
-          <meta
-            property="og:title"
-            content="Compare Movies and TV Shows Instantly"
-          />
-          <meta
-            property="og:description"
-            content="Compare movies and TV shows info like ratings, runtime, genres, release date, status, season & episodes details, cast, crew, overview and so on. Also watch movies and TV shows trailers and posters with ease."
-          />
-          <meta property="og:site_name" content="Compare Movies" />
-          <meta property="og:type" content="website" />
-          <meta
-            property="og:image"
-            content="https://www.comparemovies.info/social-logo.jpg"
-          />
-          <meta
-            name="twitter:title"
-            content="Compare Movies and TV Shows Instantly"
-          />
-          <meta
-            name="twitter:description"
-            content="Compare movies and TV shows info like ratings, runtime, genres, release date, status, season & episodes details, cast, crew, overview and so on. Also watch movies and TV shows trailers and posters with ease."
-          />
-          <meta name="twitter:creator" content="@gautiselvaraj" />
-          <meta
-            name="twitter:image"
-            content="https://www.comparemovies.info/social-logo.jpg"
-          />
           <link rel="stylesheet" href="/_next/static/style.css" />
+
+          {this.helmetJsx}
+          {this.helmetHeadComponents}
         </Head>
-        <body>
+        <body {...this.helmetBodyAttrComponents}>
           <noscript>You need to enable JavaScript to run this app.</noscript>
           <Main />
           <NextScript />
