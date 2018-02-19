@@ -46,8 +46,7 @@ const movieRemove = movie => {
 export const removeMovie = movie => {
   return dispatch => {
     dispatch(movieRemove(movie));
-    const href = removeMovieFromPath(Router.route, movie);
-    Router.push(href, href, { shallow: true });
+    Router.push('/compare', removeMovieFromPath(movie), { shallow: true });
   };
 };
 
@@ -70,16 +69,15 @@ export const addMovie = movie => {
       } catch (errors) {
         dispatch(movieFailure(errors));
       }
-
-      const href = pushMovieToPath(Router.route, movie);
-      Router.push(href, href, { shallow: true });
+      console.log(pushMovieToPath(movie));
+      Router.push('/compare', pushMovieToPath(movie), { shallow: true });
     }
   };
 };
 
 export const fetchMoviesFromUrl = () => {
   return async dispatch => {
-    let moviesFromUrl = getMovieUrlsFromPath(Router.route);
+    let moviesFromUrl = getMovieUrlsFromPath();
     moviesFromUrl.reverse();
     moviesFromUrl = moviesFromUrl.filter(path => path);
     if (moviesFromUrl.length) {
