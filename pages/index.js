@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import withRedux from 'next-redux-wrapper';
+import initStore from '../store';
 
-export default class IndexPage extends Component {
+class IndexPage extends Component {
   render() {
     return (
       <div>
@@ -9,3 +11,5 @@ export default class IndexPage extends Component {
     );
   }
 }
+
+export default withRedux(initStore)(IndexPage);
