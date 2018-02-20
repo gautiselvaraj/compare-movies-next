@@ -46,10 +46,15 @@ class IndexPage extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  showPageLoader:
-    state.getIn(['suggests', 'fetching']) || state.getIn(['movies', 'fetching'])
-});
+const mapStateToProps = state => {
+  const suggests = state.getIn(['suggests', 'results']);
+  return {
+    showPageLoader:
+      state.getIn(['suggests', 'fetching']) ||
+      state.getIn(['movies', 'fetching']),
+    suggests: suggests ? suggests.toJS() : null
+  };
+};
 
 const mapDispatchToProps = dispatch => ({
   getSuggestedMovies: () => dispatch(getSuggestedMovies()),
