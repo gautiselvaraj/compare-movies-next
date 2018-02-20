@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import PropTypes from 'prop-types';
 import SearchContainer from '~/containers/SearchContainer';
 import Logo from '~/components/Logo';
@@ -10,9 +11,11 @@ const Header = ({ shrinkHeader }) => {
   return (
     <header className={`header ${headerClass}`}>
       <div className="header__logo">
-        <a href="/" className="header__link">
-          <Logo animateLogo={!shrinkHeader} />
-        </a>
+        <Link href="/">
+          <a className="header__link">
+            <Logo animateLogo={!shrinkHeader} />
+          </a>
+        </Link>
       </div>
       <div className="header__search">
         <SearchContainer />

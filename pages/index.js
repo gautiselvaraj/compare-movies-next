@@ -7,14 +7,17 @@ import Metas from '~/components/Metas';
 import PageLoader from '~/components/PageLoader';
 import Suggests from '~/components/Suggests';
 import { getSuggestedMovies } from '~/actions/SuggestsActions';
-import { addMovie } from '~/actions/MovieActions';
+import { addMovie, removeAllMovies } from '~/actions/MovieActions';
 
 class IndexPage extends Component {
   static async getInitialProps({ req, store }) {
     if (req) {
       Helmet.renderStatic();
+      await store.dispatch(getSuggestedMovies());
+    } else {
+      store.dispatch(removeAllMovies());
     }
-    await store.dispatch(getSuggestedMovies());
+
     const suggests = store.getState().getIn(['suggests', 'results']);
     return {
       suggests: suggests ? suggests.toJS() : null
@@ -44,7 +47,8 @@ class IndexPage extends Component {
 }
 
 const mapStateToProps = state => ({
-  showPageLoader: state.getIn(['suggests', 'fetching'])
+  showPageLoader:
+    state.getIn(['suggests', 'fetching']) || state.getIn(['movies', 'fetching'])
 });
 
 const mapDispatchToProps = dispatch => ({

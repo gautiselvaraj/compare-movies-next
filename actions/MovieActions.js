@@ -43,10 +43,19 @@ const movieRemove = movie => {
   };
 };
 
+export const removeAllMovies = () => ({
+  type: types.MOVIE_REMOVE_ALL
+});
+
 export const removeMovie = movie => {
   return dispatch => {
     dispatch(movieRemove(movie));
-    Router.push('/compare', removeMovieFromPath(movie), { shallow: true });
+    const asPath = removeMovieFromPath(movie);
+    if (asPath === '/c/') {
+      Router.push('/');
+    } else {
+      Router.push('/compare', asPath, { shallow: true });
+    }
   };
 };
 
@@ -69,15 +78,14 @@ export const addMovie = movie => {
       } catch (errors) {
         dispatch(movieFailure(errors));
       }
-      console.log(pushMovieToPath(movie));
       Router.push('/compare', pushMovieToPath(movie), { shallow: true });
     }
   };
 };
 
-export const fetchMoviesFromUrl = () => {
+export const fetchMoviesFromUrl = url => {
   return async dispatch => {
-    let moviesFromUrl = getMovieUrlsFromPath();
+    let moviesFromUrl = getMovieUrlsFromPath(url);
     moviesFromUrl.reverse();
     moviesFromUrl = moviesFromUrl.filter(path => path);
     if (moviesFromUrl.length) {

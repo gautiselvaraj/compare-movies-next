@@ -53,7 +53,7 @@ class Meta extends Component {
       ', '
     )} ratings, runtime, genres, release date, status, season & episodes details, cast, crew, overview and so on.`;
     const metaImage = getPosterPath(movies[0].poster_path);
-    const metaUrl = Router.route;
+    const metaUrl = this.props.url;
 
     return (
       <Helmet>

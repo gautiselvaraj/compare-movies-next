@@ -39,6 +39,9 @@ export default function search(state = initialState, action) {
           )
       );
 
+    case types.MOVIE_REMOVE_ALL:
+      return state.set('list', List());
+
     default:
       return state;
   }

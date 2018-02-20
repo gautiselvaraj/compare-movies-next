@@ -3,10 +3,12 @@ import Router from 'next/router';
 const encodePaths = path => path.replace(/[^a-zA-Z0-9-_/\:]/g, '_');
 
 const getPathParts = path =>
-  path
-    .replace('/c/', '')
-    .split('::')
-    .filter(ele => ele);
+  path === '/'
+    ? []
+    : path
+        .replace('/c/', '')
+        .split('::')
+        .filter(ele => ele);
 
 const getTypeIdFromPath = path => path.split('--')[0];
 
@@ -29,9 +31,9 @@ export const removeMovieFromPath = movie =>
     )
   );
 
-export const getMovieUrlsFromPath = () =>
-  getPathParts(Router.asPath).map(path => {
-    if (/-{5}(tv|movie)-\d{0,10}/.test(path)) {
+export const getMovieUrlsFromPath = url =>
+  getPathParts(url).map(path => {
+    if (/^(tv|movie)-\d{0,10}/.test(path)) {
       return getTypeIdFromPath(path)
         .split('-')
         .join('/');

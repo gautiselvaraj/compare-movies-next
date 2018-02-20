@@ -37,8 +37,8 @@ const SearchResult = ({ searchResult, highlighted }) => (
   </div>
 );
 
-SearchResult.PropTypes = {
-  searchResult: PropTypes.arrayOf(PropTypes.object).isRequired,
+SearchResult.propTypes = {
+  searchResult: PropTypes.object.isRequired,
   highlighted: PropTypes.bool.isRequired
 };
 
