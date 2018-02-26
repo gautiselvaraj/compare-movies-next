@@ -33,13 +33,13 @@ class Modal extends Component {
   }
 
   componentDidMount() {
-    document.body.classList.add('body__modal--opened');
+    document.documentElement.classList.add('body__modal--opened');
     this.modal.focus();
   }
 
   componentWillUnmount() {
-    document.body.classList.remove('body__modal--opened');
-    window.clearTimeout(this.closeTimeout);
+    document.documentElement.classList.remove('body__modal--opened');
+    clearTimeout(this.closeTimeout);
     document.removeEventListener('keydown', this.onKeyDown);
   }
 

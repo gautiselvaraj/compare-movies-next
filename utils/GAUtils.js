@@ -1,19 +1,25 @@
 import ReactGA from 'react-ga';
 import Router from 'next/router';
+import { GATrackingId } from '~/constants/GAConstants';
 
 const isProd = process.env.NODE_ENV === 'production';
+const client = typeof window !== 'undefined';
+let initializedGA = false;
 
-const logMe = (category, action, label) => {
-  label = JSON.stringify(label);
-  if (isProd) {
-    ReactGA.event({ category, action, label });
+const initGA = () => {
+  if (initializedGA) {
+    return;
   }
+
+  ReactGA.initialize(GATrackingId);
+  initializedGA = true;
 };
 
-export const logPageView = () => {
-  if (isProd) {
-    ReactGA.set({ page: Router.route });
-    ReactGA.pageview(Router.route);
+const logMe = (category, action, label) => {
+  if (isProd && client) {
+    initGA();
+    label = JSON.stringify(label);
+    ReactGA.event({ category, action, label });
   }
 };
 

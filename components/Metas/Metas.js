@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Router from 'next/router';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { getPosterPath } from '~/utils/tmdbUtils';

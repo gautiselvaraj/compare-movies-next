@@ -35,7 +35,7 @@ class Search extends Component {
   }
 
   componentWillUnmount() {
-    window.clearTimeout(this.blurTimeout);
+    clearTimeout(this.blurTimeout);
   }
 
   setHighlightedIndex(key) {
@@ -88,7 +88,7 @@ class Search extends Component {
     }
 
     // Clear blur timeout
-    window.clearTimeout(this.blurTimeout);
+    clearTimeout(this.blurTimeout);
 
     this.searchInput.focus();
     this.setState({ inputFocussed: true });

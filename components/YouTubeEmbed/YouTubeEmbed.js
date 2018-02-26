@@ -10,8 +10,8 @@ class YouTubeEmbed extends Component {
   }
 
   componentDidMount() {
-    if (window.YT) {
-      this.player = new window.YT.Player(this.iframePlayer, {
+    if (YT) {
+      this.player = new YT.Player(this.iframePlayer, {
         width: 800,
         height: 'auto',
         events: {

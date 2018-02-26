@@ -21,7 +21,7 @@ class RotateText extends Component {
   }
 
   componentWillUnmount() {
-    this.timeouts.forEach(window.clearTimeout);
+    this.timeouts.forEach(clearTimeout);
   }
 
   done() {
