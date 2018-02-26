@@ -63,7 +63,10 @@ export default class MyDocument extends Document {
             sizes="16x16"
             href="/static/favicon-16x16.png"
           />
-          <link rel="manifest" href="/static/manifest.json" />
+          <meta
+            name="msapplication-config"
+            content="/static/browserconfig.xml"
+          />
           <meta name="theme-color" content="#ffffff" />
 
           <link
