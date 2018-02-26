@@ -20,8 +20,7 @@ const enUSFormat = new Intl.NumberFormat('en-US', {
 
 const randomColorPart = () => Math.round(Math.random() * 255);
 
-export const moviesAvailable = state =>
-  state.getIn(['movies', 'fetching']) || !!state.getIn(['movies', 'list']).size;
+export const moviesAvailable = state => !!state.getIn(['movies', 'list']).size;
 
 export const formatedDate = (dateString, format = 'small') => {
   if (!dateString) {
