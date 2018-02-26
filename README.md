@@ -17,7 +17,7 @@ Install Dependencies
 ```yarn```
 
 Apply and get [API key from TMDb](https://www.themoviedb.org/settings/api)
-Set `REACT_APP_TMDB_API_KEY` ENV variable to TMDb API Key
+Duplicate .env-sample to .env and add your TMDb API Key in .env file
 
 Start the server
 ```yarn dev```

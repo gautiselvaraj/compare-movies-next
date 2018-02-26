@@ -7,13 +7,14 @@
   "author": "Gauti Selvaraj <me@gauti.info> (https://www.gauti.info/)",
   "license": "MIT",
   "scripts": {
-    "dev": "node server.js",
+    "dev": "node -r dotenv/config server.js",
     "build": "next build",
-    "start": "next start",
+    "start": "NODE_ENV=production node -r dotenv/config server.js",
     "precommit": "lint-staged"
   },
   "dependencies": {
     "@zeit/next-sass": "^0.1.1",
+    "babel-plugin-root-import": "^5.1.0",
     "dotenv": "^5.0.0",
     "emoji-flags": "^1.2.0",
     "express": "^4.16.2",
@@ -42,7 +43,6 @@
     "**/*.{js,jsx,json,css}": ["prettier --single-quote --write", "git add"]
   },
   "devDependencies": {
-    "babel-plugin-root-import": "^5.1.0",
     "redux-logger": "^3.0.6"
   }
 }
