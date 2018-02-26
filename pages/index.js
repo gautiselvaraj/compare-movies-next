@@ -1,3 +1,6 @@
+import 'isomorphic-fetch';
+import '~/styles/index.scss';
+
 import React, { Component } from 'react';
 import withRedux from 'next-redux-wrapper';
 import Helmet from 'react-helmet';

@@ -1,6 +1,3 @@
-import 'isomorphic-fetch';
-import '../../styles/index.scss';
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import HeaderContainer from '~/containers/HeaderContainer';
