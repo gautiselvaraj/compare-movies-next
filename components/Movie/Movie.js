@@ -155,6 +155,24 @@ class Movie extends Component {
                 </button>
               </span>
             )}
+            {movieVideosPresent &&
+              showVideos && (
+                <MediaModal
+                  show={true}
+                  movie={movie}
+                  onClose={this.hideVideos}
+                  type="videos"
+                />
+              )}
+            {movieImagesPresent &&
+              showImages && (
+                <MediaModal
+                  show={true}
+                  movie={movie}
+                  onClose={this.hideImages}
+                  type="images"
+                />
+              )}
           </div>
           <div className="movie__countries">
             {countries.map(c => (
@@ -260,24 +278,6 @@ class Movie extends Component {
             &times;
           </button>
         </div>
-        {movieVideosPresent &&
-          showVideos && (
-            <MediaModal
-              show={true}
-              movie={movie}
-              onClose={this.hideVideos}
-              type="videos"
-            />
-          )}
-        {movieImagesPresent &&
-          showImages && (
-            <MediaModal
-              show={true}
-              movie={movie}
-              onClose={this.hideImages}
-              type="images"
-            />
-          )}
       </div>
     );
   }
