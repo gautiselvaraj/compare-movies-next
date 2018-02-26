@@ -9,16 +9,22 @@ const Logo = ({ animateLogo }) => (
         src="/static/images/logo-animated-first.png"
         className="logo__image"
         alt="Compare"
+        width="75"
+        height="75"
       />
       <img
         src="/static/images/logo-animated-second.png"
         className="logo__image"
         alt="Movies"
+        width="75"
+        height="75"
       />
       <img
         src="/static/images/logo-animated-third.png"
         className="logo__image"
         alt="Logo"
+        width="75"
+        height="75"
       />
     </div>
     <h1 className="logo__text">Compare Movies</h1>
