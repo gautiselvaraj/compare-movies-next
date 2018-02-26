@@ -37,7 +37,7 @@ class Meta extends Component {
     const metaDescription = `Comparing ${movieTitles.join(
       ', '
     )} ratings, runtime, genres, release date, status, season & episodes details, cast, crew, overview and so on.`;
-    const metaUrl = `${this.props.url}`;
+    const metaUrl = `${siteUrl}${this.props.url}`;
 
     return (
       <Helmet>
