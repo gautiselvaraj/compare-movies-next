@@ -1,5 +1,7 @@
 const express = require('express');
 const next = require('next');
+const unSupportedBrowserMiddleware = require('./unSupportedBrowserMiddleware');
+
 const port = process.env.PORT || 3000;
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
@@ -9,6 +11,7 @@ app
   .prepare()
   .then(() => {
     const server = express();
+    server.use(unSupportedBrowserMiddleware());
 
     server.get('/c/:id', (req, res) => {
       app.render(req, res, '/compare');
