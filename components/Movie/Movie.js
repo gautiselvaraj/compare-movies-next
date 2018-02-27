@@ -23,7 +23,7 @@ import Vote from '~/components/Vote';
 import MediaModal from '~/components/MediaModal';
 import Languages from '~/components/Languages';
 import SeasonEpisodes from '~/components/SeasonEpisodes';
-import Profit from '~/components/Profit';
+import BoxOffice from '~/components/BoxOffice';
 import Credits from '~/components/Credits';
 import RelatedContainer from '~/containers/RelatedContainer';
 import './Movie.scss';
@@ -226,7 +226,7 @@ class Movie extends Component {
               {movie.status}
             </span>
             <span className="movie__money">
-              <Profit budget={movie.budget} revenue={movie.revenue} />
+              <BoxOffice revenue={movie.revenue} />
             </span>
           </div>
           <div className="movie__languages">
