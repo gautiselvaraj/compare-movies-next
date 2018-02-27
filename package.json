@@ -34,7 +34,7 @@
     "react-ga": "^2.4.1",
     "react-helmet": "^5.2.0",
     "react-redux": "^5.0.7",
-    "react-shorten": "^1.0.1",
+    "react-shorten": "^1.0.4",
     "react-typist": "^2.0.4",
     "redux": "^3.7.2",
     "redux-immutable": "^4.0.0",

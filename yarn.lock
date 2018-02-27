@@ -4017,9 +4017,13 @@ mz@2.7.0:
     object-assign "^4.0.1"
     thenify-all "^1.0.0"
 
-nan@^2.3.0, nan@^2.3.2, nan@^2.4.0:
+nan@^2.3.0, nan@^2.3.2:
   version "2.8.0"
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.8.0.tgz#ed715f3fe9de02b57a5e6252d90a96675e1f085a"
+
+nan@^2.4.0:
+  version "2.9.2"
+  resolved "https://registry.yarnpkg.com/nan/-/nan-2.9.2.tgz#f564d75f5f8f36a6d9456cca7a6c4fe488ab7866"
 
 nanomatch@^1.2.9:
   version "1.2.9"
@@ -5137,9 +5141,9 @@ react-redux@^5.0.7:
     loose-envify "^1.1.0"
     prop-types "^15.6.0"
 
-react-shorten@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/react-shorten/-/react-shorten-1.0.1.tgz#32df792ca328d12ddf7766b691cbc3fc829734fd"
+react-shorten@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/react-shorten/-/react-shorten-1.0.4.tgz#55e181ec742123b770c541b5f1ebfa868aa12ab3"
   dependencies:
     canvas "^1.6.9"
     exenv "^1.2.2"
