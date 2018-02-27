@@ -8,6 +8,10 @@ const getRating = (ratings, source) => {
 };
 
 const MiscVotes = ({ ratings }) => {
+  if (!ratings) {
+    return null;
+  }
+
   const imdbRating = getRating(ratings, 'Internet Movie Database');
   const tomatoRating = getRating(ratings, 'Rotten Tomatoes');
   const metacriticRating = getRating(ratings, 'Metacritic');
