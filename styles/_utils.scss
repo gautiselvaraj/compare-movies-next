@@ -1,7 +1,4 @@
 // Some Utils
-
-@import './variables.scss';
-
 @media #{$sm-and-down} {
   .hide-sm-and-down {
     display: none;

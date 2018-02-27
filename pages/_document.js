@@ -87,7 +87,21 @@ export default class MyDocument extends Document {
           {this.helmetHeadComponents}
         </Head>
         <body {...this.helmetBodyAttrComponents}>
-          <noscript>You need to enable JavaScript to run this app.</noscript>
+          <noscript>
+            <div className="no-script">
+              <h2>JavaScript Disabled</h2>
+              <p className="no-script__paragraph">
+                Please enable JavaScript to run this app.
+              </p>
+              <a
+                href="https://www.enable-javascript.com/"
+                className="no-script__button"
+                target="_blank"
+              >
+                Enable JavaScript
+              </a>
+            </div>
+          </noscript>
           <Main />
           <NextScript />
         </body>
