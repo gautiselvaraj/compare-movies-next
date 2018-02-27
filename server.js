@@ -18,19 +18,8 @@ app
       app.render(req, res, '/compare');
     });
 
-    server.get('/movie_ratings/:id', (req, res) => {
+    server.get('/omdb_details/:id', (req, res) => {
       res.setHeader('Content-Type', 'application/json');
-
-      if (
-        [
-          'https://www.comparemovies.info',
-          'http://localhost:8080',
-          'http://localhost:3000'
-        ].indexOf(req.header('Origin')) === -1
-      ) {
-        res.send(JSON.stringify({}));
-        return res.end();
-      }
 
       fetch(
         `http://www.omdbapi.com/?i=${req.params.id}&apikey=${
@@ -38,7 +27,16 @@ app
         }`
       )
         .then(response => response.json())
-        .then(json => res.send(JSON.stringify({ ratings: json.Ratings })))
+        .then(json =>
+          res.send(
+            JSON.stringify({
+              awards: json.Awards,
+              ratings: json.Ratings,
+              dvdReleaseDate: json.DVD,
+              production: json.Production
+            })
+          )
+        )
         .catch(err => res.send(JSON.stringify({})));
     });
 
