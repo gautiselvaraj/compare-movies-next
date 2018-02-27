@@ -233,12 +233,12 @@ class Movie extends Component {
               <BoxOffice revenue={movie.revenue} />
             </span>
           </div>
-          <div
-            className={`movie__awards ${
-              movie.awards !== 'N/A' ? '' : 'movie__no-info'
-            }`}
-          >
-            {movie.awards !== 'N/A' ? movie.awards : 'No Awards Info'}
+          <div className="movie__awards">
+            {movie.awards && movie.awards !== 'N/A' ? (
+              <span>{movie.awards}</span>
+            ) : (
+              <span className="movie__no-info">No Awards Info</span>
+            )}
           </div>
           <div className="movie__production">
             {movie.production ? (
