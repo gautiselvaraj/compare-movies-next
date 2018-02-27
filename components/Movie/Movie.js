@@ -229,6 +229,31 @@ class Movie extends Component {
               <BoxOffice revenue={movie.revenue} />
             </span>
           </div>
+          <div
+            className={`movie__awards ${
+              movie.awards !== 'N/A' ? '' : 'movie__no-info'
+            }`}
+          >
+            {movie.awards !== 'N/A' ? movie.awards : 'No Awards Info'}
+          </div>
+          <div className="movie__production">
+            {movie.production ? (
+              <span className="tooltip" data-title="Production Company">
+                {movie.production}
+              </span>
+            ) : (
+              <span className="movie__no-info">No Production Company Info</span>
+            )}
+          </div>
+          <div className="movie__dvd-release-date">
+            {movie.dvdReleaseDate && movie.dvdReleaseDate !== 'N/A' ? (
+              <span className="tooltip" data-title="DVD Release Date">
+                {formatedDate(movie.dvdReleaseDate, 'long')}
+              </span>
+            ) : (
+              <span className="movie__no-info">No DVD Release Date</span>
+            )}
+          </div>
           <div className="movie__languages">
             <Languages
               translations={movie.translations.translations}

@@ -157,7 +157,10 @@
   }
 
   .movie__genres,
+  .movie__awards,
+  .movie__production,
   .movie__countries,
+  .movie__dvd-release-date,
   .movie__languages,
   .movie__related {
     font-size: .85rem;
@@ -166,6 +169,16 @@
     overflow: hidden;
     text-overflow: ellipsis;
     width: 100%;
+  }
+
+  .movie__awards {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .movie__production,
+  .movie__dvd-release-date {
+    overflow: visible;
   }
 
   .movie__genre {
