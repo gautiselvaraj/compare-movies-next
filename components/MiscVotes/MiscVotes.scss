@@ -1,0 +1,40 @@
+@import '../../styles/variables.scss';
+
+.misc-vote {
+  .misc-vote__icon {
+    color: $color-primary;
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+
+  .misc-vote__count {
+    color: $color-white;
+    font-size: .85rem;
+    line-height: 1.3rem;
+  }
+
+  &__imdb {
+    .misc-vote__icon {
+      font-size: 2.5rem;
+      line-height: 4rem;
+      margin-right: .5rem;
+    }
+
+    .misc-vote__count {
+      font-size: 1.5rem;
+      position: relative;
+      top: -.35rem;
+    }
+  }
+
+  &__secondary {
+    display: flex;
+    flex-wrap: wrap;
+    right: .5em;
+
+    > span {
+      flex: 0 100%;
+      margin: 3px 0;
+    }
+  }
+}

@@ -6,10 +6,15 @@ const Vote = ({
   vote,
   type = 'small',
   noRatingClass = '',
-  noRatingText = false
+  noRatingText = false,
+  className,
+  ...otherProps
 }) =>
   !!vote ? (
-    <div className={`vote ${type ? `vote--${type}` : ''}`}>
+    <div
+      className={`vote ${className} ${type ? `vote--${type}` : ''}`}
+      {...otherProps}
+    >
       <i className="fa fa-star vote__icon" />
       <span className="vote__count">{parseFloat(vote.toFixed(1))}</span>
     </div>

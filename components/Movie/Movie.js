@@ -20,6 +20,7 @@ import {
 } from '~/utils/GAUtils';
 import Poster from '~/components/Poster';
 import Vote from '~/components/Vote';
+import MiscVotes from '~/components/MiscVotes';
 import MediaModal from '~/components/MediaModal';
 import Languages from '~/components/Languages';
 import SeasonEpisodes from '~/components/SeasonEpisodes';
@@ -130,7 +131,10 @@ class Movie extends Component {
               type="big"
               noRatingText={true}
               noRatingClass="movie__no-info"
+              className="tooltip"
+              data-title="TMDB"
             />
+            <MiscVotes ratings={movie.ratings} />
           </div>
           <div className="movie__medias">
             {movieVideosPresent && (
