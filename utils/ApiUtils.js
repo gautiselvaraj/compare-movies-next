@@ -12,3 +12,17 @@ export default async (path, options) => {
     throw errorResponse.status_message || errorResponse.errors;
   }
 };
+
+export const getOmdbDetails = async imdbID => {
+  const baseUrl =
+    process.env.NODE_ENV === 'production'
+      ? 'https://www.comparemovies.info'
+      : `http://localhost:${process.env.PORT}`;
+  const response = await fetch(`${baseUrl}/omdb_details/${imdbID}`);
+  if (response.status >= 200 && response.status < 300) {
+    return await response.json();
+  } else {
+    const errorResponse = await response.json();
+    throw errorResponse.status_message || errorResponse.errors;
+  }
+};

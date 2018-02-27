@@ -1,5 +1,5 @@
 import Router from 'next/router';
-import callApi from '~/utils/ApiUtils';
+import callApi, { getOmdbDetails } from '~/utils/ApiUtils';
 import {
   pushMovieToPath,
   removeMovieFromPath,
@@ -10,7 +10,7 @@ import * as types from '~/constants/ActionTypes';
 import { logMovieAdd, logMovieRemove, logMovieFailed } from '~/utils/GAUtils';
 
 const relatedAappendToResponse =
-  'append_to_response=videos,images,translations,credits,similar,recommendations';
+  'append_to_response=videos,images,translations,credits,similar,recommendations,external_ids';
 
 const movieRequest = () => ({
   type: types.MOVIE_REQUEST
@@ -70,6 +70,15 @@ export const addMovie = movie => {
         response = await callApi(
           `${movie.media_type}/${movie.id}?${relatedAappendToResponse}`
         );
+
+        // Get OMDB details
+        if (response.external_ids && response.external_ids.imdb_id) {
+          const omdbResponse = await getOmdbDetails(
+            response.external_ids.imdb_id
+          );
+          response = { ...response, ...omdbResponse };
+        }
+
         dispatch(
           movieSuccess(
             Object.assign({}, response, { media_type: movie.media_type })
@@ -90,9 +99,24 @@ export const fetchMoviesFromUrl = url => {
     moviesFromUrl = moviesFromUrl.filter(path => path);
     if (moviesFromUrl.length) {
       dispatch(movieRequest());
-      const responses = await Promise.all(
+      let responses = await Promise.all(
         moviesFromUrl.map(url => callApi(`${url}?${relatedAappendToResponse}`))
       );
+
+      // Get OMDB details
+      responses = await Promise.all(
+        responses.map(async response => {
+          if (response.external_ids && response.external_ids.imdb_id) {
+            const omdbResponse = await getOmdbDetails(
+              response.external_ids.imdb_id
+            );
+            return { ...response, ...omdbResponse };
+          } else {
+            return response;
+          }
+        })
+      );
+
       responses.forEach((response, i) => {
         dispatch(
           movieSuccess(
