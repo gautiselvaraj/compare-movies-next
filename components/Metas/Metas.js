@@ -17,7 +17,7 @@ class Meta extends Component {
       return (
         <Helmet>
           <title>{defaultTitle}</title>
-          <me name="description" content={defaultDescription} />
+          <meta name="description" content={defaultDescription} />
           <meta property="og:title" content={defaultTitle} />
           <meta property="og:description" content={defaultDescription} />
           <meta property="og:type" content="website" />
