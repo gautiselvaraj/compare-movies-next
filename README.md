@@ -16,8 +16,8 @@ cd compare-movies
 Install Dependencies
 ```yarn```
 
-Apply and get [API key from TMDb](https://www.themoviedb.org/settings/api)
-Duplicate .env-sample to .env and add your TMDb API Key in .env file
+Apply and get API key from [TMDb](https://www.themoviedb.org/settings/api) and from [OMDB](http://www.omdbapi.com/apikey.aspx)
+Duplicate .env-sample to .env and add your TMDb and OMDB API Key in .env file
 
 Start the server
 ```yarn dev```

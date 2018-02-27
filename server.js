@@ -1,3 +1,4 @@
+const fetch = require('isomorphic-fetch');
 const express = require('express');
 const next = require('next');
 const unSupportedBrowserMiddleware = require('./unSupportedBrowserMiddleware');
@@ -15,6 +16,30 @@ app
 
     server.get('/c/:id', (req, res) => {
       app.render(req, res, '/compare');
+    });
+
+    server.get('/movie_ratings/:id', (req, res) => {
+      res.setHeader('Content-Type', 'application/json');
+
+      if (
+        [
+          'https://www.comparemovies.info',
+          'http://localhost:8080',
+          'http://localhost:3000'
+        ].indexOf(req.header('Origin')) === -1
+      ) {
+        res.send(JSON.stringify({}));
+        return res.end();
+      }
+
+      fetch(
+        `http://www.omdbapi.com/?i=${req.params.id}&apikey=${
+          process.env.OMDB_API_KEY
+        }`
+      )
+        .then(response => response.json())
+        .then(json => res.send(JSON.stringify({ ratings: json.Ratings })))
+        .catch(err => res.send(JSON.stringify({})));
     });
 
     server.get('*', (req, res) => {
