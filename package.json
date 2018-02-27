@@ -7,7 +7,7 @@
   "author": "Gauti Selvaraj <me@gauti.info> (https://www.gauti.info/)",
   "license": "MIT",
   "scripts": {
-    "dev": "node -r dotenv/config server.js",
+    "dev": "nodemon -r dotenv/config --watch server.js server.js",
     "build": "next build",
     "start": "NODE_ENV=production node -r dotenv/config server.js",
     "precommit": "lint-staged"
@@ -44,6 +44,7 @@
     "**/*.{js,jsx,json,css}": ["prettier --single-quote --write", "git add"]
   },
   "devDependencies": {
+    "nodemon": "^1.15.1",
     "redux-logger": "^3.0.6"
   }
 }
