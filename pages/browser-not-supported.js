@@ -1,4 +1,4 @@
-import '~/styles/index.scss';
+import '~/styles/browser_unsupported.scss';
 
 import Helmet from 'react-helmet';
 import Metas from '~/components/Metas';

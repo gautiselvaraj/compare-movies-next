@@ -1,0 +1,37 @@
+@import 'variables';
+@import 'normalize';
+@import 'resets';
+
+.not-supported {
+  background-color: white;
+  height: 100vh;
+  left: 0;
+  position: fixed;
+  text-align: center;
+  top: 0;
+  width: 100vw;
+  z-index: 9999;
+
+  .not-supported__paragraph {
+    margin: 10px 0 25px;
+  }
+
+  .not-supported__button {
+    background-color: $color-transparent;
+    border: 2px solid $color-primary;
+    border-radius: 20px;
+    color: $color-primary;
+    cursor: pointer;
+    margin-left: .5rem;
+    margin-right: .5rem;
+    padding: 5px 10px;
+    transition-property: background-color, color;
+    transition-duration: .5s;
+
+    &:hover,
+    &:focus {
+      background-color: $color-primary;
+      color: $color-white;
+    }
+  }
+}

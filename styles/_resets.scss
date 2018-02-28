@@ -15,10 +15,3 @@ a {
 ::placeholder {
   color: $color-grey-light;
 }
-
-.body__modal--opened {
-  &,
-  .movies-list {
-    overflow: hidden;
-  }
-}
