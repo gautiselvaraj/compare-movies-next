@@ -32,7 +32,7 @@ class ComparePage extends Component {
   render() {
     const { movies, showPageLoader, url, removeMovie } = this.props;
     return (
-      <Layout>
+      <Layout noFooter>
         {!!movies && <Movies movies={movies} removeMovie={removeMovie} />}
         <Metas movies={movies} url={url} />
         {showPageLoader && <PageLoader />}

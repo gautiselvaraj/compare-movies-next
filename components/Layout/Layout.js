@@ -4,13 +4,13 @@ import HeaderContainer from '~/containers/HeaderContainer';
 import Footer from '~/components/Footer';
 import './Layout.scss';
 
-const Layout = ({ children }) => (
+const Layout = ({ noFooter, children }) => (
   <div className="layout">
     <div className="layout__content">
       <HeaderContainer />
       {children}
     </div>
-    <Footer />
+    {!noFooter && <Footer />}
   </div>
 );
 
