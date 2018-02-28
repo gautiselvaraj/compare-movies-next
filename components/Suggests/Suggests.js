@@ -18,7 +18,6 @@ class Suggests extends Component {
       'Top Rated TV Shows'
     ];
     this.selectMovie = this.selectMovie.bind(this);
-    this.targets = {};
   }
 
   componentDidMount() {
@@ -28,8 +27,11 @@ class Suggests extends Component {
     }
   }
 
-  selectMovie(movie) {
-    this.targets[movie.id].disabled = true;
+  selectMovie(e, movie) {
+    if (e.currentTarget.disabled) {
+      return false;
+    }
+    e.currentTarget.disabled = true;
     logHomeMovieAdded(`${movie.media_type}-${movie.id}`);
     this.props.onMovieSelect(movie);
   }
@@ -53,8 +55,7 @@ class Suggests extends Component {
                   <button
                     key={movie.id}
                     className="suggests__list-button"
-                    ref={button => (this.targets[movie.id] = button)}
-                    onClick={() => this.selectMovie(movie)}
+                    onClick={e => this.selectMovie(e, movie)}
                   >
                     <div className="suggests__list-media">
                       <Poster
