@@ -4,13 +4,22 @@
 
 .not-supported {
   background-color: white;
-  height: 100vh;
-  left: 0;
-  position: fixed;
   text-align: center;
-  top: 0;
-  width: 100vw;
-  z-index: 9999;
+
+  .not-supported__header {
+    margin: 35px 0 50px;
+  }
+
+  .not-supported__logo__text {
+    color: $color-black;
+    font-family: 'Comfortaa', cursive;
+    font-size: 2rem;
+    line-height: 2rem;
+    margin-bottom: 0;
+    margin-top: 1rem;
+    text-align: center;
+    text-transform: lowercase;
+  }
 
   .not-supported__paragraph {
     margin: 10px 0 25px;
