@@ -43,6 +43,16 @@ class Movie extends Component {
     this.hideVideos = this.hideVideos.bind(this);
   }
 
+  componentDidMount() {
+    if (typeof window !== 'undefined') {
+      window.scroll({
+        left: 0,
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+  }
+
   showImages(returnFocus) {
     logImagesOpened(this.logLabel);
     this.setState({ showImages: true, returnFocus });
