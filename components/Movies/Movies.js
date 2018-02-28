@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import Movie from '~/components/Movie';
 import { randomColorHex } from '~/utils/CMUtils';
 import './Movies.scss';
@@ -17,7 +18,14 @@ class Movies extends Component {
     const { movies, removeMovie } = this.props;
 
     return (
-      <main className="movies-list">
+      <ReactCSSTransitionGroup
+        transitionName="movie--animation"
+        transitionEnterTimeout={650}
+        transitionLeaveTimeout={650}
+        component="main"
+        className="movies-list"
+        style={{ minWidth: movies.length * 300 }}
+      >
         {!!movies.length &&
           movies.map((movie, i) => (
             <Movie
@@ -27,7 +35,7 @@ class Movies extends Component {
               removeMovie={() => removeMovie(movie)}
             />
           ))}
-      </main>
+      </ReactCSSTransitionGroup>
     );
   }
 }

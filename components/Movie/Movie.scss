@@ -5,10 +5,28 @@
   background-repeat: no-repeat;
   background-size: cover;
   flex: 1 0 0;
-  min-width: 300px;
+  overflow: hidden;
   padding: 10px;
   position: relative;
+  width: auto;
 
+  &--animation-enter {
+    flex: 0;
+
+    &.movie--animation-enter-active {
+      flex: 1 0 0;
+      transition: flex .65s ease;
+    }
+  }
+
+  &--animation-leave {
+    transition: flex .65s ease;
+
+    &.movie--animation-leave-active {
+      flex: 0;
+    }
+  }
+  
   &:before {
     background: linear-gradient(to right, rgba($color-black, .6), rgba($color-black, .85), rgba($color-black, .6));
     bottom: 0;
@@ -26,6 +44,8 @@
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
+    margin: 0 auto;
+    max-width: 280px;
     position: relative;
   }
 
@@ -112,8 +132,7 @@
     display: flex;
     height: 75px;
     justify-content: space-around;
-    margin: .75em auto;
-    max-width: 500px;
+    margin: .75em 0;
     width: 100%;
 
     .vote,
@@ -225,14 +244,12 @@
     line-height: 1.2rem;
     margin-bottom: .5rem;
     margin-top: 1rem;
-    max-width: 650px;
     text-align: left;
     width: 100%;
   }
 
   .movie__cast-crew {
-    margin: 0 auto 1rem;
-    max-width: 300px;
+    margin: 0 0 1rem;
     text-align: left;
     width: 100%;
   }
