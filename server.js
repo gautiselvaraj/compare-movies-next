@@ -1,6 +1,7 @@
 const fetch = require('isomorphic-fetch');
 const express = require('express');
 const next = require('next');
+const forceDomain = require('forcedomain');
 const unSupportedBrowserMiddleware = require('./unSupportedBrowserMiddleware');
 
 const port = process.env.PORT || 3000;
@@ -13,6 +14,13 @@ app
   .then(() => {
     const server = express();
     server.use(unSupportedBrowserMiddleware());
+
+    server.use(
+      forceDomain({
+        hostname: 'www.comparemovies.info',
+        protocol: 'https'
+      })
+    );
 
     server.get('/c/:id', (req, res) => {
       app.render(req, res, '/compare');

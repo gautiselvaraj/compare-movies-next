@@ -20,7 +20,7 @@ class ErrorPage extends Component {
       <Layout>
         <Metas />
         <div className="error">
-          <h3 class="error__heading">
+          <h3 className="error__heading">
             {this.props.statusCode === 404 ? (
               <span>This page could not be found!</span>
             ) : (
