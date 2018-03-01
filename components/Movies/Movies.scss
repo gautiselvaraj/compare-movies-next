@@ -5,5 +5,8 @@
   flex-direction: row;
   text-align: center;
   width: 100%;
-  -webkit-overflow-scrolling: touch;
+
+  @media #{$sm-and-down} {
+    padding-bottom: 48px;
+  }
 }

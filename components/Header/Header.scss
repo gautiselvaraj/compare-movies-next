@@ -24,6 +24,18 @@
     margin: 0;
     width: auto;
   }
+
+  .header__shares {
+    @media #{$sm-and-down} {
+      background-color: $color-primary;
+      bottom: 0;
+      left: 0;
+      padding: 10px;
+      position: fixed;
+      text-align: center;
+      width: 100%;
+    }
+  }
 }
 
 .header {

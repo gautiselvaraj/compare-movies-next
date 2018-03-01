@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
+import SocialShares from '~/components/SocialShares';
 import SearchContainer from '~/containers/SearchContainer';
 import Logo from '~/components/Logo';
 import './Header.scss';
@@ -20,6 +21,11 @@ const Header = ({ shrinkHeader }) => {
       <div className="header__search">
         <SearchContainer />
       </div>
+      {shrinkHeader && (
+        <div class="header__shares">
+          <SocialShares small />
+        </div>
+      )}
     </header>
   );
 };

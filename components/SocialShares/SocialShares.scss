@@ -1,0 +1,59 @@
+@import '../../styles/variables.scss';
+
+.social-shares {
+  list-style-type: none;
+  margin: 10px 0 30px;
+  padding: 0;
+
+  .social-shares__item {
+    display: inline-block;
+    margin: 0 15px;
+  }
+
+  .social-shares__link {
+    background-color: transparent;
+    border: 0;
+    color: $color-primary-tinted;
+    cursor: pointer;
+    font-size: 35px;
+    padding: 0;
+
+    &:hover,
+    &:focus {
+      color: $color-white;
+      outline: 0;
+    }
+  }
+
+  &--small {
+    margin: 0;
+
+    .social-shares__item {
+      margin: 0 35px;
+    }
+
+    .social-shares__link {
+      font-size: 24px;
+    }
+  }
+
+  @media #{$md-and-up} {
+    &--small {
+      margin: 0 10px;
+
+      .social-shares__item {
+        margin: 0 10px;
+      }
+
+      .social-shares__link {
+        color: $color-primary;
+        font-size: 30px;
+
+        &:hover,
+        &:focus {
+          color: $color-primary-tinted;
+        }
+      }
+    }
+  }
+}

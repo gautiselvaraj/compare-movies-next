@@ -56,3 +56,5 @@ export const logOverviewOpened = label =>
 export const logCastOpened = label => logMe('Movie', 'Cast Opened', label);
 
 export const logCrewOpened = label => logMe('Movie', 'Crew Opened', label);
+
+export const logSocialShared = (label, type) => logMe('Share', type, label);
