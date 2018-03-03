@@ -7,7 +7,7 @@ const siteUrl = 'https://www.comparemovies.info';
 const defaultTitle = 'Compare Movies and TV Shows Instantly';
 const defaultDescription =
   'Compare movies and TV shows info like ratings, runtime, genres, release date, status, season & episodes details, cast, crew, overview and so on. Also watch movies and TV shows trailers and posters with ease.';
-const socialImg = `${siteUrl}/static/social-logo.jpg`;
+const socialImg = `${siteUrl}/static/social-logo-v2.jpg`;
 
 class Meta extends Component {
   render() {
