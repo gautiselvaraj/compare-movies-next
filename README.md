@@ -2,7 +2,7 @@
 
 Compare movies and TV Shows instantly.
 
-![Compare Movies Demo](compare-movies-demo.gif)
+![Compare Movies Demo](compare-movies-demo-v2.gif)
 
 ## Getting Started
 
