@@ -1,12 +1,6 @@
-import 'isomorphic-fetch';
-import '~/styles/index.scss';
-
 import React, { Component } from 'react';
-import withRedux from 'next-redux-wrapper';
-import Helmet from 'react-helmet';
-import initStore from '~/store';
+import { connect } from 'react-redux';
 import Layout from '~/components/Layout';
-import Metas from '~/components/Metas';
 import PageLoader from '~/components/PageLoader';
 import Suggests from '~/components/Suggests';
 import { getSuggestedMovies } from '~/actions/SuggestsActions';
@@ -15,7 +9,6 @@ import { addMovie, removeAllMovies } from '~/actions/MovieActions';
 class IndexPage extends Component {
   static async getInitialProps({ req, store }) {
     if (req) {
-      Helmet.renderStatic();
       await store.dispatch(getSuggestedMovies());
     } else {
       store.dispatch(removeAllMovies());
@@ -42,7 +35,6 @@ class IndexPage extends Component {
           getSuggestedMovies={getSuggestedMovies}
           onMovieSelect={onMovieSelect}
         />
-        <Metas />
         {showPageLoader && <PageLoader />}
       </Layout>
     );
@@ -64,6 +56,7 @@ const mapDispatchToProps = dispatch => ({
   onMovieSelect: movie => dispatch(addMovie(movie))
 });
 
-export default withRedux(initStore, mapStateToProps, mapDispatchToProps)(
-  IndexPage
-);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(IndexPage);

@@ -1,10 +1,5 @@
-import 'isomorphic-fetch';
-import '~/styles/index.scss';
-
 import React, { Component } from 'react';
-import withRedux from 'next-redux-wrapper';
-import Helmet from 'react-helmet';
-import initStore from '~/store';
+import { connect } from 'react-redux';
 import Layout from '~/components/Layout';
 import PageLoader from '~/components/PageLoader';
 import Movies from '~/components/Movies';
@@ -14,7 +9,6 @@ import { fetchMoviesFromUrl, removeMovie } from '~/actions/MovieActions';
 class ComparePage extends Component {
   static async getInitialProps({ req, store, asPath }) {
     if (req) {
-      Helmet.renderStatic();
       await store.dispatch(fetchMoviesFromUrl(asPath));
     }
     const url = asPath;
@@ -50,6 +44,7 @@ const mapDispatchToProps = (dispatch, props) => ({
   removeMovie: movie => dispatch(removeMovie(movie))
 });
 
-export default withRedux(initStore, mapStateToProps, mapDispatchToProps)(
-  ComparePage
-);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ComparePage);
