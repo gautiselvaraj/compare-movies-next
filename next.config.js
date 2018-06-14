@@ -6,6 +6,7 @@ const Dotenv = require('dotenv-webpack');
 const withSass = require('@zeit/next-sass');
 const withProgressBar = require('next-progressbar');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const withOffline = require('next-offline');
 
 const { ANALYZE } = process.env;
 
@@ -16,6 +17,31 @@ module.exports = withPlugins(
       withProgressBar,
       {
         profile: true
+      }
+    ],
+    [
+      withOffline,
+      {
+        workboxOpts: {
+          runtimeCaching: [
+            {
+              urlPattern: /\.(?:png|gif|jpg|jpeg|svg)$/,
+              handler: 'cacheFirst',
+              options: {
+                cacheName: 'images'
+              }
+            },
+            {
+              urlPattern: new RegExp(
+                '^(http|https)://(fonts.googleapis.com|maxcdn.bootstrapcdn.com/font-awesome)/(.*)'
+              ),
+              handler: 'cacheFirst',
+              options: {
+                cacheName: 'fonts'
+              }
+            }
+          ]
+        }
       }
     ]
   ],

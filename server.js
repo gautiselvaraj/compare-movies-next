@@ -5,6 +5,7 @@ const morgan = require('morgan');
 const compression = require('compression');
 const forceDomain = require('forcedomain');
 const unSupportedBrowserMiddleware = require('./unSupportedBrowserMiddleware');
+const { join } = require('path');
 
 const port = process.env.PORT || 3000;
 const dev = process.env.NODE_ENV !== 'production';
@@ -27,6 +28,10 @@ app
         protocol: 'https'
       })
     );
+
+    server.get('/service-worker.js', (req, res) => {
+      res.sendFile(join(__dirname, './.next/service-worker.js'));
+    });
 
     server.get('/c/:id', (req, res) => {
       app.render(req, res, '/compare');
