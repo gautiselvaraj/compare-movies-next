@@ -1,11 +1,17 @@
-FROM gcr.io/google_appengine/nodejs
+FROM keymetrics/pm2:latest-alpine
 
 # Install Cairo and Pango for node-canvas
-RUN apt-get update && apt-get install -y libcairo2-dev libjpeg-dev libpango1.0-dev libgif-dev build-essential g++
+RUN apk add --no-cache build-base g++ cairo-dev jpeg-dev pango-dev giflib-dev
 
-RUN /usr/local/bin/install_node '>=6.9.0'
+WORKDIR /app
+COPY . .
 
-COPY . /app/
 RUN yarn install
 RUN yarn build
-CMD yarn start
+RUN yarn global add pm2
+
+ENV PORT 8080
+ENV NODE_ENV production
+EXPOSE 8080
+
+CMD ["pm2-runtime", "pm2.config.js"]
