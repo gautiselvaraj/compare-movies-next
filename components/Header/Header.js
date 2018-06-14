@@ -22,7 +22,7 @@ const Header = ({ shrinkHeader }) => {
         <SearchContainer />
       </div>
       {shrinkHeader && (
-        <div class="header__shares">
+        <div className="header__shares">
           <SocialShares small />
         </div>
       )}
