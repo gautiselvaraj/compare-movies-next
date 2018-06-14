@@ -1,5 +1,7 @@
 {
   "name": "Compare Movies",
+  "description":
+    "Compare movies and TV shows info like ratings, runtime, genres, release date, status, season & episodes details, cast, crew, overview and so on. Also watch movies and TV shows trailers and posters with ease.",
   "icons": [
     {
       "src": "/static/android-chrome-192x192.png",
@@ -10,9 +12,20 @@
       "src": "/static/android-chrome-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
+    },
+    {
+      "src": "/static/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/static/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
     }
   ],
   "theme_color": "#ffffff",
   "background_color": "#ffffff",
+  "start_url": ".",
   "display": "standalone"
 }
