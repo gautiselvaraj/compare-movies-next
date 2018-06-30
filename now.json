@@ -1,0 +1,11 @@
+{
+  "name": "comparemovies",
+  "alias": "comparemovies.now.sh",
+  "type": "docker",
+  "scale": {
+    "sfo1": {
+      "min": 2,
+      "max": "auto"
+    }
+  }
+}
