@@ -1,6 +1,6 @@
 {
   "name": "comparemovies",
-  "alias": "comparemovies.now.sh",
+  "alias": "www.comparemovies.info",
   "type": "docker",
   "scale": {
     "sfo1": {
