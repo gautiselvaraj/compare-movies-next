@@ -1,6 +1,7 @@
 const fetch = require('isomorphic-fetch');
 const express = require('express');
 const next = require('next');
+const helmet = require('helmet');
 const morgan = require('morgan');
 const compression = require('compression');
 const forceDomain = require('forcedomain');
@@ -18,6 +19,7 @@ app
     const server = express();
     server.use(unSupportedBrowserMiddleware());
 
+    server.use(helmet());
     server.disable('x-powered-by');
     server.use(compression());
     server.use(morgan('combined'));

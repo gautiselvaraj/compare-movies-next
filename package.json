@@ -24,6 +24,7 @@
     "emoji-flags": "^1.2.0",
     "express": "^4.16.3",
     "forcedomain": "^1.0.0",
+    "helmet": "^3.15.0",
     "immutable": "^4.0.0-rc.12",
     "isomorphic-fetch": "^2.2.1",
     "langs": "^2.0.0",
