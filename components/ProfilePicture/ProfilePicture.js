@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { getMovieProfilePath } from '~/utils/tmdbUtils';
+import { getMovieProfilePath } from '../../utils/tmdbUtils';
 
 const ProfilePicture = ({ size, path, alt, ...props }) =>
   path && (

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import HeaderContainer from '~/containers/HeaderContainer';
-import Footer from '~/components/Footer';
+import HeaderContainer from '../../containers/HeaderContainer';
+import Footer from '../Footer';
 import './Layout.scss';
 
 const Layout = ({ noFooter, children }) => (

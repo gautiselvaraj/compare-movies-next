@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { getPosterPath } from '~/utils/tmdbUtils';
+import { getPosterPath } from '../../utils/tmdbUtils';
 
 const Poster = ({ size, path, alt, ...props }) =>
   path && (

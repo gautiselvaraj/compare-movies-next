@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { logHomeMovieAdded } from '~/utils/GAUtils';
-import Poster from '~/components/Poster';
-import Vote from '~/components/Vote';
-import { formatedDate } from '~/utils/CMUtils';
+import { logHomeMovieAdded } from '../../utils/GAUtils';
+import Poster from '../Poster';
+import Vote from '../Vote';
+import { formatedDate } from '../../utils/CMUtils';
 import './Suggests.scss';
 
 class Suggests extends Component {

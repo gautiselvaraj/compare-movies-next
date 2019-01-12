@@ -1,5 +1,5 @@
 import React from 'react';
-import RotateText from '~/components/RotateText';
+import RotateText from '../RotateText';
 import './SearchHint.scss';
 
 export default () => (

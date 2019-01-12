@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { logRelatedAdded } from '~/utils/GAUtils';
-import Modal from '~/components/Modal';
-import Poster from '~/components/Poster';
-import Vote from '~/components/Vote';
-import { formatedDate } from '~/utils/CMUtils';
+import { logRelatedAdded } from '../../utils/GAUtils';
+import Modal from '../Modal';
+import Poster from '../Poster';
+import Vote from '../Vote';
+import { formatedDate } from '../../utils/CMUtils';
 import './Related.scss';
 
 class Related extends Component {

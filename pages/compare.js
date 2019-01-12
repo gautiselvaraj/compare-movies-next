@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Layout from '~/components/Layout';
-import PageLoader from '~/components/PageLoader';
-import Movies from '~/components/Movies';
-import Metas from '~/components/Metas';
-import { fetchMoviesFromUrl, removeMovie } from '~/actions/MovieActions';
+import Layout from '../components/Layout';
+import PageLoader from '../components/PageLoader';
+import Movies from '../components/Movies';
+import Metas from '../components/Metas';
+import { fetchMoviesFromUrl, removeMovie } from '../actions/MovieActions';
 
 class ComparePage extends Component {
   static async getInitialProps({ req, store, asPath }) {

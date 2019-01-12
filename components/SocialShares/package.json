@@ -2,5 +2,5 @@
   "name": "SocialShares",
   "version": "0.0.0",
   "private": true,
-  "main": "./SocialShares.js"
+  "main": "SocialShares.js"
 }

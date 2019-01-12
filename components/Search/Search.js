@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { DebounceInput } from 'react-debounce-input';
-import Loader from '~/components/Loader';
-import SearchResults from '~/components/SearchResults';
-import SearchHint from '~/components/SearchHint';
-import { mdAndUp } from '~/utils/ResponsiveUtils';
+import Loader from '../Loader';
+import SearchResults from '../SearchResults';
+import SearchHint from '../SearchHint';
+import { mdAndUp } from '../../utils/ResponsiveUtils';
 import './Search.scss';
 
 class Search extends Component {
@@ -155,17 +155,16 @@ class Search extends Component {
             <Loader />
           </div>
         )}
-        {inputFocussed &&
-          !!searchResults && (
-            <SearchResults
-              highlightedResultIndex={highlightedResultIndex}
-              listId={searchResultsId}
-              searchResults={searchResults}
-              onMouseEnter={this.onResultMouseEnter}
-              onSelect={this.onResultSelect}
-              showNoSearchBanner={inputValuePresent && !fetchingSearchResults}
-            />
-          )}
+        {inputFocussed && !!searchResults && (
+          <SearchResults
+            highlightedResultIndex={highlightedResultIndex}
+            listId={searchResultsId}
+            searchResults={searchResults}
+            onMouseEnter={this.onResultMouseEnter}
+            onSelect={this.onResultSelect}
+            showNoSearchBanner={inputValuePresent && !fetchingSearchResults}
+          />
+        )}
       </div>
     );
   }

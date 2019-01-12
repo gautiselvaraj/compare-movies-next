@@ -2,5 +2,5 @@
   "name": "MediaModal",
   "version": "0.0.0",
   "private": true,
-  "main": "./MediaModal.js"
+  "main": "MediaModal.js"
 }

@@ -2,5 +2,5 @@
   "name": "ImageGallery",
   "version": "0.0.0",
   "private": true,
-  "main": "./ImageGallery.js"
+  "main": "ImageGallery.js"
 }

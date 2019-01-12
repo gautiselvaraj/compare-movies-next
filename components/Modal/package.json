@@ -2,5 +2,5 @@
   "name": "Modal",
   "version": "0.0.0",
   "private": true,
-  "main": "./Modal.js"
+  "main": "Modal.js"
 }

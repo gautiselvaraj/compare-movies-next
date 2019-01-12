@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import SearchResult from '~/components/SearchResult';
+import SearchResult from '../SearchResult';
 import './SearchResults.scss';
 
 class SearchResults extends Component {

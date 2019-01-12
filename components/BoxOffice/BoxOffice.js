@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { formatedCurrency } from '~/utils/CMUtils';
+import { formatedCurrency } from '../../utils/CMUtils';
 import './BoxOffice.scss';
 
 const BoxOffice = ({ budget, revenue }) => {

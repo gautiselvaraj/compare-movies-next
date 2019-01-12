@@ -2,5 +2,5 @@
   "name": "BoxOffice",
   "version": "0.0.0",
   "private": true,
-  "main": "./BoxOffice.js"
+  "main": "BoxOffice.js"
 }

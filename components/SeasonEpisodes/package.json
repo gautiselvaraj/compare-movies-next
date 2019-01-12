@@ -2,5 +2,5 @@
   "name": "SeasonEpisodes",
   "version": "0.0.0",
   "private": true,
-  "main": "./SeasonEpisodes.js"
+  "main": "SeasonEpisodes.js"
 }

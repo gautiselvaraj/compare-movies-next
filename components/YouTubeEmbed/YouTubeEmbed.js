@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Loader from '~/components/Loader';
+import Loader from '../Loader';
 import './YouTubeEmbed.scss';
 
 class YouTubeEmbed extends Component {

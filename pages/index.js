@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Layout from '~/components/Layout';
-import PageLoader from '~/components/PageLoader';
-import Suggests from '~/components/Suggests';
-import { getSuggestedMovies } from '~/actions/SuggestsActions';
-import { addMovie, removeAllMovies } from '~/actions/MovieActions';
+import Layout from '../components/Layout';
+import PageLoader from '../components/PageLoader';
+import Suggests from '../components/Suggests';
+import { getSuggestedMovies } from '../actions/SuggestsActions';
+import { addMovie, removeAllMovies } from '../actions/MovieActions';
 
 class IndexPage extends Component {
   static async getInitialProps({ req, store }) {

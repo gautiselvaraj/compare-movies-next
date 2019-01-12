@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ProfilePicture from '~/components/ProfilePicture';
-import { getInitials } from '~/utils/CMUtils';
+import ProfilePicture from '../ProfilePicture';
+import { getInitials } from '../../utils/CMUtils';
 import './Credit.scss';
 
 const Credit = ({ credit, imageSize }) => (

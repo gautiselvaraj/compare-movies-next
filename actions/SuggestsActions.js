@@ -1,6 +1,6 @@
-import callApi from '~/utils/ApiUtils';
-import * as types from '~/constants/ActionTypes';
-import { addMovieType, addTvType } from '~/utils/CMUtils';
+import callApi from '../utils/ApiUtils';
+import * as types from '../constants/ActionTypes';
+import { addMovieType, addTvType } from '../utils/CMUtils';
 
 const suggestsRequest = () => ({
   type: types.SUGGESTS_REQUEST

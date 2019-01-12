@@ -2,5 +2,5 @@
   "name": "SearchHint",
   "version": "0.0.0",
   "private": true,
-  "main": "./SearchHint.js"
+  "main": "SearchHint.js"
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { getBackdropPath } from '~/utils/tmdbUtils';
+import { getBackdropPath } from '../../utils/tmdbUtils';
 
 const Backdrop = ({ size, path, alt, ...props }) =>
   path && (

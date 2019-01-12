@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { logSocialShared } from '~/utils/GAUtils';
+import { logSocialShared } from '../../utils/GAUtils';
 import './SocialShares.scss';
 
 const getShareUrl = () => encodeURIComponent(location.href);

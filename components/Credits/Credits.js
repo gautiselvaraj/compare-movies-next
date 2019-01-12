@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Modal from '~/components/Modal';
-import Credit from '~/components/Credit';
+import Modal from '../Modal';
+import Credit from '../Credit';
 import './Credits.scss';
 
 class Credits extends Component {
@@ -28,11 +28,9 @@ class Credits extends Component {
     return (
       <div className="credits">
         <h5 className="credits__heading">{type}</h5>
-        {credits
-          .slice(0, 5)
-          .map((c, i) => (
-            <Credit key={c.credit_id} credit={c} imageSize={35} />
-          ))}
+        {credits.slice(0, 5).map((c, i) => (
+          <Credit key={c.credit_id} credit={c} imageSize={35} />
+        ))}
         <button
           className="credits__button"
           onClick={this.onClick}

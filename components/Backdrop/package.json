@@ -2,5 +2,5 @@
   "name": "Backdrop",
   "version": "0.0.0",
   "private": true,
-  "main": "./Backdrop.js"
+  "main": "Backdrop.js"
 }

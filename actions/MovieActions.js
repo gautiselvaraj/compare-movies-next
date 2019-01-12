@@ -1,13 +1,13 @@
 import Router from 'next/router';
-import callApi, { getOmdbDetails } from '~/utils/ApiUtils';
+import callApi, { getOmdbDetails } from '../utils/ApiUtils';
 import {
   pushMovieToPath,
   removeMovieFromPath,
   getMovieUrlsFromPath
-} from '~/utils/UrlUtils';
-import { checkIfMovieInList } from '~/utils/CMUtils';
-import * as types from '~/constants/ActionTypes';
-import { logMovieAdd, logMovieRemove, logMovieFailed } from '~/utils/GAUtils';
+} from '../utils/UrlUtils';
+import { checkIfMovieInList } from '../utils/CMUtils';
+import * as types from '../constants/ActionTypes';
+import { logMovieAdd, logMovieRemove, logMovieFailed } from '../utils/GAUtils';
 
 const relatedAappendToResponse =
   'append_to_response=videos,images,translations,credits,similar,recommendations,external_ids';

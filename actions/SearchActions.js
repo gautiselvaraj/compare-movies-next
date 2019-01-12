@@ -1,7 +1,7 @@
-import callApi from '~/utils/ApiUtils';
-import * as types from '~/constants/ActionTypes';
-import { filterAndSortSearchResults } from '~/utils/CMUtils';
-import { logSearch } from '~/utils/GAUtils';
+import callApi from '../utils/ApiUtils';
+import * as types from '../constants/ActionTypes';
+import { filterAndSortSearchResults } from '../utils/CMUtils';
+import { logSearch } from '../utils/GAUtils';
 
 const searchRequest = query => ({
   type: types.SEARCH_REQUEST,

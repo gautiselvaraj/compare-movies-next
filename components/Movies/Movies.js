@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import Movie from '~/components/Movie';
-import { randomColorHex } from '~/utils/CMUtils';
+import Movie from '../Movie';
+import { randomColorHex } from '../../utils/CMUtils';
 import './Movies.scss';
 
 class Movies extends Component {

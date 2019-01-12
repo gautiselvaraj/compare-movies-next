@@ -2,5 +2,5 @@
   "name": "Movies",
   "version": "0.0.0",
   "private": true,
-  "main": "./Movies.js"
+  "main": "Movies.js"
 }

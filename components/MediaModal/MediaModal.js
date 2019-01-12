@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Modal from '~/components/Modal';
-import YouTubeEmbed from '~/components/YouTubeEmbed';
-import ImageGallery from '~/components/ImageGallery';
+import Modal from '../Modal';
+import YouTubeEmbed from '../YouTubeEmbed';
+import ImageGallery from '../ImageGallery';
 import './MediaModal.scss';
 
 class MediaModal extends Component {

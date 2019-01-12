@@ -1,9 +1,9 @@
 import 'isomorphic-fetch';
-import '~/styles/index.scss';
-import '~/styles/errors.scss';
+import '../styles/index.scss';
+import '../styles/errors.scss';
 
 import React, { Component } from 'react';
-import Layout from '~/components/Layout';
+import Layout from '../components/Layout';
 
 export default class ErrorPage extends Component {
   static getInitialProps({ res, err }) {

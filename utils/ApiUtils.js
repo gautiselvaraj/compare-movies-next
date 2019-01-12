@@ -1,4 +1,4 @@
-import { API_HOSTNAME } from '~/constants/ApiConstants';
+import { API_HOSTNAME } from '../constants/ApiConstants';
 
 export default async (path, options) => {
   const response = await fetch(

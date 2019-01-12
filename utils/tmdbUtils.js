@@ -1,4 +1,4 @@
-import { IMAGE_HOSTNAME } from '~/constants/ApiConstants';
+import { IMAGE_HOSTNAME } from '../constants/ApiConstants';
 
 // TMDb available image size
 const tmdbBackdropSizes = [300, 780, 1280];

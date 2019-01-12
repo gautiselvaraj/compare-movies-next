@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactGA from 'react-ga';
-import SocialShares from '~/components/SocialShares';
+import SocialShares from '../SocialShares';
 import './Footer.scss';
 
 export default () => (

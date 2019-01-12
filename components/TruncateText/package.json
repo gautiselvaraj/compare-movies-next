@@ -2,5 +2,5 @@
   "name": "TruncateText",
   "version": "0.0.0",
   "private": true,
-  "main": "./TruncateText.js"
+  "main": "TruncateText.js"
 }

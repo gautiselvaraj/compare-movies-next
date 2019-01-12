@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Loader from '~/components/Loader';
-import Poster from '~/components/Poster';
-import Backdrop from '~/components/Backdrop';
+import Loader from '../Loader';
+import Poster from '../Poster';
+import Backdrop from '../Backdrop';
 import './ImageGallery.scss';
 
 class ImageGallery extends Component {

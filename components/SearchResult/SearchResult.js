@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { formatedDate } from '~/utils/CMUtils';
-import Poster from '~/components/Poster';
-import Vote from '~/components/Vote';
+import { formatedDate } from '../../utils/CMUtils';
+import Poster from '../Poster';
+import Vote from '../Vote';
 import './SearchResult.scss';
 
 const SearchResult = ({ searchResult, highlighted }) => (

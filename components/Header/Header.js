@@ -1,9 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
-import SocialShares from '~/components/SocialShares';
-import SearchContainer from '~/containers/SearchContainer';
-import Logo from '~/components/Logo';
+import SocialShares from '../SocialShares';
+import SearchContainer from '../../containers/SearchContainer';
+import Logo from '../Logo';
 import './Header.scss';
 
 const Header = ({ shrinkHeader }) => {

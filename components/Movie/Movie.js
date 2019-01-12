@@ -6,8 +6,8 @@ import {
   formatedDate,
   formatedRunTime,
   mergeUniqMovieArrays
-} from '~/utils/CMUtils';
-import { getBackdropPath } from '~/utils/tmdbUtils';
+} from '../../utils/CMUtils';
+import { getBackdropPath } from '../../utils/tmdbUtils';
 import {
   logImagesOpened,
   logVideosOpened,
@@ -17,16 +17,16 @@ import {
   logOverviewOpened,
   logCastOpened,
   logCrewOpened
-} from '~/utils/GAUtils';
-import Poster from '~/components/Poster';
-import Vote from '~/components/Vote';
-import MiscVotes from '~/components/MiscVotes';
-import MediaModal from '~/components/MediaModal';
-import Languages from '~/components/Languages';
-import SeasonEpisodes from '~/components/SeasonEpisodes';
-import BoxOffice from '~/components/BoxOffice';
-import Credits from '~/components/Credits';
-import RelatedContainer from '~/containers/RelatedContainer';
+} from '../../utils/GAUtils';
+import Poster from '../Poster';
+import Vote from '../Vote';
+import MiscVotes from '../MiscVotes';
+import MediaModal from '../MediaModal';
+import Languages from '../Languages';
+import SeasonEpisodes from '../SeasonEpisodes';
+import BoxOffice from '../BoxOffice';
+import Credits from '../Credits';
+import RelatedContainer from '../../containers/RelatedContainer';
 import './Movie.scss';
 
 class Movie extends Component {
@@ -169,24 +169,22 @@ class Movie extends Component {
                 </button>
               </span>
             )}
-            {movieVideosPresent &&
-              showVideos && (
-                <MediaModal
-                  show={true}
-                  movie={movie}
-                  onClose={this.hideVideos}
-                  type="videos"
-                />
-              )}
-            {movieImagesPresent &&
-              showImages && (
-                <MediaModal
-                  show={true}
-                  movie={movie}
-                  onClose={this.hideImages}
-                  type="images"
-                />
-              )}
+            {movieVideosPresent && showVideos && (
+              <MediaModal
+                show={true}
+                movie={movie}
+                onClose={this.hideVideos}
+                type="videos"
+              />
+            )}
+            {movieImagesPresent && showImages && (
+              <MediaModal
+                show={true}
+                movie={movie}
+                onClose={this.hideImages}
+                type="images"
+              />
+            )}
           </div>
           <div className="movie__countries">
             {countries.map(c => (

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { formatedDate } from '~/utils/CMUtils';
-import Modal from '~/components/Modal';
-import Poster from '~/components/Poster';
+import { formatedDate } from '../../utils/CMUtils';
+import Modal from '../Modal';
+import Poster from '../Poster';
 import './SeasonEpisodes.scss';
 
 class SeasonEpisodes extends Component {
@@ -35,8 +35,8 @@ class SeasonEpisodes extends Component {
         >
           <span className="seasons-episodes__count">
             S{seasonCount}
-            <span className="seasons-episodes__seperator">&mdash;</span>
-            E{episodeCount}
+            <span className="seasons-episodes__seperator">&mdash;</span>E
+            {episodeCount}
           </span>
         </button>
 

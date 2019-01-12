@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import langs from 'langs';
-import Modal from '~/components/Modal';
+import Modal from '../Modal';
 import './Languages.scss';
 
 class Languages extends Component {

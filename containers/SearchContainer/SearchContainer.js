@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
-import Search from '~/components/Search';
-import { searchMovies } from '~/actions/SearchActions';
-import { addMovie } from '~/actions/MovieActions';
+import Search from '../../components/Search';
+import { searchMovies } from '../../actions/SearchActions';
+import { addMovie } from '../../actions/MovieActions';
 
 const mapStateToProps = state => {
   const results = state.getIn(['search', 'results']);
@@ -19,4 +19,7 @@ const mapDispatchToProps = (dispatch, props) => ({
   }
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Search);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Search);

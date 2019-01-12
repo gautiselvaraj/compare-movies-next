@@ -77,8 +77,6 @@ export default class MyDocument extends Document {
           />
           <script src="//www.youtube.com/iframe_api" async />
 
-          <link rel="stylesheet" href="/_next/static/style.css" />
-
           {this.helmetJsx}
           {this.helmetHeadComponents}
         </Head>

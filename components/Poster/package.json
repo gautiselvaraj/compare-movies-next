@@ -2,5 +2,5 @@
   "name": "Poster",
   "version": "0.0.0",
   "private": true,
-  "main": "./Poster.js"
+  "main": "Poster.js"
 }

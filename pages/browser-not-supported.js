@@ -1,7 +1,7 @@
-import '~/styles/browser_unsupported.scss';
+import '../styles/browser_unsupported.scss';
 
 import Helmet from 'react-helmet';
-import Metas from '~/components/Metas';
+import Metas from '../components/Metas';
 
 export default () => (
   <div className="not-supported">

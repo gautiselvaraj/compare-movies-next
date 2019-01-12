@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
-import { getPosterPath } from '~/utils/tmdbUtils';
 
 const siteUrl = 'https://www.comparemovies.info';
 const defaultTitle = 'Compare Movies and TV Shows Instantly';
