@@ -1,7 +1,6 @@
 {
   "name": "comparemovies",
   "alias": "www.comparemovies.info",
-  "type": "docker",
   "scale": {
     "sfo1": {
       "min": 2,
