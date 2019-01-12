@@ -1,10 +1,11 @@
 {
-  "version": 2,
+  "version": 1,
   "name": "comparemovies",
   "alias": "www.comparemovies.info",
-  "builds": [
-    { "src": "next.config.js", "use": "@now/next" },
-    { "src": "server.js", "use": "@now/node-server" },
-    { "src": "static/*", "use": "@now/static" }
-  ]
+  "scale": {
+    "sfo1": {
+      "min": 2,
+      "max": "auto"
+    }
+  }
 }
