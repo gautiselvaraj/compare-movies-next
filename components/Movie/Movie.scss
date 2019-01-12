@@ -15,12 +15,12 @@
 
     &.movie--animation-enter-active {
       flex: 1 0 0;
-      transition: flex .65s ease;
+      transition: flex .3s ease;
     }
   }
 
   &--animation-leave {
-    transition: flex .65s ease;
+    transition: flex .3s ease;
 
     &.movie--animation-leave-active {
       flex: 0;

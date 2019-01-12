@@ -20,8 +20,8 @@ class Movies extends Component {
     return (
       <ReactCSSTransitionGroup
         transitionName="movie--animation"
-        transitionEnterTimeout={650}
-        transitionLeaveTimeout={650}
+        transitionEnterTimeout={300}
+        transitionLeaveTimeout={300}
         component="main"
         className="movies-list"
         style={{ minWidth: movies.length * 300 }}
