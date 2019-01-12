@@ -7,5 +7,6 @@
       "min": 2,
       "max": "auto"
     }
-  }
+  },
+  "type": "docker"
 }
