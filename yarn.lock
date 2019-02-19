@@ -3105,13 +3105,6 @@ for-own@^1.0.0:
   dependencies:
     for-in "^1.0.1"
 
-forcedomain@^1.0.0:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/forcedomain/-/forcedomain-1.0.1.tgz#75727896407cadc8a4f169075f188a4a8dd94fa7"
-  integrity sha512-OAOzP2mYMVvcxWvQJ/heQ0RDJkyCVWC464iNBagR+uIgUkEyhurcCVCJ8on+Pu41Ui2qT9yC0yGKlrJ96ygcAA==
-  dependencies:
-    lodash "4.17.11"
-
 forever-agent@~0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/forever-agent/-/forever-agent-0.6.1.tgz#fbc71f0c41adeb37f96c577ad1ed42d8fdacca91"
@@ -4566,7 +4559,7 @@ lodash.templatesettings@^4.0.0:
   dependencies:
     lodash._reinterpolate "~3.0.0"
 
-lodash@4.17.11, lodash@^4.0.0, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.4, lodash@^4.17.5, lodash@~4.17.10:
+lodash@^4.0.0, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.4, lodash@^4.17.5, lodash@~4.17.10:
   version "4.17.11"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
   integrity sha512-cQKh8igo5QUhZ7lg38DYWAxMvjSAKG0A8wGSVimP07SIUEK2UO+arSRKbRZWtelMtN5V0Hkwh5ryOto/SshYIg==

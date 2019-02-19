@@ -4,7 +4,6 @@ const next = require('next');
 const helmet = require('helmet');
 const morgan = require('morgan');
 const compression = require('compression');
-const forceDomain = require('forcedomain');
 const unSupportedBrowserMiddleware = require('./unSupportedBrowserMiddleware');
 const { join } = require('path');
 
@@ -23,13 +22,6 @@ app
     server.disable('x-powered-by');
     server.use(compression());
     server.use(morgan('combined'));
-
-    server.use(
-      forceDomain({
-        hostname: 'www.comparemovies.info',
-        protocol: 'https'
-      })
-    );
 
     server.get('/service-worker.js', (req, res) => {
       res.sendFile(join(__dirname, './.next/service-worker.js'));
