@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import emojiFlags from 'emoji-flags';
-import Shorten from 'react-shorten';
+import ShowMoreText from 'react-show-more-text';
 import {
   formatedDate,
   formatedRunTime,
@@ -283,12 +283,14 @@ class Movie extends Component {
             />
           </div>
           <div className="movie__overview">
-            <Shorten
-              onExpand={() => logOverviewOpened(this.logLabel)}
-              ellipsisClassName="movie__more-link"
+            <ShowMoreText
+              onClick={() => logOverviewOpened(this.logLabel)}
+              anchorClass="movie__more-link"
+              more="more"
+              less={false}
             >
               {movie.overview}
-            </Shorten>
+            </ShowMoreText>
           </div>
 
           <div className="movie__cast-crew">
