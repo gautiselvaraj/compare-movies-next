@@ -11,7 +11,7 @@
     { "src": "/c/(.*)$", "dest": "/compare" },
     { "src": "/api/omdb_details/(?<id>.*)$", "dest": "/api/omdb.js?id=$id" },
     {
-      "src": "^/service-worker.js$",
+      "src": "/service-worker.js$",
       "dest": "/_next/static/service-worker.js",
       "headers": {
         "cache-control": "public, max-age=43200, immutable",

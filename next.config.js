@@ -31,6 +31,7 @@ module.exports = withOffline(
       return config;
     },
     workboxOpts: {
+      swDest: 'static/service-worker.js',
       runtimeCaching: [
         {
           urlPattern: /\.(?:png|gif|jpg|jpeg|svg)$/,
