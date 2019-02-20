@@ -1,38 +1,14 @@
 import Document, { Head, Main, NextScript } from 'next/document';
-import Helmet from 'react-helmet';
 
 export default class MyDocument extends Document {
   static async getInitialProps(...args) {
     const documentProps = await super.getInitialProps(...args);
-    return { ...documentProps, helmet: Helmet.renderStatic() };
-  }
-
-  get helmetHtmlAttrComponents() {
-    return this.props.helmet.htmlAttributes.toComponent();
-  }
-
-  get helmetBodyAttrComponents() {
-    return this.props.helmet.bodyAttributes.toComponent();
-  }
-
-  get helmetHeadComponents() {
-    return Object.keys(this.props.helmet)
-      .filter(el => el !== 'htmlAttributes' && el !== 'bodyAttributes')
-      .map(el => this.props.helmet[el].toComponent());
-  }
-
-  get helmetJsx() {
-    return (
-      <Helmet
-        htmlAttributes={{ lang: 'en' }}
-        title="Compare Movies and TV Shows"
-      />
-    );
+    return { ...documentProps };
   }
 
   render() {
     return (
-      <html lang="en" {...this.helmetHtmlAttrComponents}>
+      <html lang="en">
         <Head>
           <meta charSet="utf-8" />
           <meta content="IE=Edge,chrome=1" httpEquiv="X-UA-Compatible" />
@@ -76,11 +52,8 @@ export default class MyDocument extends Document {
             crossOrigin="anonymous"
           />
           <script src="//www.youtube.com/iframe_api" async />
-
-          {this.helmetJsx}
-          {this.helmetHeadComponents}
         </Head>
-        <body {...this.helmetBodyAttrComponents}>
+        <body>
           <noscript>
             <div className="not-supported">
               <h2>JavaScript Disabled</h2>

@@ -19,7 +19,15 @@ Install Dependencies
 ```yarn```
 
 Apply and get API key from [TMDb](https://www.themoviedb.org/settings/api) and from [OMDB](http://www.omdbapi.com/apikey.aspx)
-Duplicate .env-sample to .env and add your TMDb and OMDB API Key in .env file
+
+Create a file called `now-secrets.json` and add the following
+```
+{
+  "@tmdb-api-key": "<Your-TMDB-Key>",
+  "@omdb-api-key": "<Your-OMDB-Key>"
+}
+```
+
 
 Start the server
 ```yarn dev```

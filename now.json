@@ -1,12 +1,23 @@
 {
-  "version": 1,
+  "version": 2,
   "name": "comparemovies",
   "alias": "www.comparemovies.info",
-  "scale": {
-    "sfo1": {
-      "min": 2,
-      "max": "auto"
-    }
+  "builds": [
+    { "src": "next.config.js", "use": "@now/next" },
+    { "src": "/api/*.js", "use": "@now/node" }
+  ],
+  "routes": [
+    { "src": "/c(/)?$", "status": 301, "headers": { "Location": "/" } },
+    { "src": "/c/(.*)$", "dest": "/compare" },
+    { "src": "/api/omdb_details/(?<id>.*)$", "dest": "/api/omdb.js?id=$id" }
+  ],
+  "env": {
+    "TMDB_API_KEY": "@tmdb-api-key",
+    "OMDB_API_KEY": "@omdb-api-key"
   },
-  "type": "docker"
+  "build": {
+    "env": {
+      "TMDB_API_KEY": "@tmdb-api-key"
+    }
+  }
 }

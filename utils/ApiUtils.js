@@ -18,7 +18,7 @@ export const getOmdbDetails = async imdbID => {
     process.env.NODE_ENV === 'production'
       ? 'https://www.comparemovies.info'
       : `http://localhost:${process.env.PORT || 3000}`;
-  const response = await fetch(`${baseUrl}/omdb_details/${imdbID}`);
+  const response = await fetch(`${baseUrl}/api/omdb_details/${imdbID}`);
   if (response.status >= 200 && response.status < 300) {
     return await response.json();
   } else {

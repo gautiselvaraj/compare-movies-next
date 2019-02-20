@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
+import Head from 'next/head';
 
 const siteUrl = 'https://www.comparemovies.info';
 const defaultTitle = 'Compare Movies and TV Shows Instantly';
@@ -14,7 +14,7 @@ class Meta extends Component {
 
     if (!movies || !movies.length) {
       return (
-        <Helmet>
+        <Head>
           <title>{defaultTitle}</title>
           <meta name="description" content={defaultDescription} />
           <meta property="og:title" content={defaultTitle} />
@@ -25,7 +25,7 @@ class Meta extends Component {
           <meta name="twitter:title" content={defaultTitle} />
           <meta name="twitter:description" content={defaultDescription} />
           <meta name="twitter:image" content={socialImg} />
-        </Helmet>
+        </Head>
       );
     }
 
@@ -39,7 +39,7 @@ class Meta extends Component {
     const metaUrl = `${siteUrl}${this.props.url}`;
 
     return (
-      <Helmet>
+      <Head>
         <title>{metaTitle}</title>
         <meta name="description" content={metaDescription} />
         <meta property="og:title" content={metaTitle} />
@@ -50,7 +50,7 @@ class Meta extends Component {
         <meta name="twitter:title" content={metaTitle} />
         <meta name="twitter:description" content={metaDescription} />
         <meta name="twitter:image" content={socialImg} />
-      </Helmet>
+      </Head>
     );
   }
 }

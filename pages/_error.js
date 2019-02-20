@@ -1,4 +1,3 @@
-import 'isomorphic-fetch';
 import '../styles/index.scss';
 import '../styles/errors.scss';
 
