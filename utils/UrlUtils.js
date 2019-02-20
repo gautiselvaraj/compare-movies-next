@@ -7,12 +7,12 @@ const getPathParts = path =>
     ? []
     : path
         .replace('/c/', '')
-        .split('::')
+        .split('/')
         .filter(ele => ele);
 
 const getTypeIdFromPath = path => path.split('--')[0];
 
-const encodeAndPrefixPaths = paths => `/c/${encodePaths(paths.join('::'))}`;
+const encodeAndPrefixPaths = paths => `/c/${encodePaths(paths.join('/'))}`;
 
 export const pushMovieToPath = movie => {
   const pathParts = getPathParts(Router.asPath);

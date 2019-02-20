@@ -13,7 +13,7 @@ app
     const server = express();
     server.disable('x-powered-by');
 
-    server.get('/c/:id', (req, res) => {
+    server.get(/^\/c\/.*$/, (req, res) => {
       app.render(req, res, '/compare');
     });
 
