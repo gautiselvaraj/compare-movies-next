@@ -1,6 +1,5 @@
 const express = require('express');
 const next = require('next');
-const unSupportedBrowserMiddleware = require('./unSupportedBrowserMiddleware');
 const omdbService = require('./services/omdb');
 
 const port = process.env.PORT || 3000;
@@ -12,7 +11,6 @@ app
   .prepare()
   .then(() => {
     const server = express();
-    server.use(unSupportedBrowserMiddleware());
     server.disable('x-powered-by');
 
     server.get('/c/:id', (req, res) => {

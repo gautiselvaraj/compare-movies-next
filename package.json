@@ -16,7 +16,6 @@
   },
   "dependencies": {
     "@zeit/next-sass": "^1.0.1",
-    "browser-detect": "^0.2.28",
     "emoji-flags": "^1.2.0",
     "express": "^4.16.3",
     "immutable": "^4.0.0-rc.12",
