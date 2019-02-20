@@ -1,7 +1,8 @@
 {
   "name": "Compare Movies",
-  "description":
-    "Compare movies and TV shows info like ratings, runtime, genres, release date, status, season & episodes details, cast, crew, overview and so on. Also watch movies and TV shows trailers and posters with ease.",
+  "short_name": "Compare Movies",
+  "start_url": "/",
+  "description": "Compare movies and TV shows info like ratings, runtime, genres, release date, status, season & episodes details, cast, crew, overview and so on. Also watch movies and TV shows trailers and posters with ease.",
   "icons": [
     {
       "src": "/static/android-chrome-192x192.png",

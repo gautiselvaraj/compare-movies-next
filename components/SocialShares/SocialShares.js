@@ -21,7 +21,7 @@ export default class SocialShares extends Component {
 
   redditShare() {
     const url = `http://www.reddit.com/submit?url=${getShareUrl()}&title=${getShareTitle()}`;
-    logSocialShared(url, 'FacebRedditook');
+    logSocialShared(url, 'Reddit');
     openLinkInNewTab(url);
   }
 
@@ -37,6 +37,7 @@ export default class SocialShares extends Component {
             className={`social-shares__link ${
               small ? '' : 'social-shares__link--invert'
             }`}
+            aria-label="Share on Facebook"
           >
             <i className="fa fa-facebook-official" />
           </button>
@@ -48,6 +49,7 @@ export default class SocialShares extends Component {
             className={`social-shares__link ${
               small ? '' : 'social-shares__link--invert'
             }`}
+            aria-label="Share on Twitter"
           >
             <i className="fa fa-twitter" />
           </button>
@@ -59,6 +61,7 @@ export default class SocialShares extends Component {
             className={`social-shares__link ${
               small ? '' : 'social-shares__link--invert'
             }`}
+            aria-label="Share on Reddit"
           >
             <i className="fa fa-reddit" />
           </button>

@@ -148,6 +148,7 @@ class Search extends Component {
               ? `search_results_result_${highlightedResultIndex}`
               : undefined
           }
+          aria-label="Type any Movie or TV Show title"
         />
         {!inputValuePresent && <SearchHint />}
         {fetchingSearchResults && (
