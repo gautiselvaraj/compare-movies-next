@@ -1,7 +1,10 @@
 {
   "name": "Compare Movies",
-  "short_name": "Compare Movies",
+  "short_name": "CM",
   "start_url": "/",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "display": "standalone",
   "description": "Compare movies and TV shows info like ratings, runtime, genres, release date, status, season & episodes details, cast, crew, overview and so on. Also watch movies and TV shows trailers and posters with ease.",
   "icons": [
     {
@@ -24,9 +27,5 @@
       "sizes": "16x16",
       "type": "image/png"
     }
-  ],
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff",
-  "start_url": "/",
-  "display": "standalone"
+  ]
 }
