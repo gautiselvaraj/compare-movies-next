@@ -1,3 +1,5 @@
+const withPlugins = require('next-compose-plugins');
+const withOffline = require('next-offline');
 const withSass = require('@zeit/next-sass');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const webpack = require('webpack');
@@ -8,7 +10,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 const { ANALYZE } = process.env;
 
-module.exports = withSass({
+module.exports = withPlugins([[withSass], [withOffline]], {
   target: 'serverless',
   poweredByHeader: false,
   webpack: (config, { isServer }) => {
@@ -27,5 +29,25 @@ module.exports = withSass({
     }
 
     return config;
+  },
+  workboxOpts: {
+    runtimeCaching: [
+      {
+        urlPattern: /\.(?:png|gif|jpg|jpeg|svg)$/,
+        handler: 'cacheFirst',
+        options: {
+          cacheName: 'images'
+        }
+      },
+      {
+        urlPattern: new RegExp(
+          '^(http|https)://(fonts.googleapis.com|maxcdn.bootstrapcdn.com/font-awesome)/(.*)'
+        ),
+        handler: 'cacheFirst',
+        options: {
+          cacheName: 'fonts'
+        }
+      }
+    ]
   }
 });

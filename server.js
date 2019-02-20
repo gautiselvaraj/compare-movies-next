@@ -1,6 +1,7 @@
 const express = require('express');
 const next = require('next');
 const omdbService = require('./services/omdb');
+const { join } = require('path');
 
 const port = process.env.PORT || 3000;
 const dev = process.env.NODE_ENV !== 'production';
@@ -21,6 +22,10 @@ app
       res.setHeader('Content-Type', 'application/json');
       const response = await omdbService(req.params.id);
       res.send(JSON.stringify(response));
+    });
+
+    server.get('/service-worker.js', (req, res) => {
+      res.sendFile(join(__dirname, './.next/service-worker.js'));
     });
 
     server.get('*', (req, res) => {
