@@ -8,24 +8,56 @@ const defaultDescription =
   'Compare movies and TV shows info like ratings, runtime, genres, release date, status, season & episodes details, cast, crew, overview and so on. Also watch movies and TV shows trailers and posters with ease.';
 const socialImg = `${siteUrl}/static/social-logo-v2.jpg`;
 
+const HeadContents = ({
+  title,
+  description,
+  ogTitle,
+  ogDescription,
+  ogImage,
+  ogUrl,
+  twitterTitle,
+  twitterDescription,
+  twitterImage
+}) => (
+  <Head>
+    <title key="title">{title}</title>
+    <meta name="description" content={description} key="description" />
+    <meta property="og:title" content={ogTitle} key="ogTitle" />
+    <meta
+      property="og:description"
+      content={ogDescription}
+      key="ogDescription"
+    />
+    <meta property="og:type" content="website" key="ogType" />
+    <meta property="og:image" content={ogImage} key="ogImage" />
+    <meta property="og:url" content={ogUrl} key="ogUrl" />
+    <meta name="twitter:title" content={twitterTitle} key="twitterTitle" />
+    <meta
+      name="twitter:description"
+      content={twitterDescription}
+      key="twitterDescription"
+    />
+    <meta name="twitter:image" content={twitterImage} key="twitterImage" />
+  </Head>
+);
+
 class Meta extends Component {
   render() {
     const movies = this.props.movies;
 
     if (!movies || !movies.length) {
       return (
-        <Head>
-          <title>{defaultTitle}</title>
-          <meta name="description" content={defaultDescription} />
-          <meta property="og:title" content={defaultTitle} />
-          <meta property="og:description" content={defaultDescription} />
-          <meta property="og:type" content="website" />
-          <meta property="og:image" content={socialImg} />
-          <meta property="og:url" content={siteUrl} />
-          <meta name="twitter:title" content={defaultTitle} />
-          <meta name="twitter:description" content={defaultDescription} />
-          <meta name="twitter:image" content={socialImg} />
-        </Head>
+        <HeadContents
+          title={defaultTitle}
+          description={defaultDescription}
+          ogTitle={defaultTitle}
+          ogDescription={defaultDescription}
+          ogImage={socialImg}
+          ogUrl={siteUrl}
+          twitterTitle={defaultTitle}
+          twitterDescription={defaultDescription}
+          twitterImage={socialImg}
+        />
       );
     }
 
@@ -39,18 +71,17 @@ class Meta extends Component {
     const metaUrl = `${siteUrl}${this.props.url}`;
 
     return (
-      <Head>
-        <title>{metaTitle}</title>
-        <meta name="description" content={metaDescription} />
-        <meta property="og:title" content={metaTitle} />
-        <meta property="og:description" content={metaDescription} />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content={socialImg} />
-        <meta property="og:url" content={metaUrl} />
-        <meta name="twitter:title" content={metaTitle} />
-        <meta name="twitter:description" content={metaDescription} />
-        <meta name="twitter:image" content={socialImg} />
-      </Head>
+      <HeadContents
+        title={metaTitle}
+        description={metaDescription}
+        ogTitle={metaTitle}
+        ogDescription={metaDescription}
+        ogImage={socialImg}
+        ogUrl={metaUrl}
+        twitterTitle={metaTitle}
+        twitterDescription={metaDescription}
+        twitterImage={socialImg}
+      />
     );
   }
 }
