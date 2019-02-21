@@ -1,7 +1,7 @@
 {
   "name": "compare-movies",
   "version": "1.0.0",
-  "description": "Compare movies and TV shows instantly",
+  "description": "Confused about what to watch? Compare movies and TV shows and make informed decisions.",
   "main": "index.js",
   "repository": "https://github.com/gautiselvaraj/compare-movies",
   "author": "Gauti Selvaraj <me@gauti.info> (https://www.gauti.info/)",

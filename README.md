@@ -1,8 +1,8 @@
 # [Compare Movies](https://www.comparemovies.info)
 
-#### Compare movies and TV Shows instantly.
+#### Confused about what to watch? Compare movies and TV shows and make informed decisions.
 
-Compare Movies is a web app which compares movies and TV shows instantly. You can compare ratings from various sources (IMDB, Rotten Tomatoes, Metacritic and TMDB), awards info, DVD release dates, casts, crews, and so on. You can also watch trailers, videos, posters and other images all in one place.
+Compare Movies is a web app which compares movies and TV shows. Users can watch trailers and compare stats like ratings from IMDB, TMDB, Rotten Tomatoes and Metacritic, runtime, genres, release date, status, season & episode details, cast, crew, overview and so on with ease.
 
 ![Compare Movies Demo](compare-movies-demo-v2.gif)
 

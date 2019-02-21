@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import Head from 'next/head';
 
 const siteUrl = 'https://www.comparemovies.info';
-const defaultTitle = 'Compare Movies and TV Shows Instantly';
+const defaultTitle = 'Compare Movies and TV Shows';
 const defaultDescription =
-  'Compare movies and TV shows info like ratings, runtime, genres, release date, status, season & episodes details, cast, crew, overview and so on. Also watch movies and TV shows trailers and posters with ease.';
+  'Confused about what to watch? Compare movies and TV shows and make informed decisions. Watch trailers and compare stats like ratings from IMDB, TMDB, Rotten Tomatoes and Metacritic, runtime, genres, release date, status, season & episode details, cast, crew, overview and so on with ease.';
 const socialImg = `${siteUrl}/static/social-logo-v2.jpg`;
 
 const HeadContents = ({
@@ -64,10 +64,10 @@ class Meta extends Component {
     const movieTitles = movies.map(m => m.title || m.name);
     const metaTitle = `${movieTitles.join(
       ' vs '
-    )} - Compare Movies and TV Shows Instantly`;
+    )} - Compare Movies and TV Shows`;
     const metaDescription = `Comparing ${movieTitles.join(
       ', '
-    )} ratings, runtime, genres, release date, status, season & episodes details, cast, crew, overview and so on.`;
+    )} stats like ratings from IMDB, TMDB, Rotten Tomatoes and Metacritic, runtime, genres, release date, status, season & episode details, cast, crew, overview and so on with ease.`;
     const metaUrl = `${siteUrl}${this.props.url}`;
 
     return (
