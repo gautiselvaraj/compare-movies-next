@@ -130,19 +130,19 @@ export const getAggregateRating = movie => {
     totalRatingCount = 0;
 
   if (movie.vote_average) {
-    totalRatingFor10 += parseInt(movie.vote_average, 10);
+    totalRatingFor10 += parseFloat(movie.vote_average, 10);
     totalRatingCount++;
   }
   if (imdbRating) {
-    totalRatingFor10 += parseInt(imdbRating, 10);
+    totalRatingFor10 += parseFloat(imdbRating, 10);
     totalRatingCount++;
   }
   if (tomatoRating) {
-    totalRatingFor10 += parseInt(tomatoRating, 10) / 10;
+    totalRatingFor10 += parseFloat(tomatoRating, 10) / 10;
     totalRatingCount++;
   }
   if (metacriticRating) {
-    totalRatingFor10 += parseInt(metacriticRating, 10) / 10;
+    totalRatingFor10 += parseFloat(metacriticRating, 10) / 10;
     totalRatingCount++;
   }
   return (Math.round((totalRatingFor10 / totalRatingCount) * 10) / 10).toFixed(
