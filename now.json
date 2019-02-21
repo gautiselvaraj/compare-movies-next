@@ -21,11 +21,13 @@
   ],
   "env": {
     "TMDB_API_KEY": "@tmdb-api-key",
-    "OMDB_API_KEY": "@omdb-api-key"
+    "OMDB_API_KEY": "@omdb-api-key",
+    "ROLLBAR_CLIENT_KEY": "@rollbar-client-key"
   },
   "build": {
     "env": {
-      "TMDB_API_KEY": "@tmdb-api-key"
+      "TMDB_API_KEY": "@tmdb-api-key",
+      "ROLLBAR_CLIENT_KEY": "@rollbar-client-key"
     }
   }
 }

@@ -30,6 +30,8 @@ import Credits from '../Credits';
 import RelatedContainer from '../../containers/RelatedContainer';
 import './Movie.scss';
 import { JSONLD, Generic } from 'react-structured-data';
+import logRollbarError from '../../utils/rollbar';
+
 class Movie extends Component {
   constructor(props) {
     super(props);
@@ -73,6 +75,10 @@ class Movie extends Component {
   hideVideos() {
     this.setState({ showVideos: false });
     this.videoButton.focus();
+  }
+
+  componentDidCatch(error, errorInfo) {
+    logRollbarError(error);
   }
 
   render() {

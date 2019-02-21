@@ -8,6 +8,7 @@ import withRedux from 'next-redux-wrapper';
 import initStore from '../store';
 import Metas from '../components/Metas';
 import { recordPageView } from '../utils/GAUtils';
+import logRollbarError from '../utils/rollbar';
 
 recordPageView();
 Router.events.on('routeChangeStart', recordPageView);
@@ -19,6 +20,13 @@ class MyApp extends App {
         ? await Component.getInitialProps(ctx)
         : {}
     };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    logRollbarError(error);
+
+    // Pass on error to App class so custom error pages can be rendered
+    super.componentDidCatch(error, errorInfo);
   }
 
   render() {

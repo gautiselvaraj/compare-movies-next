@@ -16,7 +16,9 @@ module.exports = withOffline(
     webpack: (config, { isServer }) => {
       config.plugins = config.plugins || [];
 
-      config.plugins.push(new webpack.EnvironmentPlugin(['TMDB_API_KEY']));
+      config.plugins.push(
+        new webpack.EnvironmentPlugin(['TMDB_API_KEY', 'ROLLBAR_CLIENT_KEY'])
+      );
 
       if (ANALYZE) {
         config.plugins.push(
