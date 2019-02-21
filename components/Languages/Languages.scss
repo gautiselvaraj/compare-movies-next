@@ -1,38 +1,43 @@
 @import '../../styles/variables.scss';
 
-.language {
-  .language__button {
-    background-color: $color-transparent;
-    border: 0;
-    cursor: pointer;
-    padding: 0;
-    position: relative;
+.language__button {
+  background-color: $color-transparent;
+  border: 0;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
 
+  &:after {
+    border-bottom: 1px dotted $color-grey-light;
+    bottom: -5px;
+    content: '';
+    left: 0;
+    position: absolute;
+    width: 100%;
+  }
+
+  &:hover,
+  &:focus {
     &:after {
-      border-bottom: 1px dotted $color-grey-light;
-      bottom: -5px;
-      content: '';
-      left: 0;
-      position: absolute;
-      width: 100%;
-    }
-
-    &:hover,
-    &:focus {
-      &:after {
-        border-bottom-color: $color-primary;
-      }
+      border-bottom-color: $color-primary;
     }
   }
+}
 
-  .language__translated-count {
-    color: $color-grey-lighter;
-    font-size: .75rem;
-  }
+.language__translated-count {
+  color: $color-grey-lighter;
+  font-size: .75rem;
+}
 
-  .language__modal-heading {
-    font-size: 1.35rem;
-    margin-bottom: .5rem;
-    margin-top: 1rem;
-  }
+.language__modal-heading {
+  font-size: 1.35rem;
+  margin-bottom: .5rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.language__translation {
+  line-height: 2rem;
+  text-align: center;
 }

@@ -1,74 +1,73 @@
 @import '../../styles/variables.scss';
 
-.seasons-episodes {
-  .seasons-episodes__button {
-    background-color: $color-transparent;
-    border: 0;
-    color: inherit;
-    cursor: pointer;
-    padding: 0;
-    position: relative;
+.seasons-episodes__button {
+  background-color: $color-transparent;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
 
+  &:after {
+    border-bottom: 1px dotted $color-grey-light;
+    bottom: -5px;
+    content: '';
+    left: 0;
+    position: absolute;
+    width: 100%;
+  }
+
+  &:hover,
+  &:focus {
     &:after {
-      border-bottom: 1px dotted $color-grey-light;
-      bottom: -5px;
-      content: '';
-      left: 0;
-      position: absolute;
-      width: 100%;
-    }
-
-    &:hover,
-    &:focus {
-      &:after {
-        border-bottom-color: $color-primary;
-      }
+      border-bottom-color: $color-primary;
     }
   }
+}
 
-  .seasons-episodes_seperator {
-    margin-left: 5px;
-    margin-right: 5px;
-  }
+.seasons-episodes_seperator {
+  margin-left: 5px;
+  margin-right: 5px;
+}
 
-  .seasons-episodes__modal-heading {
-    font-size: 1.35rem;
-    margin-bottom: .5rem;
-    margin-top: 1rem;
-  }
+.seasons-episodes__modal-heading {
+  font-size: 1.35rem;
+  margin-bottom: .5rem;
+  margin-top: 1rem;
+  text-align: center;
+}
 
-  .seasons-episodes__season {
-    display: flex;
-    flex-flow: row nowrap;
-    margin: 1.5rem auto;
-    max-width: 300px;
-    text-align: left;
-  }
+.seasons-episodes__season {
+  display: flex;
+  flex-flow: row nowrap;
+  margin: 1.5rem auto;
+  max-width: 300px;
+  text-align: left;
+}
 
-  .seasons-episodes__poster {
-    margin-right: 1rem;
-    width: 75px;
-  }
+.seasons-episodes__poster {
+  margin-right: 1rem;
+  width: 75px;
+}
 
-  .seasons-episodes__misc {
-    flex: 1 0 0;
-  }
+.seasons-episodes__misc {
+  flex: 1 0 0;
+}
 
-  .seasons-episodes__season-number {
-    font-size: 1.1rem;
-    line-height: 1.35rem;
-    margin-bottom: .5rem;
-    margin-top: 0;
-  }
+.seasons-episodes__season-number {
+  font-size: 1.1rem;
+  line-height: 1.35rem;
+  margin-bottom: .5rem;
+  margin-top: 0;
+}
 
-  .seasons-episodes__episode-count {
-    line-height: 1.25rem;
-    margin-bottom: .5rem;
-  }
+.seasons-episodes__episode-count {
+  line-height: 1.25rem;
+  margin-bottom: .5rem;
+}
 
-  .seasons-episodes__air-date {
-    color: $color-grey-light;
-    font-size: .8rem;
-    line-height: 1.25rem;
-  }
+.seasons-episodes__air-date {
+  color: $color-grey-light;
+  font-size: .8rem;
+  line-height: 1.25rem;
 }

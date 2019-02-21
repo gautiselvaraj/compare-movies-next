@@ -88,6 +88,7 @@ export default class MyDocument extends Document {
             </div>
           </noscript>
           <Main />
+          <div id="modal_portal" />
           <NextScript />
         </body>
       </html>

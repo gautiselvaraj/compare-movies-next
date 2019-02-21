@@ -24,15 +24,15 @@
       color: $color-primary-tinted;
     }
   }
+}
 
-  .credits__modal-heading {
-    font-size: 1.35rem;
-    margin-bottom: 1.5rem;
-    margin-top: 1rem;
-    text-align: center;
-  }
+.credits__modal-heading {
+  font-size: 1.35rem;
+  margin-bottom: 1.5rem;
+  margin-top: 1rem;
+  text-align: center;
+}
 
-  .credits__modal-type {
-    text-transform: capitalize;
-  }
+.credits__modal-type {
+  text-transform: capitalize;
 }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
 import './Modal.scss';
 
@@ -9,6 +10,27 @@ class Modal extends Component {
     this.onClose = this.onClose.bind(this);
     this.onKeyDown = this.onKeyDown.bind(this);
     this.onClick = this.onClick.bind(this);
+    this.el = document.createElement('div');
+    this.modalRoot = null;
+  }
+
+  componentWillMount() {
+    this.closeTimeout = null;
+    document.addEventListener('keydown', this.onKeyDown);
+  }
+
+  componentDidMount() {
+    this.modalRoot = document.getElementById('modal_portal');
+    this.modalRoot.appendChild(this.el);
+    document.documentElement.classList.add('body__modal--opened');
+    this.modal.focus();
+  }
+
+  componentWillUnmount() {
+    this.modalRoot.removeChild(this.el);
+    document.documentElement.classList.remove('body__modal--opened');
+    clearTimeout(this.closeTimeout);
+    document.removeEventListener('keydown', this.onKeyDown);
   }
 
   onKeyDown(event) {
@@ -27,22 +49,6 @@ class Modal extends Component {
     }
   }
 
-  componentWillMount() {
-    this.closeTimeout = null;
-    document.addEventListener('keydown', this.onKeyDown);
-  }
-
-  componentDidMount() {
-    document.documentElement.classList.add('body__modal--opened');
-    this.modal.focus();
-  }
-
-  componentWillUnmount() {
-    document.documentElement.classList.remove('body__modal--opened');
-    clearTimeout(this.closeTimeout);
-    document.removeEventListener('keydown', this.onKeyDown);
-  }
-
   onClose() {
     this.setState({ modalClosing: true });
     // Set timeout so modal closing animations can happen
@@ -53,7 +59,7 @@ class Modal extends Component {
     const modalClosingClass = this.state.modalClosing ? 'modal--closing' : '';
     const { modalClassName, children, ariaLabel } = this.props;
 
-    return (
+    return createPortal(
       <div
         className={`modal ${
           modalClassName ? modalClassName : ''
@@ -77,7 +83,8 @@ class Modal extends Component {
             </div>
           </div>
         </div>
-      </div>
+      </div>,
+      this.el
     );
   }
 }
