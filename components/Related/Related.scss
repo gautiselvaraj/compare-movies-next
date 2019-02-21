@@ -24,6 +24,12 @@
   }
 }
 
+.related__list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
 .related__link {
   color: $color-grey-lighter;
   font-size: .9rem;

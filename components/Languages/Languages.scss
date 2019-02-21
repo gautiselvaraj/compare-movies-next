@@ -24,6 +24,12 @@
   }
 }
 
+.language__list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
 .language__translated-count {
   color: $color-grey-lighter;
   font-size: .75rem;

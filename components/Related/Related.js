@@ -65,34 +65,37 @@ class Related extends Component {
               Related {type}{' '}
               <span className="hide-sm-and-down">for {movieTitle} </span>
             </h4>
-            {related.map(m => (
-              <button
-                key={m.id}
-                className="related__add-button"
-                onClick={() => this.selectMovie(m)}
-              >
-                <div className="related__media">
-                  <Poster
-                    size={75}
-                    path={m.poster_path}
-                    alt={m.title || m.name}
-                    className="relateds__image"
-                  />
-                </div>
-                <div className="related__details">
-                  <h5 className="related__title">{m.title || m.name}</h5>
-                  <div>
-                    <span className="related__date">
-                      {formatedDate(m.release_date || m.first_air_date)}
-                    </span>
-                    <span className="related__vote">
-                      <TmdbVote vote={m.vote_average} />
-                    </span>
-                  </div>
-                  <div className="related__compare">Add to compare</div>
-                </div>
-              </button>
-            ))}
+            <ul className="related__list">
+              {related.map(m => (
+                <li key={m.id} className="related__item">
+                  <button
+                    className="related__add-button"
+                    onClick={() => this.selectMovie(m)}
+                  >
+                    <div className="related__media">
+                      <Poster
+                        size={75}
+                        path={m.poster_path}
+                        alt={m.title || m.name}
+                        className="relateds__image"
+                      />
+                    </div>
+                    <div className="related__details">
+                      <h5 className="related__title">{m.title || m.name}</h5>
+                      <div>
+                        <span className="related__date">
+                          {formatedDate(m.release_date || m.first_air_date)}
+                        </span>
+                        <span className="related__vote">
+                          <TmdbVote vote={m.vote_average} />
+                        </span>
+                      </div>
+                      <div className="related__compare">Add to compare</div>
+                    </div>
+                  </button>
+                </li>
+              ))}
+            </ul>
           </Modal>
         )}
       </div>

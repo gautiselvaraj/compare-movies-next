@@ -35,6 +35,12 @@
     margin-top: 1.25rem;
     margin-bottom: 1.25rem;
   }
+  
+  .suggests__list-items {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
 
   .suggests__list-item {
     + .suggests__list-item {

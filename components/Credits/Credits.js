@@ -45,9 +45,13 @@ class Credits extends Component {
               <span className="hide-sm-and-down">{movieTitle} </span>
               <span className="credits__modal-type">{type}</span>
             </h4>
-            {credits.map((c, i) => (
-              <Credit key={c.credit_id} credit={c} imageSize={50} />
-            ))}
+            <ul className="credits__list">
+              {credits.map((c, i) => (
+                <li className="credits__item">
+                  <Credit key={c.credit_id} credit={c} imageSize={50} />
+                </li>
+              ))}
+            </ul>
           </Modal>
         )}
       </div>

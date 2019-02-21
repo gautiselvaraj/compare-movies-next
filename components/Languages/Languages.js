@@ -55,11 +55,15 @@ class Languages extends Component {
               <span className="hide-sm-and-down">{movieTitle} </span>
               Translated Languages
             </h4>
-            {languages.map(t => (
-              <div className="language__translation" key={t.iso_639_1}>
-                {t.name} &mdash; {t.english_name}
-              </div>
-            ))}
+            <ul className="language__list">
+              {languages.map(t => (
+                <li className="language__item">
+                  <div className="language__translation" key={t.iso_639_1}>
+                    {t.name} &mdash; {t.english_name}
+                  </div>
+                </li>
+              ))}
+            </ul>
           </Modal>
         )}
       </div>
