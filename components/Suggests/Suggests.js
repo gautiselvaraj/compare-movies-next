@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { logHomeMovieAdded } from '../../utils/GAUtils';
 import Poster from '../Poster';
-import Vote from '../Vote';
+import TmdbVote from '../TmdbVote';
 import { formatedDate } from '../../utils/CMUtils';
 import './Suggests.scss';
 
@@ -76,7 +76,7 @@ class Suggests extends Component {
                           )}
                         </span>
                         <span className="suggests__list-vote">
-                          <Vote vote={movie.vote_average} />
+                          <TmdbVote vote={movie.vote_average} />
                         </span>
                       </div>
                     </div>

@@ -145,7 +145,9 @@ export const getAggregateRating = movie => {
     totalRatingFor10 += parseInt(metacriticRating, 10) / 10;
     totalRatingCount++;
   }
-  return totalRatingFor10 / totalRatingCount;
+  return (Math.round((totalRatingFor10 / totalRatingCount) * 10) / 10).toFixed(
+    1
+  );
 };
 
 export const getAggregateRatingCount = movie => {

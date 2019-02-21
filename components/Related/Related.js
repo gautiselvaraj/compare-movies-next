@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { logRelatedAdded } from '../../utils/GAUtils';
 import Modal from '../Modal';
 import Poster from '../Poster';
-import Vote from '../Vote';
+import TmdbVote from '../TmdbVote';
 import { formatedDate } from '../../utils/CMUtils';
 import './Related.scss';
 
@@ -86,7 +86,7 @@ class Related extends Component {
                       {formatedDate(m.release_date || m.first_air_date)}
                     </span>
                     <span className="related__vote">
-                      <Vote vote={m.vote_average} />
+                      <TmdbVote vote={m.vote_average} />
                     </span>
                   </div>
                   <div className="related__compare">Add to compare</div>

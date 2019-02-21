@@ -1,0 +1,62 @@
+@import '../../styles/variables.scss';
+
+.vote {
+  .vote__icon {
+    color: $color-primary;
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+
+  .vote__count {
+    color: $color-white;
+    font-size: .85rem;
+    line-height: 1.3rem;
+  }
+
+  &__primary {
+    .vote__count {
+      font-size: 1.75rem;
+    }
+
+    .vote__icon {
+      display: block;
+      margin-bottom: .75rem;
+
+      i {
+        font-size: .85rem;
+        position: relative;
+
+        &:first-child {
+          top: 5px;
+        }
+
+        &:nth-child(2) {
+          font-size: 1.25rem;
+        }
+
+        &:last-child {
+          top: 5px;
+        }
+      }
+    }
+  }
+
+  &__secondary {
+    display: block;
+
+    .vote__icon {
+      font-size: 1.35rem;
+      line-height: 2.5rem;
+      margin-right: .35rem;
+    }
+
+    .vote__count {
+      font-size: 1.15rem;
+    }
+  }
+
+  &__tertiary {
+    display: block;
+    margin-top: .5rem;
+  }
+}

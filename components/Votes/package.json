@@ -1,6 +1,6 @@
 {
-  "name": "Vote",
+  "name": "Votes",
   "version": "0.0.0",
   "private": true,
-  "main": "Vote.js"
+  "main": "Votes.js"
 }

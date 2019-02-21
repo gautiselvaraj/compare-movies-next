@@ -1,0 +1,16 @@
+@import '../../styles/variables.scss';
+
+.tmdb-vote {
+  .tmdb-vote__icon {
+    color: $color-primary;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    margin-right: .25rem;
+  }
+
+  .tmdb-vote__count {
+    color: $color-primary;
+    font-size: .85rem;
+    line-height: 1.3rem;
+  }
+}

@@ -21,8 +21,7 @@ import {
   logCrewOpened
 } from '../../utils/GAUtils';
 import Poster from '../Poster';
-import Vote from '../Vote';
-import MiscVotes from '../MiscVotes';
+import Votes from '../Votes';
 import MediaModal from '../MediaModal';
 import Languages from '../Languages';
 import SeasonEpisodes from '../SeasonEpisodes';
@@ -167,15 +166,7 @@ class Movie extends Component {
           </div>
           <h5 className="movie__title">{movie.title || movie.name}</h5>
           <div className="movie__vote">
-            <Vote
-              vote={movie.vote_average}
-              type="big"
-              noRatingText={true}
-              noRatingClass="movie__no-info"
-              className="tooltip"
-              data-title="TMDB"
-            />
-            <MiscVotes ratings={movie.ratings} />
+            <Votes movie={movie} />
           </div>
           <div className="movie__medias">
             {movieVideosPresent && (

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { formatedDate } from '../../utils/CMUtils';
 import Poster from '../Poster';
-import Vote from '../Vote';
+import TmdbVote from '../TmdbVote';
 import './SearchResult.scss';
 
 const SearchResult = ({ searchResult, highlighted }) => (
@@ -30,7 +30,7 @@ const SearchResult = ({ searchResult, highlighted }) => (
           )}
         </div>
         <div className="search-result__vote">
-          <Vote vote={searchResult.vote_average} />
+          <TmdbVote vote={searchResult.vote_average} />
         </div>
       </div>
     </div>
