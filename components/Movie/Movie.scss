@@ -1,4 +1,5 @@
 @import '../../styles/variables.scss';
+$image-shadow-color: rgba($color-black, .2);
 
 .movie {
   background-position: center;
@@ -6,7 +7,8 @@
   background-size: cover;
   flex: 1 0 0;
   overflow: hidden;
-  padding: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
   position: relative;
   width: auto;
 
@@ -39,22 +41,40 @@
   }
 
   .movie__container {
-    align-items: center;
     color: $color-white;
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
     margin: 0 auto;
     max-width: 280px;
+    padding-bottom: .75rem;
+    padding-top: .75rem;
     position: relative;
+    width: 100%;
+
+    &--sm {
+      padding-bottom: .4rem;
+      padding-top: .4rem;
+    }
+
+    &--xs {
+      padding-bottom: 0;
+      padding-top: 0;
+    }
+  }
+
+  .movie__misc {
+    font-size: .9rem;
+
+    &--centered {
+      align-items: center;
+      display: flex;
+      justify-content: space-around;
+    }
+  }
+
+  .movie__no-info {
+    color: $color-grey;
   }
 
   .movie__poster {
-    height: 200px;
-    margin-top: .5rem;
-  }
-
-  .movie__poster-button {
     background-color: $color-transparent;
     border: 0;
     border-radius: 0;
@@ -76,8 +96,6 @@
       }
     }
   }
-
-  $image-shadow-color: rgba($color-black, .2);
 
   .movie__image {
     box-shadow: 0 25px 28px $image-shadow-color,
@@ -114,15 +132,10 @@
     align-items: center;
     display: flex;
     font-size: 1.25rem;
-    height: 3.2rem;
-    line-height: 1.6rem;
-    margin-bottom: .25rem;
-    margin-top: 1rem;
-    overflow: hidden;
-  }
-
-  .movie__no-info {
-    color: $color-grey;
+    justify-content: center;
+    margin-bottom: 0;
+    margin-top: 0;
+    min-height: 60px;
   }
 
   .movie__vote {
@@ -130,21 +143,16 @@
     border-top: 1px solid rgba(white, .35);
     border-bottom: 1px solid rgba(white, .35);
     display: flex;
-    height: 100px;
     justify-content: space-around;
-    margin: .75em 0;
+    margin-top: .5rem;
+    margin-bottom: .75rem;
+    padding-top: .75rem;
+    padding-bottom: .75rem;
     width: 100%;
-
-    .vote,
-    .misc-vote {
-      flex: 0 33.33%;
-    }
   }
 
   .movie__medias {
     min-height: 31px;
-    margin-bottom: 1rem;
-    margin-top: .5rem;
   }
 
   .movie__videos-button,
@@ -167,50 +175,6 @@
     }
   }
 
-  .movie__misc {
-    font-size: .85rem;
-    height: 2.5rem;
-    line-height: 2.5rem;
-  }
-
-  .movie__date,
-  .movie__runtime,
-  .movie__seasons-episodes {
-    display: inline-block;
-    margin-left: 1rem;
-    margin-right: 1rem;
-  }
-
-  .movie__seperator {
-    margin-left: 3px;
-    margin-right: 3px;
-  }
-
-  .movie__genres,
-  .movie__awards,
-  .movie__production,
-  .movie__countries,
-  .movie__dvd-release-date,
-  .movie__languages,
-  .movie__related {
-    font-size: .85rem;
-    height: 2.5rem;
-    line-height: 2.5rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    width: 100%;
-  }
-
-  .movie__awards,
-  .movie__production {
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-
-  .movie__dvd-release-date {
-    overflow: visible;
-  }
-
   .movie__genre {
     margin-right: .35rem;
 
@@ -227,29 +191,29 @@
     font-size: .9rem;
 
     + .movie__country {
-      margin-left: 10px;
+      margin-left: .35rem;
     }
   }
 
   .movie__country-emoji {
     font-size: 1rem;
-    margin-right: 3px;
     position: relative;
     top: 2px;
   }
 
+  .movie__network {
+    color: #1bad1b;
+    font-weight: bold;
+  }
+
   .movie__overview {
-    flex: 1 0 0;
     font-size: .85rem;
-    line-height: 1.2rem;
-    margin-bottom: .5rem;
-    margin-top: 1rem;
     text-align: left;
     width: 100%;
   }
 
   .movie__cast-crew {
-    margin: 0 0 1rem;
+    margin-bottom: 1rem;
     text-align: left;
     width: 100%;
   }
@@ -263,13 +227,13 @@
     font-size: .85rem;
     height: 1.5rem;
     left: 50%;
-    line-height: 1.5rem;
     margin-left: 58px;
     padding: 0;
     position: absolute;
     text-align: center;
-    top: 0;
+    top: 5px;
     width: 1.5rem;
+    z-index: 2;
 
     &:hover,
     &:focus {

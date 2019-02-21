@@ -4,6 +4,10 @@
 @import 'utils';
 @import 'tooltip';
 
+html {
+  line-height: 1.5;
+}
+
 .body__modal--opened {
   &,
   .movies-list {
