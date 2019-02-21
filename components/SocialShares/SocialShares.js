@@ -3,7 +3,12 @@ import { logSocialShared } from '../../utils/GAUtils';
 import './SocialShares.scss';
 
 const getShareUrl = () => encodeURIComponent(location.href);
-const getShareTitle = () => encodeURIComponent(document.title);
+const getShareTitle = () =>
+  encodeURIComponent(
+    location.pathname === '/'
+      ? 'Confused about what to watch? Compare movies and TV shows and make informed decisions.'
+      : document.title
+  );
 const openLinkInNewTab = link => window.open(link, '_blank');
 
 export default class SocialShares extends Component {
