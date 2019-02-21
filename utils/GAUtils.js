@@ -23,6 +23,14 @@ const logMe = (category, action, label) => {
   }
 };
 
+export const recordPageView = path => {
+  if (isProd && client) {
+    path = path || window.location.pathname;
+    initGA();
+    ReactGA.pageview(path);
+  }
+};
+
 export const logSearch = label => logMe('Search', 'Searched', label);
 
 export const logMovieAdd = label => logMe('Movie', 'Added', label);
