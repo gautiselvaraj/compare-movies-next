@@ -8,7 +8,11 @@ module.exports = async id => {
     const response = await rawResponse.json();
     return {
       awards: response.Awards,
-      ratings: response.Ratings,
+      ratings: response.Ratings.map(r =>
+        r.Source === 'Internet Movie Database'
+          ? { ...r, imdbVotes: response.imdbVotes }
+          : r
+      ),
       dvdReleaseDate: response.DVD,
       production: response.Production
     };

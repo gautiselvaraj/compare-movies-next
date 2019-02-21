@@ -201,12 +201,12 @@
     width: 100%;
   }
 
-  .movie__awards {
+  .movie__awards,
+  .movie__production {
     text-overflow: ellipsis;
     white-space: nowrap;
   }
 
-  .movie__production,
   .movie__dvd-release-date {
     overflow: visible;
   }

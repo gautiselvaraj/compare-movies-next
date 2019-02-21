@@ -5813,6 +5813,13 @@ react-show-more-text@^1.0.4:
     prop-types "^15.6.0"
     react-truncate "^2.1.5"
 
+react-structured-data@^0.0.11:
+  version "0.0.11"
+  resolved "https://registry.yarnpkg.com/react-structured-data/-/react-structured-data-0.0.11.tgz#dac358c1d5c2cecc43d9fca2fdf5fa18b2c2b03c"
+  integrity sha512-CkrCUCPD0DqRPKDw91hyH3PHmf1+tF8Ak3JFJ/KdEEeGpCFxTzSxFf+tRQO8fYB/FnQrXEpARS5Sm5ZrzHdRpA==
+  dependencies:
+    prop-types "^15.6.0"
+
 react-transition-group@^1.2.0:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-1.2.1.tgz#e11f72b257f921b213229a774df46612346c7ca6"

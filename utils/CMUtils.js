@@ -27,7 +27,9 @@ export const formatedDate = (dateString, format = 'small') => {
     return '';
   }
   const date = new Date(dateString);
-  return format === 'long'
+  return format === 'iso8601'
+    ? `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
+    : format === 'long'
     ? `${monthNames[date.getMonth()]}, ${date.getDate()} ${date.getFullYear()}`
     : `${monthNames[date.getMonth()]} ${date.getFullYear()}`;
 };
@@ -46,13 +48,14 @@ export const formatedCurrency = value => {
   return enUSFormat.format(value);
 };
 
-export const formatedRunTime = value => {
+export const formatedRunTime = (value, format = 'long') => {
   const hour = Math.floor(value / 60);
   const mins = value % 60;
+  const isLong = format === 'long';
 
-  return `${hour > 0 ? `${hour}hr` : ''} ${
-    mins > 0 ? `${mins > 0 ? `${mins}min` : ''}` : ''
-  }`;
+  return `${hour > 0 ? `${hour}${isLong ? 'hr' : 'H'}` : ''}${
+    isLong ? ' ' : ''
+  }${mins > 0 ? `${mins > 0 ? `${mins}${isLong ? 'min' : 'M'}` : ''}` : ''}`;
 };
 
 export const randomColorHex = () =>
@@ -108,4 +111,47 @@ export const checkIfMovieInList = (movie, movies) =>
 export const getInitials = name => {
   const nameSplits = name.split(' ');
   return nameSplits[0][0] + nameSplits[nameSplits.length - 1][0];
+};
+
+export const getMovieRatingByType = (ratings, source) => {
+  let filteredRating = ratings.find(rating => rating.Source === source);
+  return filteredRating ? filteredRating.Value.split('/')[0] : false;
+};
+
+export const getAggregateRating = movie => {
+  const imdbRating = getMovieRatingByType(
+    movie.ratings,
+    'Internet Movie Database'
+  );
+  const tomatoRating = getMovieRatingByType(movie.ratings, 'Rotten Tomatoes');
+  const metacriticRating = getMovieRatingByType(movie.ratings, 'Metacritic');
+
+  let totalRatingFor10 = 0,
+    totalRatingCount = 0;
+
+  if (movie.vote_average) {
+    totalRatingFor10 += parseInt(movie.vote_average, 10);
+    totalRatingCount++;
+  }
+  if (imdbRating) {
+    totalRatingFor10 += parseInt(imdbRating, 10);
+    totalRatingCount++;
+  }
+  if (tomatoRating) {
+    totalRatingFor10 += parseInt(tomatoRating, 10) / 10;
+    totalRatingCount++;
+  }
+  if (metacriticRating) {
+    totalRatingFor10 += parseInt(metacriticRating, 10) / 10;
+    totalRatingCount++;
+  }
+  return totalRatingFor10 / totalRatingCount;
+};
+
+export const getAggregateRatingCount = movie => {
+  const imdbRating = movie.ratings.find(
+    r => r.Source === 'Internet Movie Database'
+  );
+  const imdbRatingCount = parseInt(imdbRating ? imdbRating.imdbVotes : 0, 10);
+  return imdbRatingCount + parseInt(movie.vote_count, 10);
 };

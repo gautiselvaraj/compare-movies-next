@@ -5,7 +5,9 @@ import ShowMoreText from 'react-show-more-text';
 import {
   formatedDate,
   formatedRunTime,
-  mergeUniqMovieArrays
+  mergeUniqMovieArrays,
+  getAggregateRating,
+  getAggregateRatingCount
 } from '../../utils/CMUtils';
 import { getBackdropPath } from '../../utils/tmdbUtils';
 import {
@@ -28,7 +30,7 @@ import BoxOffice from '../BoxOffice';
 import Credits from '../Credits';
 import RelatedContainer from '../../containers/RelatedContainer';
 import './Movie.scss';
-
+import { JSONLD, Generic } from 'react-structured-data';
 class Movie extends Component {
   constructor(props) {
     super(props);
@@ -89,10 +91,39 @@ class Movie extends Component {
         : movie.production_countries;
     countries = countries.map(c => emojiFlags.countryCode(c.iso_3166_1));
 
+    const productionInfo = movie.production
+      ? movie.production
+      : movie.production_companies
+      ? movie.production_companies.map(p => p.name).join(', ')
+      : false;
+    const director = movie.credits.crew.find(c => c.job === 'Director');
+    const creators = movie.created_by
+      ? movie.created_by.map(c => c.name).join(', ')
+      : null;
+
     let similarArray = movie.similar.results;
     let recommendedArray = movie.recommendations.results;
     similarArray.forEach(a => (a.media_type = movie.media_type));
     recommendedArray.forEach(a => (a.media_type = movie.media_type));
+
+    const commonJsonLdAttrs = {
+      name: movie.title || movie.name,
+      description: movie.overview,
+      datePublished: formatedDate(
+        movie.release_date || movie.first_air_date,
+        'iso8601'
+      ),
+      dateCreated: formatedDate(
+        movie.release_date || movie.first_air_date,
+        'iso8601'
+      ),
+      genre: movie.genres.map(g => g.name).join(', '),
+      awards: movie.awards,
+      image: `https://image.tmdb.org/t/p/w342${movie.poster_path}`,
+      inLanguage: movie.translations.translations
+        .map(t => t.iso_639_1)
+        .join(',')
+    };
 
     return (
       <div
@@ -238,8 +269,28 @@ class Movie extends Component {
               {movie.status}
             </span>
             <span className="movie__money">
-              <BoxOffice revenue={movie.revenue} />
+              {movie.networks ? (
+                <span className="box-office tooltip" data-title="Network">
+                  {movie.networks.map(n => n.name).join(',')}
+                </span>
+              ) : (
+                <BoxOffice revenue={movie.revenue} />
+              )}
             </span>
+          </div>
+          <div className="movie__misc">
+            {director ? (
+              <span
+                className="movie__director tooltip"
+                data-title="Directed By"
+              >
+                {director.name}
+              </span>
+            ) : creators ? (
+              <span className="movie__director tooltip" data-title="Created By">
+                {creators}
+              </span>
+            ) : null}
           </div>
           <div className="movie__awards">
             {movie.awards && movie.awards !== 'N/A' ? (
@@ -249,9 +300,9 @@ class Movie extends Component {
             )}
           </div>
           <div className="movie__production">
-            {movie.production ? (
+            {productionInfo ? (
               <span className="tooltip" data-title="Production Company">
-                {movie.production}
+                {productionInfo}
               </span>
             ) : (
               <span className="movie__no-info">No Production Company Info</span>
@@ -317,6 +368,84 @@ class Movie extends Component {
             &times;
           </button>
         </div>
+
+        <JSONLD>
+          {movie.media_type === 'movie' ? (
+            <Generic
+              type="Movie"
+              jsonldtype="Movie"
+              schema={{
+                ...commonJsonLdAttrs,
+                duration: `T${formatedRunTime(movie.runtime, 'short')}`
+              }}
+            >
+              <Generic
+                type="aggregateRating"
+                jsonldtype="AggregateRating"
+                schema={{
+                  bestRating: 10,
+                  ratingValue: getAggregateRating(movie),
+                  ratingCount: getAggregateRatingCount(movie)
+                }}
+              />
+              <Generic
+                type="countryOfOrigin"
+                jsonldtype="Country"
+                schema={{ name: countries[0].name }}
+              />
+              <Generic
+                type="productionCompany"
+                jsonldtype="Organization"
+                schema={{
+                  name:
+                    movie.production || movie.production_companies
+                      ? movie.production_companies[0].name
+                      : ''
+                }}
+              />
+              <Generic
+                type="director"
+                jsonldtype="Person"
+                schema={{ name: director ? director.name : '' }}
+              />
+            </Generic>
+          ) : (
+            <Generic
+              type="TVSeries"
+              jsonldtype="TVSeries"
+              schema={{
+                ...commonJsonLdAttrs,
+                numberOfEpisodes: movie.number_of_episodes,
+                numberOfSeasons: movie.number_of_seasons
+              }}
+            >
+              <Generic
+                type="aggregateRating"
+                jsonldtype="AggregateRating"
+                schema={{
+                  bestRating: 10,
+                  ratingValue: getAggregateRating(movie),
+                  ratingCount: getAggregateRatingCount(movie)
+                }}
+              />
+              <Generic
+                type="countryOfOrigin"
+                jsonldtype="Country"
+                schema={{ name: countries[0].name }}
+              />
+              <Generic
+                type="productionCompany"
+                jsonldtype="Organization"
+                schema={{
+                  name:
+                    movie.production || movie.production_companies
+                      ? movie.production_companies[0].name
+                      : ''
+                }}
+              />
+            </Generic>
+          )}
+        </JSONLD>
       </div>
     );
   }

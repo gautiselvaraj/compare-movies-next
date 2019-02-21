@@ -1,20 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './MiscVotes.scss';
-
-const getRating = (ratings, source) => {
-  let filteredRating = ratings.find(rating => rating.Source === source);
-  return filteredRating ? filteredRating.Value.split('/')[0] : false;
-};
+import { getMovieRatingByType } from '../../utils/CMUtils';
 
 const MiscVotes = ({ ratings }) => {
   if (!ratings) {
     return null;
   }
 
-  const imdbRating = getRating(ratings, 'Internet Movie Database');
-  const tomatoRating = getRating(ratings, 'Rotten Tomatoes');
-  const metacriticRating = getRating(ratings, 'Metacritic');
+  const imdbRating = getMovieRatingByType(ratings, 'Internet Movie Database');
+  const tomatoRating = getMovieRatingByType(ratings, 'Rotten Tomatoes');
+  const metacriticRating = getMovieRatingByType(ratings, 'Metacritic');
 
   return [
     <span className="misc-vote misc-vote__secondary" key="1">
