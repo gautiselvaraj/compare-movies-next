@@ -34,7 +34,7 @@ module.exports = withOffline(
       swDest: 'static/service-worker.js',
       runtimeCaching: [
         {
-          urlPattern: /\.(?:png|gif|jpg|jpeg|svg)$/,
+          urlPattern: /\.(?:png|gif|jpg|jpeg|svg|ico)$/,
           handler: 'cacheFirst',
           options: {
             cacheName: 'images'
@@ -50,7 +50,7 @@ module.exports = withOffline(
           }
         },
         {
-          urlPattern: /^https:\/\/www.comparemovies.info\/?$/,
+          urlPattern: /^https:\/\/www.comparemovies.info(\/?|\/c\/.+)$/,
           handler: 'networkFirst',
           options: {
             cacheName: 'pages'
