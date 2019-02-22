@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
+import { getUrlPathFromMovies } from '../../utils/UrlUtils';
 
 const siteUrl = 'https://www.comparemovies.info';
 const defaultTitle = 'Compare Movies and TV Shows';
@@ -19,7 +20,7 @@ const HeadContents = ({
   twitterDescription,
   twitterImage
 }) => (
-  <Head>
+  <>
     <title key="title">{title}</title>
     <meta name="description" content={description} key="description" />
     <meta property="og:title" content={ogTitle} key="ogTitle" />
@@ -38,7 +39,7 @@ const HeadContents = ({
       key="twitterDescription"
     />
     <meta name="twitter:image" content={twitterImage} key="twitterImage" />
-  </Head>
+  </>
 );
 
 class Meta extends Component {
@@ -47,17 +48,19 @@ class Meta extends Component {
 
     if (!movies || !movies.length) {
       return (
-        <HeadContents
-          title={defaultTitle}
-          description={defaultDescription}
-          ogTitle={defaultTitle}
-          ogDescription={defaultDescription}
-          ogImage={socialImg}
-          ogUrl={siteUrl}
-          twitterTitle={defaultTitle}
-          twitterDescription={defaultDescription}
-          twitterImage={socialImg}
-        />
+        <Head>
+          <HeadContents
+            title={defaultTitle}
+            description={defaultDescription}
+            ogTitle={defaultTitle}
+            ogDescription={defaultDescription}
+            ogImage={socialImg}
+            ogUrl={siteUrl}
+            twitterTitle={defaultTitle}
+            twitterDescription={defaultDescription}
+            twitterImage={socialImg}
+          />
+        </Head>
       );
     }
 
@@ -69,19 +72,25 @@ class Meta extends Component {
       ', '
     )} stats like ratings from IMDB, TMDB, Rotten Tomatoes and Metacritic, runtime, genres, release date, status, season & episode details, cast, crew, overview and so on with ease.`;
     const metaUrl = `${siteUrl}${this.props.pathName}`;
+    const canonicalUrl = `${siteUrl}/c/${getUrlPathFromMovies(
+      movies.sort((a, b) => a.id - b.id)
+    )}`;
 
     return (
-      <HeadContents
-        title={metaTitle}
-        description={metaDescription}
-        ogTitle={metaTitle}
-        ogDescription={metaDescription}
-        ogImage={socialImg}
-        ogUrl={metaUrl}
-        twitterTitle={metaTitle}
-        twitterDescription={metaDescription}
-        twitterImage={socialImg}
-      />
+      <Head>
+        <HeadContents
+          title={metaTitle}
+          description={metaDescription}
+          ogTitle={metaTitle}
+          ogDescription={metaDescription}
+          ogImage={socialImg}
+          ogUrl={metaUrl}
+          twitterTitle={metaTitle}
+          twitterDescription={metaDescription}
+          twitterImage={socialImg}
+        />
+        <link rel="canonical" href={canonicalUrl} key="canonical" />
+      </Head>
     );
   }
 }

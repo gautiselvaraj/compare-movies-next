@@ -45,3 +45,6 @@ export const getMovieUrlsFromPath = url =>
       return null;
     }
   });
+
+export const getUrlPathFromMovies = movies =>
+  movies.map(m => getMoviePath(m)).join('/');
