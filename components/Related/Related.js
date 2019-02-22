@@ -5,7 +5,7 @@ import Modal from '../Modal';
 import Poster from '../Poster';
 import TmdbVote from '../TmdbVote';
 import { formatedDate } from '../../utils/CMUtils';
-import { pushMovieToPath, getMovieUrlsFromPath } from '../../utils/UrlUtils';
+import { pushMovieToPath, getMoviesFromPath } from '../../utils/UrlUtils';
 import Link from 'next/link';
 import './Related.scss';
 
@@ -35,7 +35,7 @@ class Related extends Component {
 
   render() {
     const { related, movieTitle, movieType, pathName } = this.props;
-    const moviesFromUrl = getMovieUrlsFromPath(pathName).map(m =>
+    const moviesFromUrl = getMoviesFromPath(pathName).map(m =>
       parseInt(m.id, 10)
     );
     const uniqRelated = related.filter(m => !moviesFromUrl.includes(m.id));

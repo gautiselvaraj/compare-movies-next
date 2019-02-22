@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
 import Search from '../../components/Search';
 import { searchMovies } from '../../actions/SearchActions';
-import { addMovie } from '../../actions/MovieActions';
+import { pushMovieToPath } from '../../utils/UrlUtils';
+import Router from 'next/router';
 
 const mapStateToProps = state => {
   const results = state.getIn(['search', 'results']);
@@ -11,11 +12,11 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = (dispatch, props) => ({
+const mapDispatchToProps = dispatch => ({
   onSearchChange: query => dispatch(searchMovies(query)),
   onSearchSelect: movie => {
     dispatch(searchMovies(null));
-    dispatch(addMovie(movie));
+    Router.push('/compare', pushMovieToPath(movie));
   }
 });
 

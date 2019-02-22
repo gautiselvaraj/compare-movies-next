@@ -19,8 +19,7 @@ const searchFailure = errors => ({
 });
 
 export const searchMovies = query => {
-  return async (dispatch, getState) => {
-    const state = getState();
+  return async dispatch => {
     dispatch(searchRequest(query));
     if (query) {
       logSearch(query);
@@ -29,8 +28,7 @@ export const searchMovies = query => {
           await Promise.all([
             callApi(`search/movie?include_adult=true&page=1&query=${query}`),
             callApi(`search/tv?include_adult=true&page=1&query=${query}`)
-          ]),
-          state.getIn(['movies', 'list'])
+          ])
         );
         dispatch(searchSuccess(combainedResults));
       } catch (errors) {

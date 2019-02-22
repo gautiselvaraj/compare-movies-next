@@ -32,7 +32,7 @@ export const removeMovieFromPath = movie =>
     )
   );
 
-export const getMovieUrlsFromPath = url =>
+export const getMoviesFromPath = url =>
   getPathParts(url).map(path => {
     if (/^(tv|movie)-\d{0,10}/.test(path)) {
       const movieSplit = getTypeIdFromPath(path).split('-');

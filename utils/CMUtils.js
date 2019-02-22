@@ -1,3 +1,6 @@
+import Router from 'next/router';
+import { getMoviesFromPath } from './UrlUtils';
+
 const monthNames = [
   'Jan',
   'Feb',
@@ -82,12 +85,13 @@ export const addTvType = tvShows => {
   return tvShows;
 };
 
-export const filterAndSortSearchResults = (searchArrays, movies) => {
+export const filterAndSortSearchResults = (
+  searchArrays,
+  path = Router.asPath
+) => {
+  const movies = getMoviesFromPath(path);
   let moviesArray = addMovieType(searchArrays[0].results);
   let tvShowsArray = addTvType(searchArrays[1].results);
-
-  movies = movies ? movies.toJS() : [];
-
   let combinedArray = mergeUniqMovieArrays(moviesArray, tvShowsArray);
 
   // Sort results based on popularity
@@ -96,11 +100,12 @@ export const filterAndSortSearchResults = (searchArrays, movies) => {
   );
 
   // Remove results already present in selected movies
-  return combinedArray.filter((ele, i, self) => {
-    return !movies.find(
-      movie => movie.id === ele.id && movie.media_type === ele.media_type
-    );
-  });
+  return combinedArray.filter(
+    c =>
+      !movies.find(
+        m => parseInt(m.id, 10) === c.id && m.media_type === c.media_type
+      )
+  );
 };
 
 export const checkIfMovieInList = (movie, movies) =>

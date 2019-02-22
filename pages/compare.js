@@ -5,7 +5,7 @@ import PageLoader from '../components/PageLoader';
 import Movies from '../components/Movies';
 import Metas from '../components/Metas';
 import { fetchMoviesFromUrl, removeMovie } from '../actions/MovieActions';
-import { getMovieUrlsFromPath } from '../utils/UrlUtils';
+import { getMoviesFromPath } from '../utils/UrlUtils';
 
 class ComparePage extends Component {
   static async getInitialProps({ store, asPath }) {
@@ -16,7 +16,7 @@ class ComparePage extends Component {
       .getIn(['movies', 'list'])
       .toJS();
 
-    const movieIdsFromUrl = getMovieUrlsFromPath(asPath).map(m =>
+    const movieIdsFromUrl = getMoviesFromPath(asPath).map(m =>
       parseInt(m.id, 10)
     );
     movies = movies.filter(m => movieIdsFromUrl.includes(m.id));
