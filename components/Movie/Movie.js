@@ -98,7 +98,7 @@ class Movie extends Component {
 
     const productionInfo = movie.production
       ? movie.production
-      : movie.production_companies
+      : movie.production_companies && movie.production_companies.length
       ? movie.production_companies.map(p => p.name).join(', ')
       : false;
     const director = movie.credits.crew.find(c => c.job === 'Director');
@@ -408,7 +408,9 @@ class Movie extends Component {
                 jsonldtype="Organization"
                 schema={{
                   name:
-                    movie.production || movie.production_companies
+                    movie.production ||
+                    (movie.production_companies &&
+                      movie.production_companies.length)
                       ? movie.production_companies[0].name
                       : ''
                 }}
@@ -448,7 +450,9 @@ class Movie extends Component {
                 jsonldtype="Organization"
                 schema={{
                   name:
-                    movie.production || movie.production_companies
+                    movie.production ||
+                    (movie.production_companies &&
+                      movie.production_companies.length)
                       ? movie.production_companies[0].name
                       : ''
                 }}
