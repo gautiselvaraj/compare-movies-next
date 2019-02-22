@@ -92,7 +92,9 @@ class Movie extends Component {
 
     let countries =
       movie.media_type === 'tv'
-        ? [{ iso_3166_1: movie.origin_country[0] }]
+        ? movie.origin_country && movie.origin_country.length
+          ? [{ iso_3166_1: movie.origin_country[0] }]
+          : []
         : movie.production_countries;
     countries = countries.map(c => emojiFlags.countryCode(c.iso_3166_1));
 
@@ -406,7 +408,9 @@ class Movie extends Component {
               <Generic
                 type="countryOfOrigin"
                 jsonldtype="Country"
-                schema={{ name: countries[0].name }}
+                schema={{
+                  name: countries && countries.length ? countries[0].name : ''
+                }}
               />
               <Generic
                 type="productionCompany"
@@ -448,7 +452,9 @@ class Movie extends Component {
               <Generic
                 type="countryOfOrigin"
                 jsonldtype="Country"
-                schema={{ name: countries[0].name }}
+                schema={{
+                  name: countries && countries.length ? countries[0].name : ''
+                }}
               />
               <Generic
                 type="productionCompany"
