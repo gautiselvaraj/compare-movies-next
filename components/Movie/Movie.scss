@@ -67,7 +67,11 @@ $image-shadow-color: rgba($color-black, .2);
     &--centered {
       align-items: center;
       display: flex;
-      justify-content: space-around;
+      justify-content: space-evenly;
+
+      > * {
+        flex: 1 0 33%;
+      }
     }
   }
 
@@ -144,12 +148,16 @@ $image-shadow-color: rgba($color-black, .2);
     border-top: 1px solid rgba(white, .35);
     border-bottom: 1px solid rgba(white, .35);
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     margin-top: .5rem;
     margin-bottom: .75rem;
     padding-top: .75rem;
     padding-bottom: .75rem;
     width: 100%;
+
+    > * {
+      flex: 1 0 33%;
+    }
   }
 
   .movie__medias {
