@@ -82,13 +82,7 @@ class Movie extends Component {
   }
 
   render() {
-    const {
-      movie,
-      movieWidth,
-      backgroundColor,
-      removeMovie,
-      pathName
-    } = this.props;
+    const { movie, backgroundColor, removeMovie, pathName } = this.props;
     const { showImages, showVideos } = this.state;
     const movieVideosPresent = !!movie.videos.results.length;
     const movieImagesPresent = !![
@@ -143,7 +137,6 @@ class Movie extends Component {
       <div
         className="movie"
         style={{
-          width: movieWidth,
           backgroundColor,
           backgroundImage: `url('${getBackdropPath(movie.backdrop_path, 200)}')`
         }}
@@ -480,8 +473,7 @@ class Movie extends Component {
 Movie.propTypes = {
   movie: PropTypes.object.isRequired,
   backgroundColor: PropTypes.string.isRequired,
-  removeMovie: PropTypes.func.isRequired,
-  movieWidth: PropTypes.string.isRequired
+  removeMovie: PropTypes.func.isRequired
 };
 
 export default Movie;

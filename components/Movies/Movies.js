@@ -34,7 +34,6 @@ class Movies extends Component {
               backgroundColor={this.randomColors[i]}
               removeMovie={() => removeMovie(movie)}
               pathName={pathName}
-              movieWidth={`${100 / movies.length}vw`}
             />
           ))}
       </ReactCSSTransitionGroup>
