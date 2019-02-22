@@ -72,8 +72,9 @@ class Meta extends Component {
       ', '
     )} stats like ratings from IMDB, TMDB, Rotten Tomatoes and Metacritic, runtime, genres, release date, status, season & episode details, cast, crew, overview and so on with ease.`;
     const metaUrl = `${siteUrl}${this.props.pathName}`;
+    let sortedMovies = [...movies];
     const canonicalUrl = `${siteUrl}/c/${getUrlPathFromMovies(
-      movies.sort((a, b) => a.id - b.id)
+      sortedMovies.sort((a, b) => a.id - b.id)
     )}`;
 
     return (

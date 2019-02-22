@@ -20,7 +20,7 @@ class ComparePage extends Component {
       parseInt(m.id, 10)
     );
     movies = movies.filter(m => movieIdsFromUrl.includes(m.id));
-    movies = movies.sort(
+    movies.sort(
       (a, b) => movieIdsFromUrl.indexOf(a.id) - movieIdsFromUrl.indexOf(b.id)
     );
 
