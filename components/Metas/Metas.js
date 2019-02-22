@@ -68,7 +68,7 @@ class Meta extends Component {
     const metaDescription = `Comparing ${movieTitles.join(
       ', '
     )} stats like ratings from IMDB, TMDB, Rotten Tomatoes and Metacritic, runtime, genres, release date, status, season & episode details, cast, crew, overview and so on with ease.`;
-    const metaUrl = `${siteUrl}${this.props.url}`;
+    const metaUrl = `${siteUrl}${this.props.pathName}`;
 
     return (
       <HeadContents

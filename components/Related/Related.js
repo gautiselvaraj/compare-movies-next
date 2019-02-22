@@ -5,6 +5,8 @@ import Modal from '../Modal';
 import Poster from '../Poster';
 import TmdbVote from '../TmdbVote';
 import { formatedDate } from '../../utils/CMUtils';
+import { pushMovieToPath, getMovieUrlsFromPath } from '../../utils/UrlUtils';
+import Link from 'next/link';
 import './Related.scss';
 
 class Related extends Component {
@@ -29,11 +31,14 @@ class Related extends Component {
   selectMovie(m) {
     logRelatedAdded(`${m.media_type}-${m.id}`);
     this.onClose();
-    this.props.onRelatedSelect(m);
   }
 
   render() {
-    const { related, movieTitle, movieType } = this.props;
+    const { related, movieTitle, movieType, pathName } = this.props;
+    const moviesFromUrl = getMovieUrlsFromPath(pathName).map(m =>
+      parseInt(m.id, 10)
+    );
+    const uniqRelated = related.filter(m => !moviesFromUrl.includes(m.id));
     const type = movieType === 'tv' ? 'TV Shows' : 'Movies';
 
     if (!related.length) {
@@ -66,33 +71,37 @@ class Related extends Component {
               <span className="hide-sm-and-down">for {movieTitle} </span>
             </h4>
             <ul className="related__list">
-              {related.map(m => (
+              {uniqRelated.map(m => (
                 <li key={m.id} className="related__item">
-                  <button
-                    className="related__add-button"
-                    onClick={() => this.selectMovie(m)}
-                  >
-                    <div className="related__media">
-                      <Poster
-                        size={75}
-                        path={m.poster_path}
-                        alt={m.title || m.name}
-                        className="relateds__image"
-                      />
-                    </div>
-                    <div className="related__details">
-                      <h5 className="related__title">{m.title || m.name}</h5>
-                      <div>
-                        <span className="related__date">
-                          {formatedDate(m.release_date || m.first_air_date)}
-                        </span>
-                        <span className="related__vote">
-                          <TmdbVote vote={m.vote_average} />
-                        </span>
+                  <Link href="/compare" as={pushMovieToPath(m, pathName)}>
+                    <a
+                      className="related__add-button"
+                      onClick={() => this.selectMovie(m)}
+                    >
+                      <div className="related__media">
+                        <Poster
+                          size={75}
+                          path={m.poster_path}
+                          alt={m.title || m.name}
+                          className="relateds__image"
+                        />
                       </div>
-                      <div className="related__compare">Add to compare</div>
-                    </div>
-                  </button>
+                      <div className="related__details">
+                        <h5 className="related__title">{m.title || m.name}</h5>
+                        <div>
+                          <span className="related__date">
+                            {formatedDate(m.release_date || m.first_air_date)}
+                          </span>
+                          <span className="related__vote">
+                            <TmdbVote vote={m.vote_average} />
+                          </span>
+                        </div>
+                        <div className="related__compare">
+                          Add to comparison list
+                        </div>
+                      </div>
+                    </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -107,8 +116,8 @@ Related.propTypes = {
   movieTitle: PropTypes.string.isRequired,
   movieType: PropTypes.string.isRequired,
   related: PropTypes.arrayOf(PropTypes.object).isRequired,
-  onRelatedSelect: PropTypes.func.isRequired,
-  onModalOpen: PropTypes.func.isRequired
+  onModalOpen: PropTypes.func.isRequired,
+  pathName: PropTypes.string.isRequired
 };
 
 export default Related;

@@ -104,9 +104,11 @@ export const filterAndSortSearchResults = (searchArrays, movies) => {
 };
 
 export const checkIfMovieInList = (movie, movies) =>
-  movies.filter(
-    m => movie.id === m.get('id') && movie.media_type === m.get('media_type')
-  ).size;
+  !!movies.find(
+    m =>
+      parseInt(movie.id, 10) === m.get('id') &&
+      movie.media_type === m.get('media_type')
+  );
 
 export const getInitials = name => {
   const nameSplits = name.split(' ');

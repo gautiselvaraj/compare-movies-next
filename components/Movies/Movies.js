@@ -15,7 +15,7 @@ class Movies extends Component {
   }
 
   render() {
-    const { movies, removeMovie } = this.props;
+    const { movies, removeMovie, pathName } = this.props;
 
     return (
       <ReactCSSTransitionGroup
@@ -33,6 +33,8 @@ class Movies extends Component {
               movie={movie}
               backgroundColor={this.randomColors[i]}
               removeMovie={() => removeMovie(movie)}
+              pathName={pathName}
+              movieWidth={`${100 / movies.length}vw`}
             />
           ))}
       </ReactCSSTransitionGroup>

@@ -5,30 +5,43 @@ import PageLoader from '../components/PageLoader';
 import Movies from '../components/Movies';
 import Metas from '../components/Metas';
 import { fetchMoviesFromUrl, removeMovie } from '../actions/MovieActions';
+import { getMovieUrlsFromPath } from '../utils/UrlUtils';
 
 class ComparePage extends Component {
-  static async getInitialProps({ req, store, asPath }) {
-    if (req) {
-      await store.dispatch(fetchMoviesFromUrl(asPath));
-    }
-    const url = asPath;
+  static async getInitialProps({ store, asPath }) {
+    await store.dispatch(fetchMoviesFromUrl(asPath));
 
-    const movies = store
+    let movies = store
       .getState()
       .getIn(['movies', 'list'])
       .toJS();
+
+    const movieIdsFromUrl = getMovieUrlsFromPath(asPath).map(m =>
+      parseInt(m.id, 10)
+    );
+    movies = movies.filter(m => movieIdsFromUrl.includes(m.id));
+    movies = movies.sort(
+      (a, b) => movieIdsFromUrl.indexOf(a.id) - movieIdsFromUrl.indexOf(b.id)
+    );
+
     return {
       movies,
-      url
+      pathName: asPath
     };
   }
 
   render() {
-    const { movies, showPageLoader, url, removeMovie } = this.props;
+    const { movies, showPageLoader, pathName, removeMovie } = this.props;
     return (
-      <Layout noFooter>
-        {!!movies && <Movies movies={movies} removeMovie={removeMovie} />}
-        <Metas movies={movies} url={url} />
+      <Layout noFooter pathName={pathName}>
+        {!!movies && (
+          <Movies
+            movies={movies}
+            removeMovie={removeMovie}
+            pathName={pathName}
+          />
+        )}
+        <Metas movies={movies} pathName={pathName} />
         {showPageLoader && <PageLoader />}
       </Layout>
     );
@@ -36,13 +49,10 @@ class ComparePage extends Component {
 }
 
 const mapStateToProps = state => ({
-  movies: state.getIn(['movies', 'list']).toJS(),
   showPageLoader: state.getIn(['movies', 'fetching'])
 });
 
-const mapDispatchToProps = (dispatch, props) => ({
-  removeMovie: movie => dispatch(removeMovie(movie))
-});
+const mapDispatchToProps = () => ({ removeMovie });
 
 export default connect(
   mapStateToProps,

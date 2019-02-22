@@ -4,18 +4,16 @@ import Layout from '../components/Layout';
 import PageLoader from '../components/PageLoader';
 import Suggests from '../components/Suggests';
 import { getSuggestedMovies } from '../actions/SuggestsActions';
-import { addMovie, removeAllMovies } from '../actions/MovieActions';
 
 class IndexPage extends Component {
-  static async getInitialProps({ req, store }) {
+  static async getInitialProps({ req, store, asPath }) {
     if (req) {
       await store.dispatch(getSuggestedMovies());
-    } else {
-      store.dispatch(removeAllMovies());
     }
 
     const suggests = store.getState().getIn(['suggests', 'results']);
     return {
+      pathName: asPath,
       suggests: suggests ? suggests.toJS() : null
     };
   }
@@ -25,15 +23,15 @@ class IndexPage extends Component {
       showPageLoader,
       suggests,
       getSuggestedMovies,
-      onMovieSelect
+      pathName
     } = this.props;
 
     return (
-      <Layout>
+      <Layout pathName={pathName}>
         <Suggests
+          pathName={pathName}
           suggests={suggests}
           getSuggestedMovies={getSuggestedMovies}
-          onMovieSelect={onMovieSelect}
         />
         {showPageLoader && <PageLoader />}
       </Layout>
@@ -52,8 +50,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  getSuggestedMovies: () => dispatch(getSuggestedMovies()),
-  onMovieSelect: movie => dispatch(addMovie(movie))
+  getSuggestedMovies: () => dispatch(getSuggestedMovies())
 });
 
 export default connect(

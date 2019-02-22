@@ -4,18 +4,19 @@ import HeaderContainer from '../../containers/HeaderContainer';
 import Footer from '../Footer';
 import './Layout.scss';
 
-const Layout = ({ noFooter, children }) => (
+const Layout = ({ noFooter, pathName, children }) => (
   <div className="layout">
     <div className="layout__content">
-      <HeaderContainer />
+      <HeaderContainer pathName={pathName} />
       {children}
     </div>
-    {!noFooter && <Footer />}
+    {!noFooter && <Footer pathName={pathName} />}
   </div>
 );
 
 Layout.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
+  pathName: PropTypes.string
 };
 
 export default Layout;

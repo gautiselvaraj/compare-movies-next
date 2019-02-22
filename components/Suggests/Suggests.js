@@ -5,6 +5,8 @@ import Poster from '../Poster';
 import TmdbVote from '../TmdbVote';
 import { formatedDate } from '../../utils/CMUtils';
 import './Suggests.scss';
+import { pushMovieToPath } from '../../utils/UrlUtils';
+import Link from 'next/link';
 
 class Suggests extends Component {
   constructor() {
@@ -17,7 +19,6 @@ class Suggests extends Component {
       'Top Rated Movies',
       'Top Rated TV Shows'
     ];
-    this.selectMovie = this.selectMovie.bind(this);
   }
 
   componentDidMount() {
@@ -27,17 +28,8 @@ class Suggests extends Component {
     }
   }
 
-  selectMovie(e, movie) {
-    if (e.currentTarget.disabled) {
-      return false;
-    }
-    e.currentTarget.disabled = true;
-    logHomeMovieAdded(`${movie.media_type}-${movie.id}`);
-    this.props.onMovieSelect(movie);
-  }
-
   render() {
-    const suggests = this.props.suggests;
+    const { pathName, suggests } = this.props;
 
     if (!suggests) {
       return null;
@@ -53,35 +45,38 @@ class Suggests extends Component {
               <ul className="suggests__list-items">
                 {suggest.map((movie, j) => (
                   <li className="suggests__list-item" key={movie.id}>
-                    <button
-                      key={movie.id}
-                      className="suggests__list-button"
-                      onClick={e => this.selectMovie(e, movie)}
-                    >
-                      <div className="suggests__list-media">
-                        <Poster
-                          size={35}
-                          path={movie.poster_path}
-                          alt={movie.title || movie.name}
-                          className="suggests__list-image"
-                        />
-                      </div>
-                      <div className="suggests__list-details">
-                        <h5 className="suggests__list-sub-title">
-                          {movie.title || movie.name}
-                        </h5>
-                        <div>
-                          <span className="suggests__list-date">
-                            {formatedDate(
-                              movie.release_date || movie.first_air_date
-                            )}
-                          </span>
-                          <span className="suggests__list-vote">
-                            <TmdbVote vote={movie.vote_average} />
-                          </span>
+                    <Link href="/compare" as={pushMovieToPath(movie, pathName)}>
+                      <a
+                        className="suggests__list-button"
+                        onClick={() =>
+                          logHomeMovieAdded(`${movie.media_type}-${movie.id}`)
+                        }
+                      >
+                        <div className="suggests__list-media">
+                          <Poster
+                            size={35}
+                            path={movie.poster_path}
+                            alt={movie.title || movie.name}
+                            className="suggests__list-image"
+                          />
                         </div>
-                      </div>
-                    </button>
+                        <div className="suggests__list-details">
+                          <h5 className="suggests__list-sub-title">
+                            {movie.title || movie.name}
+                          </h5>
+                          <div>
+                            <span className="suggests__list-date">
+                              {formatedDate(
+                                movie.release_date || movie.first_air_date
+                              )}
+                            </span>
+                            <span className="suggests__list-vote">
+                              <TmdbVote vote={movie.vote_average} />
+                            </span>
+                          </div>
+                        </div>
+                      </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -96,7 +91,7 @@ class Suggests extends Component {
 Suggests.propTypes = {
   suggests: PropTypes.arrayOf(PropTypes.array),
   getSuggestedMovies: PropTypes.func.isRequired,
-  onMovieSelect: PropTypes.func.isRequired
+  pathName: PropTypes.string.isRequired
 };
 
 export default Suggests;

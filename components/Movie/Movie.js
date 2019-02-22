@@ -27,7 +27,7 @@ import Languages from '../Languages';
 import SeasonEpisodes from '../SeasonEpisodes';
 import BoxOffice from '../BoxOffice';
 import Credits from '../Credits';
-import RelatedContainer from '../../containers/RelatedContainer';
+import Related from '../Related';
 import './Movie.scss';
 import { JSONLD, Generic } from 'react-structured-data';
 import logRollbarError from '../../utils/rollbar';
@@ -77,12 +77,18 @@ class Movie extends Component {
     this.videoButton.focus();
   }
 
-  componentDidCatch(error, errorInfo) {
+  componentDidCatch(error) {
     logRollbarError(error);
   }
 
   render() {
-    const { movie, backgroundColor, removeMovie } = this.props;
+    const {
+      movie,
+      movieWidth,
+      backgroundColor,
+      removeMovie,
+      pathName
+    } = this.props;
     const { showImages, showVideos } = this.state;
     const movieVideosPresent = !!movie.videos.results.length;
     const movieImagesPresent = !![
@@ -137,6 +143,7 @@ class Movie extends Component {
       <div
         className="movie"
         style={{
+          width: movieWidth,
           backgroundColor,
           backgroundImage: `url('${getBackdropPath(movie.backdrop_path, 200)}')`
         }}
@@ -334,11 +341,12 @@ class Movie extends Component {
         </div>
 
         <div className="movie__related movie__container">
-          <RelatedContainer
+          <Related
             related={mergeUniqMovieArrays(recommendedArray, similarArray)}
             movieTitle={movie.title || movie.name}
             movieType={movie.media_type}
             onModalOpen={() => logRelatedOpened(this.logLabel)}
+            pathName={pathName}
           />
         </div>
 
@@ -375,7 +383,11 @@ class Movie extends Component {
           )}
         </div>
 
-        <button onClick={removeMovie} className="movie__remove">
+        <button
+          onClick={removeMovie}
+          className="movie__remove"
+          aria-label={`Remove ${movie.title || movie.name}`}
+        >
           &times;
         </button>
 
@@ -468,7 +480,8 @@ class Movie extends Component {
 Movie.propTypes = {
   movie: PropTypes.object.isRequired,
   backgroundColor: PropTypes.string.isRequired,
-  removeMovie: PropTypes.func.isRequired
+  removeMovie: PropTypes.func.isRequired,
+  movieWidth: PropTypes.string.isRequired
 };
 
 export default Movie;

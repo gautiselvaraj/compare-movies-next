@@ -3,24 +3,23 @@ import './SocialShares.scss';
 const isClient = typeof window !== 'undefined';
 import ReactGA from 'react-ga';
 
-const getShareUrl = () =>
-  encodeURIComponent(
-    isClient ? location.href : 'https://www.comparemovies.info/'
-  );
+const getShareUrl = pathName => encodeURIComponent(pathName);
 
-const getShareTitle = () =>
+const getShareTitle = pathName =>
   encodeURIComponent(
-    isClient && location.pathname !== '/'
+    isClient && pathName !== '/'
       ? document.title
       : 'Confused about what to watch? Compare movies and TV shows and make informed decisions.'
   );
 
-export default ({ small }) => (
+export default ({ small, pathName }) => (
   <ul className={`social-shares ${small ? 'social-shares--small' : ''}`}>
     <li className="social-shares__item">
       <ReactGA.OutboundLink
         eventLabel="Shared on Facebook"
-        to={`https://www.facebook.com/sharer/sharer.php?u=${getShareUrl()}`}
+        to={`https://www.facebook.com/sharer/sharer.php?u=${getShareUrl(
+          pathName
+        )}`}
         className={`social-shares__link ${
           small ? '' : 'social-shares__link--invert'
         }`}
@@ -33,7 +32,11 @@ export default ({ small }) => (
     <li className="social-shares__item">
       <ReactGA.OutboundLink
         eventLabel="Shared on Twitter"
-        to={`https://twitter.com/share?url=${getShareUrl()}&text=${getShareTitle()}&hashtags=comparemovies&via=comparemovies_`}
+        to={`https://twitter.com/share?url=${getShareUrl(
+          pathName
+        )}&text=${getShareTitle(
+          pathName
+        )}&hashtags=comparemovies&via=comparemovies_`}
         target="_blank"
         className={`social-shares__link ${
           small ? '' : 'social-shares__link--invert'
@@ -46,7 +49,9 @@ export default ({ small }) => (
     <li className="social-shares__item">
       <ReactGA.OutboundLink
         eventLabel="Shared on Reddit"
-        to={`http://www.reddit.com/submit?url=${getShareUrl()}&title=${getShareTitle()}`}
+        to={`http://www.reddit.com/submit?url=${getShareUrl(
+          pathName
+        )}&title=${getShareTitle(pathName)}`}
         target="_blank"
         className={`social-shares__link ${
           small ? '' : 'social-shares__link--invert'

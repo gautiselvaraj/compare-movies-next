@@ -34,29 +34,14 @@ const movieFailure = errors => {
   };
 };
 
-const movieRemove = movie => {
-  logMovieRemove(`${movie.media_type}-${movie.id}`);
-
-  return {
-    type: types.MOVIE_REMOVE,
-    movie
-  };
-};
-
-export const removeAllMovies = () => ({
-  type: types.MOVIE_REMOVE_ALL
-});
-
 export const removeMovie = movie => {
-  return dispatch => {
-    dispatch(movieRemove(movie));
-    const asPath = removeMovieFromPath(movie);
-    if (asPath === '/c/') {
-      Router.push('/');
-    } else {
-      Router.push('/compare', asPath, { shallow: true });
-    }
-  };
+  logMovieRemove(`${movie.media_type}-${movie.id}`);
+  const asPath = removeMovieFromPath(movie);
+  if (asPath === '/c/') {
+    Router.push('/');
+  } else {
+    Router.push('/compare', asPath);
+  }
 };
 
 export const addMovie = movie => {
@@ -93,14 +78,22 @@ export const addMovie = movie => {
 };
 
 export const fetchMoviesFromUrl = url => {
-  return async dispatch => {
+  return async (dispatch, getState) => {
+    const state = getState();
+    const moviesInState = state.getIn(['movies', 'list']);
     let moviesFromUrl = getMovieUrlsFromPath(url);
-    moviesFromUrl.reverse();
-    moviesFromUrl = moviesFromUrl.filter(path => path);
+    moviesFromUrl = moviesFromUrl.filter(
+      movie => !checkIfMovieInList(movie, moviesInState)
+    );
+    moviesFromUrl = moviesFromUrl.filter(movie => movie.path);
+
     if (moviesFromUrl.length) {
       dispatch(movieRequest());
+
       let responses = await Promise.all(
-        moviesFromUrl.map(url => callApi(`${url}?${relatedAappendToResponse}`))
+        moviesFromUrl.map(movie =>
+          callApi(`${movie.path}?${relatedAappendToResponse}`)
+        )
       );
 
       // Get OMDB details
@@ -121,7 +114,7 @@ export const fetchMoviesFromUrl = url => {
         dispatch(
           movieSuccess(
             Object.assign({}, response, {
-              media_type: moviesFromUrl[i].split('/')[0]
+              media_type: moviesFromUrl[i].media_type
             })
           )
         );
