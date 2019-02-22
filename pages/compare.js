@@ -33,7 +33,7 @@ class ComparePage extends Component {
   render() {
     const { movies, showPageLoader, pathName, removeMovie } = this.props;
     return (
-      <Layout noFooter pathName={pathName}>
+      <Layout noFooter movies={movies}>
         {!!movies && (
           <Movies
             movies={movies}
@@ -41,7 +41,7 @@ class ComparePage extends Component {
             pathName={pathName}
           />
         )}
-        <Metas movies={movies} pathName={pathName} />
+        <Metas movies={movies} />
         {showPageLoader && <PageLoader />}
       </Layout>
     );

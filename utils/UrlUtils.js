@@ -14,16 +14,13 @@ const getTypeIdFromPath = path => path.split('--')[0];
 
 const encodeAndPrefixPaths = paths => `/c/${encodePaths(paths.join('/'))}`;
 
-export const getMoviePath = movie =>
+const getMoviePath = movie =>
   `${movie.media_type}-${movie.id}--${(movie.title || movie.name)
     .trim()
     .substring(0, 20)}`;
 
-export const pushMovieToPath = (movie, path = Router.asPath) => {
-  const pathParts = getPathParts(path);
-  pathParts.unshift(getMoviePath(movie));
-  return encodeAndPrefixPaths(pathParts);
-};
+export const pushMovieToPath = (movie, path = Router.asPath) =>
+  encodeAndPrefixPaths([getMoviePath(movie), ...getPathParts(path)]);
 
 export const removeMovieFromPath = movie =>
   encodeAndPrefixPaths(
@@ -32,8 +29,8 @@ export const removeMovieFromPath = movie =>
     )
   );
 
-export const getMoviesFromPath = url =>
-  getPathParts(url).map(path => {
+export const getMoviesFromPath = path =>
+  getPathParts(path).map(path => {
     if (/^(tv|movie)-\d{0,10}/.test(path)) {
       const movieSplit = getTypeIdFromPath(path).split('-');
       return {
@@ -46,5 +43,5 @@ export const getMoviesFromPath = url =>
     }
   });
 
-export const getUrlPathFromMovies = movies =>
-  movies.map(m => getMoviePath(m)).join('/');
+export const getPathFromMovies = movies =>
+  encodePaths(movies.map(m => getMoviePath(m)).join('/'));

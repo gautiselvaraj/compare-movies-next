@@ -1,25 +1,19 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './SocialShares.scss';
-const isClient = typeof window !== 'undefined';
 import ReactGA from 'react-ga';
+import { metaTitle, metaUrl } from '../../utils/metas';
 
-const getShareUrl = pathName =>
-  encodeURIComponent(`https://www.comparemovies.info${pathName}`);
+const getShareUrl = movies => encodeURIComponent(metaUrl(movies));
+const getShareTitle = movies => encodeURIComponent(metaTitle(movies));
 
-const getShareTitle = pathName =>
-  encodeURIComponent(
-    isClient && pathName !== '/'
-      ? document.title
-      : 'Confused about what to watch? Compare movies and TV shows and make informed decisions.'
-  );
-
-export default ({ small, pathName }) => (
+const SocialShares = ({ small, movies }) => (
   <ul className={`social-shares ${small ? 'social-shares--small' : ''}`}>
     <li className="social-shares__item">
       <ReactGA.OutboundLink
         eventLabel="Shared on Facebook"
         to={`https://www.facebook.com/sharer/sharer.php?u=${getShareUrl(
-          pathName
+          movies
         )}`}
         className={`social-shares__link ${
           small ? '' : 'social-shares__link--invert'
@@ -34,9 +28,9 @@ export default ({ small, pathName }) => (
       <ReactGA.OutboundLink
         eventLabel="Shared on Twitter"
         to={`https://twitter.com/share?url=${getShareUrl(
-          pathName
+          movies
         )}&text=${getShareTitle(
-          pathName
+          movies
         )}&hashtags=comparemovies&via=comparemovies_`}
         target="_blank"
         className={`social-shares__link ${
@@ -51,8 +45,8 @@ export default ({ small, pathName }) => (
       <ReactGA.OutboundLink
         eventLabel="Shared on Reddit"
         to={`http://www.reddit.com/submit?url=${getShareUrl(
-          pathName
-        )}&title=${getShareTitle(pathName)}`}
+          movies
+        )}&title=${getShareTitle(movies)}`}
         target="_blank"
         className={`social-shares__link ${
           small ? '' : 'social-shares__link--invert'
@@ -64,3 +58,9 @@ export default ({ small, pathName }) => (
     </li>
   </ul>
 );
+
+SocialShares.propTypes = {
+  movies: PropTypes.arrayOf(PropTypes.object)
+};
+
+export default SocialShares;

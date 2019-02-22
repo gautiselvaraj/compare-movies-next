@@ -27,7 +27,7 @@ class IndexPage extends Component {
     } = this.props;
 
     return (
-      <Layout pathName={pathName}>
+      <Layout>
         <Suggests
           pathName={pathName}
           suggests={suggests}

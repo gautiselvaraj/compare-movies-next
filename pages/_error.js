@@ -5,14 +5,14 @@ import React, { Component } from 'react';
 import Layout from '../components/Layout';
 
 export default class ErrorPage extends Component {
-  static getInitialProps({ res, err, asPath }) {
+  static getInitialProps({ res, err }) {
     const statusCode = res ? res.statusCode : err ? err.statusCode : null;
-    return { statusCode, pathName: asPath };
+    return { statusCode };
   }
 
   render() {
     return (
-      <Layout pathName={pathName}>
+      <Layout>
         <div className="error">
           <h3 className="error__heading">
             {this.props.statusCode === 404 ? (

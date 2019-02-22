@@ -3,9 +3,9 @@ import ReactGA from 'react-ga';
 import SocialShares from '../SocialShares';
 import './Footer.scss';
 
-export default ({ pathName }) => (
+export default () => (
   <footer className="footer">
-    <SocialShares pathName={pathName} />
+    <SocialShares />
     <p className="footer__created_by">
       <ReactGA.OutboundLink
         eventLabel="Gauti's Website"

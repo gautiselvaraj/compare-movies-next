@@ -6,7 +6,7 @@ import SearchContainer from '../../containers/SearchContainer';
 import Logo from '../Logo';
 import './Header.scss';
 
-const Header = ({ shrinkHeader, pathName }) => {
+const Header = ({ shrinkHeader, movies }) => {
   const headerClass = shrinkHeader ? 'header--affixed' : '';
 
   return (
@@ -23,7 +23,7 @@ const Header = ({ shrinkHeader, pathName }) => {
       </div>
       {shrinkHeader && (
         <div className="header__shares">
-          <SocialShares small pathName={pathName} />
+          <SocialShares small movies={movies} />
         </div>
       )}
     </header>
