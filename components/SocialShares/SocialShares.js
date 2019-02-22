@@ -3,7 +3,8 @@ import './SocialShares.scss';
 const isClient = typeof window !== 'undefined';
 import ReactGA from 'react-ga';
 
-const getShareUrl = pathName => encodeURIComponent(pathName);
+const getShareUrl = pathName =>
+  encodeURIComponent(`https://www.comparemovies.info${pathName}`);
 
 const getShareTitle = pathName =>
   encodeURIComponent(
