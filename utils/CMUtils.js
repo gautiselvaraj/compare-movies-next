@@ -114,6 +114,9 @@ export const getInitials = name => {
 };
 
 export const getMovieRatingByType = (ratings, source) => {
+  if (!ratings) {
+    return false;
+  }
   let filteredRating = ratings.find(rating => rating.Source === source);
   return filteredRating ? filteredRating.Value.split('/')[0] : false;
 };
@@ -151,6 +154,10 @@ export const getAggregateRating = movie => {
 };
 
 export const getAggregateRatingCount = movie => {
+  if (!movie.ratings) {
+    return parseInt(movie.vote_count, 10);
+  }
+
   const imdbRating = movie.ratings.find(
     r => r.Source === 'Internet Movie Database'
   );
