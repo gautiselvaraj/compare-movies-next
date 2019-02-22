@@ -34,7 +34,7 @@ const Votes = ({ movie }) => {
       </span>
       <span
         className="vote vote__primary tooltip"
-        data-title="Aggregated Rating"
+        data-title="Aggregate Rating"
       >
         <span className="vote__icon">
           <i className="fa fa-star" />
