@@ -6,11 +6,11 @@ import SearchContainer from '../../containers/SearchContainer';
 import Logo from '../Logo';
 import './Header.scss';
 
-const Header = ({ shrinkHeader, movies }) => {
-  const headerClass = shrinkHeader ? 'header--affixed' : '';
+const Header = ({ movies }) => {
+  const shrinkHeader = movies && movies.length;
 
   return (
-    <header className={`header ${headerClass}`}>
+    <header className={`header ${shrinkHeader ? 'header--affixed' : ''}`}>
       <div className="header__logo">
         <Link href="/">
           <a className="header__link">
@@ -31,7 +31,7 @@ const Header = ({ shrinkHeader, movies }) => {
 };
 
 Header.propTypes = {
-  shrinkHeader: PropTypes.bool.isRequired
+  movies: PropTypes.arrayOf(PropTypes.object)
 };
 
 export default Header;

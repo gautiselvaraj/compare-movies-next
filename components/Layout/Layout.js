@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import HeaderContainer from '../../containers/HeaderContainer';
+import Header from '../Header';
 import Footer from '../Footer';
 import './Layout.scss';
 
 const Layout = ({ noFooter, movies, children }) => (
   <div className="layout">
     <div className="layout__content">
-      <HeaderContainer movies={movies} />
+      <Header movies={movies} />
       {children}
     </div>
     {!noFooter && <Footer />}
