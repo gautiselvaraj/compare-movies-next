@@ -21,15 +21,6 @@ const movieSuccess = result => {
   };
 };
 
-const movieFailure = errors => {
-  logMovieFailed(errors);
-
-  return {
-    type: types.MOVIE_FAILURE,
-    errors
-  };
-};
-
 export const removeMovie = movie => {
   logMovieRemove(`${movie.media_type}-${movie.id}`);
   const asPath = removeMovieFromPath(movie);

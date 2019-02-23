@@ -1,5 +1,4 @@
 import ReactGA from 'react-ga';
-import Router from 'next/router';
 import { GATrackingId } from '../constants/GAConstants';
 
 const isProd = process.env.NODE_ENV === 'production';

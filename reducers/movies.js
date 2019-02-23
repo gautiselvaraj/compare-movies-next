@@ -22,26 +22,6 @@ export default function search(state = initialState, action) {
           .set('errors', null);
       });
 
-    case types.MOVIE_FAILURE:
-      return state.withMutations(map => {
-        map.set('fetching', false).set('errors', action.errors);
-      });
-
-    case types.MOVIE_REMOVE:
-      return state.set(
-        'list',
-        state
-          .get('list')
-          .filter(
-            movie =>
-              movie.get('id') !== action.movie.id ||
-              movie.get('media_type') !== action.movie.media_type
-          )
-      );
-
-    case types.MOVIE_REMOVE_ALL:
-      return state.set('list', List());
-
     default:
       return state;
   }

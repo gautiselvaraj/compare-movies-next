@@ -6,15 +6,14 @@ module.exports = async id => {
       `http://www.omdbapi.com/?i=${id}&apikey=${process.env.OMDB_API_KEY}`
     );
     const response = await rawResponse.json();
+    const { Awards, Ratings = [], imdbVotes, DVD, Production } = response;
     return {
-      awards: response.Awards,
-      ratings: response.Ratings.map(r =>
-        r.Source === 'Internet Movie Database'
-          ? { ...r, imdbVotes: response.imdbVotes }
-          : r
+      awards: Awards,
+      ratings: Ratings.map(r =>
+        r.Source === 'Internet Movie Database' ? { ...r, imdbVotes } : r
       ),
-      dvdReleaseDate: response.DVD,
-      production: response.Production
+      dvdReleaseDate: DVD,
+      production: Production
     };
   } catch (err) {
     return {};
