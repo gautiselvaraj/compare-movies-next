@@ -242,10 +242,7 @@ class Movie extends Component {
               </span>
             )
           ) : (
-            <span
-              className="movie__seasons-episodes tooltip"
-              data-title="Seasons & Episodes"
-            >
+            <span className="movie__seasons-episodes">
               <SeasonEpisodes
                 seasonCount={movie.number_of_seasons}
                 episodeCount={movie.number_of_episodes}
