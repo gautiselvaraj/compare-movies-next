@@ -18,7 +18,7 @@ const Votes = ({ movie }) => {
     <>
       <span>
         {vote && (
-          <span className="vote vote__secondary tooltip" data-title="TMDB">
+          <span className="vote vote__secondary tooltip" aria-label="TMDB">
             <i className="fa fa-star vote__icon" />
             <span className="vote__count">{parseFloat(vote.toFixed(1))}</span>
           </span>
@@ -26,7 +26,7 @@ const Votes = ({ movie }) => {
         {tomatoRating && (
           <span
             className="vote vote__tertiary tooltip"
-            data-title="Rotten Tomatoes"
+            aria-label="Rotten Tomatoes"
           >
             <span className="vote__count">{tomatoRating}</span>
           </span>
@@ -34,7 +34,7 @@ const Votes = ({ movie }) => {
       </span>
       <span
         className="vote vote__primary tooltip"
-        data-title="Aggregate Rating"
+        aria-label="Aggregate Rating"
       >
         <span className="vote__icon">
           <i className="fa fa-star" />
@@ -45,13 +45,13 @@ const Votes = ({ movie }) => {
       </span>
       <span>
         {imdbRating && (
-          <span className="vote vote__secondary tooltip" data-title="IMDB">
+          <span className="vote vote__secondary tooltip" aria-label="IMDB">
             <i className="fa fa-imdb vote__icon" />
             <span className="vote__count">{imdbRating}</span>
           </span>
         )}
         {metacriticRating && (
-          <span className="vote vote__tertiary tooltip" data-title="Metacritic">
+          <span className="vote vote__tertiary tooltip" aria-label="Metacritic">
             <span className="vote__count">{metacriticRating}/100</span>
           </span>
         )}

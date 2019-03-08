@@ -10,7 +10,7 @@
                   0 -6px 8px rgba($color-black, .35),
                   6px 0 8px rgba($color-black, .35),
                   -6px 0 8px rgba($color-black, .35);
-    content: attr(data-title);
+    content: attr(aria-label);
     color: $color-black;
     font-size: .85rem;
     font-weight: normal;

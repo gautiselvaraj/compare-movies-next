@@ -9,7 +9,7 @@ const BoxOffice = ({ budget, revenue }) => {
   }
 
   return (
-    <span className="box-office tooltip" data-title="Box Office">
+    <span className="box-office tooltip" aria-label="Box Office">
       {formatedCurrency(revenue)}
     </span>
   );

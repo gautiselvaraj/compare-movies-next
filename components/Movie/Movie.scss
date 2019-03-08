@@ -92,7 +92,7 @@ $image-shadow-color: rgba($color-black, .2);
       height: 200px;
 
       &:after {
-        content: attr(data-title);
+        content: attr(aria-label);
         color: $color-grey-dark;
         font-size: .85rem;
         line-height: 1.25rem;

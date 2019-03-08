@@ -155,7 +155,7 @@ class Movie extends Component {
             className="movie__poster"
             onClick={() => this.showImages(this.posterButton)}
             ref={i => (this.posterButton = i)}
-            data-title={movieName}
+            aria-label={movieName}
           >
             <Poster
               size={135}
@@ -171,7 +171,7 @@ class Movie extends Component {
           {movie.adult && (
             <span
               className="movie__adult tooltip"
-              data-title={`Adult ${isMovie ? 'Movie' : 'Show'}`}
+              aria-label={`Adult ${isMovie ? 'Movie' : 'Show'}`}
             >
               <i className="fa fa-exclamation-triangle movie__adult-icon" />
               18+
@@ -180,7 +180,9 @@ class Movie extends Component {
         </div>
 
         <div className="movie__container">
-          <h5 className="movie__title">{movieName}</h5>
+          <h5 className="movie__title" aria-label="Name">
+            {movieName}
+          </h5>
         </div>
 
         <div className="movie__vote movie__container">
@@ -194,6 +196,7 @@ class Movie extends Component {
                 className="movie__videos-button"
                 onClick={this.showVideos}
                 ref={v => (this.videoButton = v)}
+                aria-label="Teasers, trailers and other videos"
               >
                 Videos
               </button>
@@ -205,6 +208,7 @@ class Movie extends Component {
                 className="movie__images-button"
                 onClick={() => this.showImages(this.imageButton)}
                 ref={i => (this.imageButton = i)}
+                aria-label="Covers, posters and other images"
               >
                 Images
               </button>
@@ -228,7 +232,10 @@ class Movie extends Component {
           )}
         </div>
 
-        <div className="movie__misc movie__countries movie__container">
+        <div
+          className="movie__misc movie__countries movie__container"
+          aria-label="Countries"
+        >
           {countries.map(c => (
             <span key={c.code} className="movie__country">
               <span className="movie__country-emoji">{c.emoji}</span>
@@ -240,7 +247,7 @@ class Movie extends Component {
         <div className="movie__misc movie__misc--centered movie__container">
           {isMovie ? (
             !!movie.runtime && (
-              <span className="movie__runtime tooltip" data-title="Runtime">
+              <span className="movie__runtime tooltip" aria-label="Runtime">
                 {formatedRunTime(movie.runtime)}
               </span>
             )
@@ -257,13 +264,16 @@ class Movie extends Component {
           )}
           <span
             className="movie__date tooltip"
-            data-title={isMovie ? 'Released Date' : 'First Air Date'}
+            aria-label={isMovie ? 'Released Date' : 'First Air Date'}
           >
             {formatedDate(movie.release_date || movie.first_air_date, 'long')}
           </span>
         </div>
 
-        <div className="movie__misc movie__genres movie__container">
+        <div
+          className="movie__misc movie__genres movie__container"
+          aria-label="Genres"
+        >
           <ShowMoreText
             onClick={() => logGenreInfoExpanded(this.logLabel)}
             anchorClass="movie__more-link"
@@ -276,11 +286,11 @@ class Movie extends Component {
         </div>
 
         <div className="movie__misc movie__misc--centered movie__container">
-          <span className="movie__status tooltip" data-title="Status">
+          <span className="movie__status tooltip" aria-label="Status">
             {movie.status}
           </span>
           {movie.networks ? (
-            <span className="movie__network tooltip" data-title="Network">
+            <span className="movie__network tooltip" aria-label="Network">
               {movie.networks.map(n => n.name).join(',')}
             </span>
           ) : (
@@ -290,17 +300,20 @@ class Movie extends Component {
 
         <div className="movie__misc movie__container">
           {director ? (
-            <span className="movie__director tooltip" data-title="Directed By">
+            <span className="movie__director tooltip" aria-label="Directed By">
               {director.name}
             </span>
           ) : creators ? (
-            <span className="movie__director tooltip" data-title="Created By">
+            <span className="movie__director tooltip" aria-label="Created By">
               {creators}
             </span>
           ) : null}
         </div>
 
-        <div className="movie__misc movie__awards movie__container">
+        <div
+          className="movie__misc movie__awards movie__container"
+          aria-label="Awards"
+        >
           {movie.awards && movie.awards !== 'N/A' ? (
             <ShowMoreText
               onClick={() => logAwardsInfoExpanded(this.logLabel)}
@@ -318,7 +331,7 @@ class Movie extends Component {
 
         <div className="movie__misc movie__production movie__container">
           {productionInfo ? (
-            <div className="tooltip" data-title="Production Company">
+            <div className="tooltip" aria-label="Production Company">
               <ShowMoreText
                 onClick={() => logProductionInfoExpanded(this.logLabel)}
                 anchorClass="movie__more-link"
@@ -336,7 +349,7 @@ class Movie extends Component {
 
         <div className="movie__misc movie__dvd-release-date movie__container">
           {movie.dvdReleaseDate && movie.dvdReleaseDate !== 'N/A' ? (
-            <span className="tooltip" data-title="DVD Release Date">
+            <span className="tooltip" aria-label="DVD Release Date">
               {formatedDate(movie.dvdReleaseDate, 'long')}
             </span>
           ) : (
@@ -363,7 +376,7 @@ class Movie extends Component {
           />
         </div>
 
-        <div className="movie__overview movie__container">
+        <div className="movie__overview movie__container" aria-label="Overview">
           <ShowMoreText
             onClick={() => logOverviewOpened(this.logLabel)}
             anchorClass="movie__more-link"

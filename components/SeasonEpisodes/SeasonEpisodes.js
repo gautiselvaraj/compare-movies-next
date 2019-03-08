@@ -32,6 +32,7 @@ class SeasonEpisodes extends Component {
           className="seasons-episodes__button"
           onClick={this.onClick}
           ref={b => (this.button = b)}
+          aria-label="Seasons & Episodes"
         >
           <span className="seasons-episodes__count">
             S{seasonCount}
