@@ -84,18 +84,21 @@ class Movie extends Component {
   render() {
     const { movie, backgroundColor, removeMovie, pathName } = this.props;
     const { showImages, showVideos } = this.state;
+
+    const movieName = movie.title || movie.name;
+    const isMovie = movie.media_type === 'movie';
+
     const movieVideosPresent = !!movie.videos.results.length;
     const movieImagesPresent = !![
       ...movie.images.posters,
       ...movie.images.backdrops
     ].length;
 
-    let countries =
-      movie.media_type === 'tv'
-        ? movie.origin_country && movie.origin_country.length
-          ? [{ iso_3166_1: movie.origin_country[0] }]
-          : []
-        : movie.production_countries;
+    let countries = !isMovie
+      ? movie.origin_country && movie.origin_country.length
+        ? [{ iso_3166_1: movie.origin_country[0] }]
+        : []
+      : movie.production_countries;
     countries = countries.map(c => emojiFlags.countryCode(c.iso_3166_1));
 
     const productionInfo = movie.production
@@ -117,7 +120,7 @@ class Movie extends Component {
     const aggregateRatingCount = getAggregateRatingCount(movie);
 
     const commonJsonLdAttrs = {
-      name: movie.title || movie.name,
+      name: movieName,
       description: movie.overview,
       datePublished: formatedDate(
         movie.release_date || movie.first_air_date,
@@ -148,27 +151,23 @@ class Movie extends Component {
             className="movie__poster"
             onClick={() => this.showImages(this.posterButton)}
             ref={i => (this.posterButton = i)}
-            data-title={movie.title || movie.name}
+            data-title={movieName}
           >
             <Poster
               size={135}
               path={movie.poster_path}
-              alt={movie.title || movie.name}
+              alt={movieName}
               className="movie__image"
             />
           </button>
         </div>
 
         <div className="movie__container movie__container--xs">
-          <span className="movie__type">
-            {movie.media_type === 'movie' ? movie.media_type : 'TV Show'}
-          </span>
+          <span className="movie__type">{isMovie ? 'Movie' : 'TV Show'}</span>
           {movie.adult && (
             <span
               className="movie__adult tooltip"
-              data-title={`Adult ${
-                movie.media_type === 'tv' ? 'Show' : 'Movie'
-              }`}
+              data-title={`Adult ${isMovie ? 'Movie' : 'Show'}`}
             >
               <i className="fa fa-exclamation-triangle movie__adult-icon" />
               18+
@@ -177,7 +176,7 @@ class Movie extends Component {
         </div>
 
         <div className="movie__container">
-          <h5 className="movie__title">{movie.title || movie.name}</h5>
+          <h5 className="movie__title">{movieName}</h5>
         </div>
 
         <div className="movie__vote movie__container">
@@ -235,7 +234,7 @@ class Movie extends Component {
         </div>
 
         <div className="movie__misc movie__misc--centered movie__container">
-          {movie.media_type === 'movie' ? (
+          {isMovie ? (
             !!movie.runtime && (
               <span className="movie__runtime tooltip" data-title="Runtime">
                 {formatedRunTime(movie.runtime)}
@@ -247,16 +246,14 @@ class Movie extends Component {
                 seasonCount={movie.number_of_seasons}
                 episodeCount={movie.number_of_episodes}
                 seasons={movie.seasons}
-                movieTitle={movie.title || movie.name}
+                movieTitle={movieName}
                 onModalOpen={() => logSeasonsOpened(this.logLabel)}
               />
             </span>
           )}
           <span
             className="movie__date tooltip"
-            data-title={
-              movie.media_type === 'movie' ? 'Released Date' : 'First Air Date'
-            }
+            data-title={isMovie ? 'Released Date' : 'First Air Date'}
           >
             {formatedDate(movie.release_date || movie.first_air_date, 'long')}
           </span>
@@ -326,7 +323,7 @@ class Movie extends Component {
         <div className="movie__languages movie__container">
           <Languages
             translations={movie.translations.translations}
-            movieTitle={movie.title || movie.name}
+            movieTitle={movieName}
             onModalOpen={() => logLanguagesOpened(this.logLabel)}
             orginalLanguageCode={movie.original_language}
           />
@@ -335,7 +332,7 @@ class Movie extends Component {
         <div className="movie__related movie__container">
           <Related
             related={mergeUniqMovieArrays(recommendedArray, similarArray)}
-            movieTitle={movie.title || movie.name}
+            movieTitle={movieName}
             movieType={movie.media_type}
             onModalOpen={() => logRelatedOpened(this.logLabel)}
             pathName={pathName}
@@ -357,7 +354,7 @@ class Movie extends Component {
           {movie.credits.cast.length > 1 && (
             <Credits
               credits={movie.credits.cast}
-              movieTitle={movie.title || movie.name}
+              movieTitle={movieName}
               type="cast"
               onModalOpen={() => logCastOpened(this.logLabel)}
             />
@@ -368,7 +365,7 @@ class Movie extends Component {
           {movie.credits.crew.length > 1 && (
             <Credits
               credits={movie.credits.crew}
-              movieTitle={movie.title || movie.name}
+              movieTitle={movieName}
               type="crew"
               onModalOpen={() => logCrewOpened(this.logLabel)}
             />
@@ -378,13 +375,13 @@ class Movie extends Component {
         <button
           onClick={removeMovie}
           className="movie__remove"
-          aria-label={`Remove ${movie.title || movie.name}`}
+          aria-label={`Remove ${movieName}`}
         >
           &times;
         </button>
 
         <JSONLD>
-          {movie.media_type === 'movie' ? (
+          {isMovie ? (
             <Generic
               type="Movie"
               jsonldtype="Movie"
