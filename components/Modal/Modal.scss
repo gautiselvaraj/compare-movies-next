@@ -1,7 +1,7 @@
 @import '../../styles/variables.scss';
 
 #modal_portal {
-  position: relative;
+  position: fixed;
   z-index: 999;
 }
 
