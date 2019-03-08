@@ -18,7 +18,10 @@ import {
   logRelatedOpened,
   logOverviewOpened,
   logCastOpened,
-  logCrewOpened
+  logCrewOpened,
+  logProductionInfoExpanded,
+  logAwardsInfoExpanded,
+  logGenreInfoExpanded
 } from '../../utils/GAUtils';
 import Poster from '../Poster';
 import Votes from '../Votes';
@@ -87,6 +90,7 @@ class Movie extends Component {
 
     const movieName = movie.title || movie.name;
     const isMovie = movie.media_type === 'movie';
+    const genres = movie.genres ? movie.genres.map(g => g.name).join(', ') : '';
 
     const movieVideosPresent = !!movie.videos.results.length;
     const movieImagesPresent = !![
@@ -130,7 +134,7 @@ class Movie extends Component {
         movie.release_date || movie.first_air_date,
         'iso8601'
       ),
-      genre: movie.genres.map(g => g.name).join(', '),
+      genre: genres,
       awards: movie.awards,
       image: `https://image.tmdb.org/t/p/w342${movie.poster_path}`,
       inLanguage: movie.translations.translations
@@ -260,11 +264,15 @@ class Movie extends Component {
         </div>
 
         <div className="movie__misc movie__genres movie__container">
-          {movie.genres.map(g => (
-            <span key={g.id} className="movie__genre">
-              {g.name}
-            </span>
-          ))}
+          <ShowMoreText
+            onClick={() => logGenreInfoExpanded(this.logLabel)}
+            anchorClass="movie__more-link"
+            more="more"
+            less="less"
+            lines={1}
+          >
+            {genres}
+          </ShowMoreText>
         </div>
 
         <div className="movie__misc movie__misc--centered movie__container">
@@ -294,7 +302,15 @@ class Movie extends Component {
 
         <div className="movie__misc movie__awards movie__container">
           {movie.awards && movie.awards !== 'N/A' ? (
-            <span>{movie.awards}</span>
+            <ShowMoreText
+              onClick={() => logAwardsInfoExpanded(this.logLabel)}
+              anchorClass="movie__more-link"
+              more="more"
+              less="less"
+              lines={1}
+            >
+              {movie.awards}
+            </ShowMoreText>
           ) : (
             <span className="movie__no-info">No Awards Info</span>
           )}
@@ -302,9 +318,17 @@ class Movie extends Component {
 
         <div className="movie__misc movie__production movie__container">
           {productionInfo ? (
-            <span className="tooltip" data-title="Production Company">
-              {productionInfo}
-            </span>
+            <div className="tooltip" data-title="Production Company">
+              <ShowMoreText
+                onClick={() => logProductionInfoExpanded(this.logLabel)}
+                anchorClass="movie__more-link"
+                more="more"
+                less="less"
+                lines={1}
+              >
+                {productionInfo}
+              </ShowMoreText>
+            </div>
           ) : (
             <span className="movie__no-info">No Production Company Info</span>
           )}
@@ -344,7 +368,7 @@ class Movie extends Component {
             onClick={() => logOverviewOpened(this.logLabel)}
             anchorClass="movie__more-link"
             more="more"
-            less={false}
+            less="less"
           >
             {movie.overview}
           </ShowMoreText>

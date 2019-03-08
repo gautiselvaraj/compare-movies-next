@@ -60,6 +60,15 @@ export const logHomeMovieAdded = label =>
 export const logOverviewOpened = label =>
   logMe('Movie', 'Overview Opened', label);
 
+export const logProductionInfoExpanded = label =>
+  logMe('Movie', 'Production Info Expanded', label);
+
+export const logAwardsInfoExpanded = label =>
+  logMe('Movie', 'Awards Info Expanded', label);
+
+export const logGenreInfoExpanded = label =>
+  logMe('Movie', 'Genre Info Expanded', label);
+
 export const logCastOpened = label => logMe('Movie', 'Cast Opened', label);
 
 export const logCrewOpened = label => logMe('Movie', 'Crew Opened', label);
