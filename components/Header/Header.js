@@ -19,7 +19,7 @@ const Header = ({ movies }) => {
         </Link>
       </div>
       <div className="header__search">
-        <SearchContainer />
+        <SearchContainer autoFocus={!shrinkHeader} />
       </div>
       {shrinkHeader && (
         <div className="header__shares">

@@ -89,9 +89,6 @@ class Search extends Component {
 
     // Clear blur timeout
     clearTimeout(this.blurTimeout);
-
-    this.searchInput.focus();
-    this.setState({ inputFocussed: true });
   }
 
   onFocus() {
@@ -115,7 +112,12 @@ class Search extends Component {
       inputFocussed,
       inputValuePresent
     } = this.state;
-    const { onSearchChange, fetchingSearchResults, searchResults } = this.props;
+    const {
+      onSearchChange,
+      fetchingSearchResults,
+      searchResults,
+      autoFocus
+    } = this.props;
     const searchResultsId = 'search_results';
     const searchResultsOpened = !!searchResults && inputFocussed;
 
@@ -133,7 +135,7 @@ class Search extends Component {
           onKeyDown={this.onKeyDown}
           onFocus={this.onFocus}
           onBlur={this.onBlur}
-          autoFocus={true}
+          autoFocus={autoFocus}
           type="search"
           className="search__input"
           autoComplete="off"
@@ -175,7 +177,8 @@ Search.propTypes = {
   onSearchChange: PropTypes.func.isRequired,
   onSearchSelect: PropTypes.func.isRequired,
   searchResults: PropTypes.arrayOf(PropTypes.object),
-  fetchingSearchResults: PropTypes.bool.isRequired
+  fetchingSearchResults: PropTypes.bool.isRequired,
+  autoFocus: PropTypes.bool.isRequired
 };
 
 export default Search;
