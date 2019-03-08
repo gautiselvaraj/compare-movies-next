@@ -7,6 +7,11 @@
     { "src": "/api/*.js", "use": "@now/node" }
   ],
   "routes": [
+    {
+      "src": "^http[s]?://comparemovies.info(.*)",
+      "status": 301,
+      "headers": { "Location": "https://www.comparemovies.info$1" }
+    },
     { "src": "/c(/)?$", "status": 301, "headers": { "Location": "/" } },
     { "src": "/c/(.*)$", "dest": "/compare" },
     { "src": "/api/omdb_details/(?<id>.*)$", "dest": "/api/omdb.js?id=$id" },
