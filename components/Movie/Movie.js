@@ -104,6 +104,7 @@ class Movie extends Component {
         : []
       : movie.production_countries;
     countries = countries.map(c => emojiFlags.countryCode(c.iso_3166_1));
+    countries = countries.filter(c => c);
 
     const productionInfo = movie.production
       ? movie.production
