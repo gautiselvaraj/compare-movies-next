@@ -447,14 +447,7 @@ class Movie extends Component {
               <Generic
                 type="productionCompany"
                 jsonldtype="Organization"
-                schema={{
-                  name:
-                    movie.production ||
-                    (movie.production_companies &&
-                      movie.production_companies.length)
-                      ? movie.production_companies[0].name
-                      : ''
-                }}
+                schema={{ name: productionInfo }}
               />
               <Generic
                 type="director"
@@ -491,14 +484,7 @@ class Movie extends Component {
               <Generic
                 type="productionCompany"
                 jsonldtype="Organization"
-                schema={{
-                  name:
-                    movie.production ||
-                    (movie.production_companies &&
-                      movie.production_companies.length)
-                      ? movie.production_companies[0].name
-                      : ''
-                }}
+                schema={{ name: productionInfo }}
               />
             </Generic>
           )}
