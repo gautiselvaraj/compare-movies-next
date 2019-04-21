@@ -1,6 +1,6 @@
 import Router from 'next/router';
 
-const encodePaths = path => path.replace(/[^a-zA-Z0-9-_/\:]/g, '_');
+const encodePath = path => path.replace(/[^a-zA-Z0-9-_:]/g, '_');
 
 const getPathParts = path => {
   path = path.split('?')[0];
@@ -14,10 +14,10 @@ const getPathParts = path => {
 
 const getTypeIdFromPath = path => path.split('--')[0];
 
-const encodeAndPrefixPaths = paths => `/c/${encodePaths(paths.join('/'))}`;
+const encodeAndPrefixPaths = paths => `/c/${paths.join('/')}`;
 
 const getMoviePath = movie =>
-  `${movie.media_type}-${movie.id}--${(movie.title || movie.name)
+  `${movie.media_type}-${movie.id}--${encodePath(movie.title || movie.name)
     .trim()
     .substring(0, 20)}`;
 
@@ -46,4 +46,4 @@ export const getMoviesFromPath = path =>
   });
 
 export const getPathFromMovies = movies =>
-  encodePaths(movies.map(m => getMoviePath(m)).join('/'));
+  movies.map(m => getMoviePath(m)).join('/');
